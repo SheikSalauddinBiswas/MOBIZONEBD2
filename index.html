@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+<script>
+/* always start from the very top (keep #offer/... deep links working) */
+(function(){
+ try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}
+ var offer=function(){return /^#offer\//.test(location.hash)};
+ try{if(location.hash&&!offer())history.replaceState(null,"",location.pathname+location.search)}catch(e){}
+ var top=function(){if(!offer())window.scrollTo({top:0,left:0,behavior:"instant"})};
+ top();
+ document.addEventListener("DOMContentLoaded",top);
+ window.addEventListener("load",function(){top();setTimeout(top,120)});
+ window.addEventListener("pageshow",function(e){if(e.persisted)top()});
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f3f4f7">
