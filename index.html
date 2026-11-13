@@ -1442,5 +1442,43 @@ document.addEventListener("keydown",e=>{if(lbx.hidden)return;if(e.key==="Escape"
 const r=render;render=function(){r();build()};build();
 })();
 </script>
+<style id="bl-css">
+/* ===== CLICKABLE BRAND TILES ===== */
+.mq .bl{cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.mq .bl:hover{border-color:var(--amber)}
+.mq .bl:active{transform:translateY(0) scale(.97)}
+.mq .bl.sel{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 0 0 3px rgba(251,176,45,.42),0 18px 30px -16px var(--glow)}
+.mq .bl.oos{opacity:.55}.mq .bl.oos:hover{opacity:.9}
+.bl-n{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--amber);color:#2a1c00;font:700 .72rem/22px 'Inter',sans-serif;font-style:normal;text-align:center;box-shadow:0 6px 12px -6px #000;pointer-events:none}
+.mq .bl.sel .bl-n{background:#2a1c00;color:var(--amber);box-shadow:0 0 0 2px var(--amber)}
+.brands{padding-top:20px}
+</style>
+<script>
+/* Brand strip: click a brand to show only its phones (click again to clear) */
+(()=>{
+const $=s=>document.querySelector(s),mq=$("#mq");if(!mq)return;
+const cn={};P.forEach(p=>{const k=p[0].split(" ")[0].toLowerCase();cn[k]=(cn[k]||0)+1});
+const TX={bn:{tip:(b,n)=>n?b+" · "+n.toLocaleString("bn-BD")+"টি ডিভাইস":b+" · এখন স্টকে নেই",show:(b,n)=>b+": "+n.toLocaleString("bn-BD")+"টি ডিভাইস দেখাচ্ছি",no:b=>b+"-এর ফোন এখন স্টকে নেই, কল করে জানুন",clr:"সব ব্র্যান্ড দেখাচ্ছি"},
+ en:{tip:(b,n)=>n?b+" · "+n+" device"+(n===1?"":"s"):b+" · currently out of stock",show:(b,n)=>"Showing "+n+" "+b+" device"+(n===1?"":"s"),no:b=>b+" is out of stock right now. Call us to ask.",clr:"Showing all brands"}};
+let tt,sx=0;
+const toast=m=>{const e=$("#toast");if(!e)return;e.textContent=m;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2200)};
+const chips=()=>[...document.querySelectorAll("#bchips .bc[data-b]")].filter(c=>c.dataset.b);
+function sync(){const on=new Set(chips().filter(c=>c.classList.contains("on")).map(c=>c.dataset.b.toLowerCase()));mq.querySelectorAll(".bl").forEach(e=>e.classList.toggle("sel",on.has(e.dataset.bk)))}
+function dec(){mq.querySelectorAll(".bl").forEach(e=>{e.dataset.nm=e.dataset.nm||e.title;const b=e.dataset.nm,k=b.toLowerCase(),n=cn[k]||0;e.dataset.bk=k;e.setAttribute("role","button");e.tabIndex=0;e.classList.toggle("oos",!n);
+ const o=e.querySelector(".bl-n");o&&o.remove();if(n)e.insertAdjacentHTML("beforeend",`<i class="bl-n">${n.toLocaleString(t().cur)}</i>`);e.title=TX[lang].tip(b,n);e.setAttribute("aria-label",e.title)});sync()}
+function pick(el){const b=el.dataset.nm,k=el.dataset.bk,n=cn[k]||0,L=TX[lang];
+ if(!n)return toast(L.no(b));
+ const on=chips().filter(c=>c.classList.contains("on")),only=on.length===1&&on[0].dataset.b.toLowerCase()===k;
+ if(only){const all=document.querySelector('#bchips .bc[data-b=""]');all&&all.click();toast(L.clr);sync();return}
+ filter="all";$("#rst2").click();render();
+ const c=chips().find(x=>x.dataset.b.toLowerCase()===k);c&&c.click();sync();
+ $("#shop").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});toast(L.show(b,n))}
+mq.addEventListener("pointerdown",e=>{sx=e.clientX});
+mq.addEventListener("click",e=>{const el=e.target.closest(".bl");if(!el||Math.abs(e.clientX-sx)>6)return;pick(el)});
+mq.addEventListener("keydown",e=>{const el=e.target.closest(".bl");if(el&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(el)}});
+const bc=$("#bchips");bc&&new MutationObserver(sync).observe(bc,{subtree:true,attributes:true,attributeFilter:["class"]});
+const r=render;render=function(){r();dec()};dec();
+})();
+</script>
 </body>
 </html>
