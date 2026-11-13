@@ -394,6 +394,20 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .mq .bl:not(.tx) .bt{display:none}
 .mq .bl.tx img{display:none}
 .mq .bl .bt{color:#2b2619;opacity:1;font-size:1.1rem}.mq .bl .bt:hover{color:#2b2619}
+
+/* ---- compact "choose your path" ---- */
+.paths{padding:44px 0 6px}
+.paths .head{margin-bottom:20px;align-items:center}
+.paths .head h2{font-size:clamp(1.3rem,2.3vw,1.75rem)}
+.paths .head p{display:none}
+.paths .cats{gap:14px}
+.paths .cat{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:22px}
+.paths .cat .ic{flex:none;width:48px;height:48px;border-radius:15px;font-size:1.3rem;margin:0}
+.paths .cat h3{font-size:1rem;margin-bottom:2px}
+.paths .cat p{font-size:.82rem;line-height:1.4}
+.paths .cat:hover,.paths .cat.rv.done:hover{transform:translateY(-4px)}
+@media(max-width:960px){.paths .cats{grid-template-columns:repeat(3,1fr);gap:10px}.paths .cat{flex-direction:column;justify-content:center;text-align:center;gap:10px;padding:16px 8px}.paths .cat p{display:none}.paths .cat h3{font-size:.9rem;line-height:1.3;margin:0}}
+@media(max-width:560px){.paths{padding:30px 0 0}.paths .head{margin-bottom:14px}.paths .cat{padding:14px 6px;border-radius:18px}.paths .cat .ic{width:42px;height:42px;font-size:1.15rem}.paths .cat h3{font-size:.8rem}}
 </style>
 </head>
 <body>
@@ -461,7 +475,7 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 
 <div class="brands"><div class="mq" id="mq"></div></div>
 
-<section><div class="wrap">
+<section class="paths"><div class="wrap">
   <div class="head rv"><div><span class="eyebrow" data-i="ey1"></span><h2 data-i="k1"></h2></div><p data-i="k2"></p></div>
   <div class="cats">
     <a class="cat sp rv" href="#shop"><div class="ic"><svg class="i"><use href="#phone"/></svg></div><h3 data-i="k3"></h3><p data-i="k4"></p></a>
@@ -552,14 +566,15 @@ const P=[
  ["Samsung Galaxy Tab S10 FE","ad4658f7-69c9-443c-b4a0-8d184487bb1d",48500,"tab"],
  ["Xiaomi Pad 8","f989f5d7-a6e6-4bef-8c04-dbe356890659",44800,"tab"]];
 const HERO=[0,1,2,5];
-const BRC={};
+const BRC={},BC={apple:"#1d1d1f",samsung:"#1428A0",xiaomi:"#FF6900",vivo:"#415FFF",oppo:"#1B9E5F",oneplus:"#F5010C",honor:"#0A59F7",motorola:"#5C92FA",infinix:"#00A94F",nokia:"#124191",huawei:"#CF0A2C",asus:"#00539B",lg:"#A50034"};
 function brFit(i){if(i.dataset.f)return;i.dataset.f=1;const k=i.alt,
  sz=(w,h)=>{const r=w/h;let hh=Math.min(34,Math.sqrt(2600/r)),ww=hh*r;if(ww>128){ww=128;hh=ww/r}i.style.height=hh+"px";i.style.width=ww+"px"};
  if(BRC[k]){i.src=BRC[k].u;sz(BRC[k].w,BRC[k].h);return}
  try{const nw=i.naturalWidth||300,nh=i.naturalHeight||nw,W=480,H=Math.max(1,Math.round(W*nh/nw)),c=document.createElement("canvas");c.width=W;c.height=H;
   const x=c.getContext("2d");x.drawImage(i,0,0,W,H);const d=x.getImageData(0,0,W,H).data;let a=W,b=H,e=-1,f=-1;
   for(let y=0;y<H;y++)for(let z=0;z<W;z++)if(d[(y*W+z)*4+3]>10){if(z<a)a=z;if(z>e)e=z;if(y<b)b=y;if(y>f)f=y}
-  if(e<0)throw 0;const w=e-a+1,h=f-b+1,o=document.createElement("canvas");o.width=w;o.height=h;o.getContext("2d").drawImage(c,a,b,w,h,0,0,w,h);
+  if(e<0)throw 0;const w=e-a+1,h=f-b+1,o=document.createElement("canvas");o.width=w;o.height=h;const q=o.getContext("2d");q.drawImage(c,a,b,w,h,0,0,w,h);
+  const col=BC[k.toLowerCase()];if(col){q.globalCompositeOperation="source-in";q.fillStyle=col;q.fillRect(0,0,w,h)}
   const u=o.toDataURL("image/png");BRC[k]={u,w,h};i.src=u;sz(w,h)}catch(err){i.style.height="30px";i.style.width="auto"}}
 function brErr(i){if(/\.svg$/.test(i.src)){i.src=i.src.replace(/\.svg$/,".png")}else{i.parentNode.classList.add("tx");i.onerror=null}}
 const BR=["Apple","Samsung","Xiaomi","realme","vivo","Oppo","OnePlus","Honor","Motorola","Infinix","Tecno","itel","Nokia","Huawei","Asus","LG"];
