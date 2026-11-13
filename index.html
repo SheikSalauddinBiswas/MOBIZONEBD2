@@ -3,131 +3,134 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MobiZone BD — Buy · Sell · Exchange</title>
-<meta name="description" content="নতুন মোবাইল কিনুন, পুরাতন ফোন এক্সচেঞ্জ করুন, গ্যাজেট নিন — MobiZone BD">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>MobiZone BD — Buy · Sell · Exchange | Chattogram</title>
+<meta name="description" content="Sealed phones, honest trade-ins and genuine gadgets. Two stores in Chattogram: Reazuddin Bazar and Nasirabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--amber:#fbb02d;--amber2:#ffcf6b;--bg:#15120e;--bg2:#1e1a14;--card:#241f18;--text:#f7f3ea;--mute:#a79f90;--line:rgba(255,255,255,.09);--glow:rgba(251,176,45,.28)}
-[data-theme=light]{--bg:#f4f5f7;--bg2:#fff;--card:#fff;--text:#1b1812;--mute:#6b6558;--line:rgba(0,0,0,.09);--glow:rgba(251,176,45,.35)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+:root{--amber:#fbb02d;--amber2:#ffd27a;--bg:#120f0b;--bg2:#1a160f;--card:#211c14;--text:#f7f3ea;--mute:#a79f90;--line:rgba(255,255,255,.09);--glow:rgba(251,176,45,.3)}
+[data-theme=light]{--bg:#f3f4f7;--bg2:#fff;--card:#fff;--text:#1b1812;--mute:#6b6558;--line:rgba(0,0,0,.09);--glow:rgba(251,176,45,.38)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
 body{font-family:'Outfit','Hind Siliguri',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .4s,color .4s;overflow-x:hidden}
 html[lang=bn] body{font-family:'Hind Siliguri','Outfit',sans-serif}
-a{color:inherit;text-decoration:none}
-button,select{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
-.wrap{width:min(1160px,92%);margin:auto}
+a{color:inherit;text-decoration:none}button,select{font:inherit;color:inherit}:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{width:min(1180px,92%);margin:auto}
 svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
-
-/* header — always dark so the white logo letters stay visible */
-header{position:sticky;top:0;z-index:50;background:rgba(21,18,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);color:#f7f3ea}
-.nav{display:flex;align-items:center;gap:20px;height:68px}
-.nav img{height:38px;width:auto}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2));z-index:99}
+header{position:sticky;top:0;z-index:50;background:rgba(18,15,11,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);color:#f7f3ea}
+.nav{display:flex;align-items:center;gap:22px;height:70px}.nav img{height:38px}
 .nav nav{margin-left:auto;display:flex;gap:26px;font-weight:500;font-size:.95rem}
-.nav nav a{opacity:.8;transition:.25s;position:relative}
-.nav nav a:hover{opacity:1;color:var(--amber)}
-.tools{display:flex;gap:8px;margin-left:auto}
-.nav nav+.tools{margin-left:0}
-.chip{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:99px;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.85rem;transition:.25s;color:#f7f3ea}
+.nav nav a{opacity:.78;transition:.25s}.nav nav a:hover{opacity:1;color:var(--amber)}
+.tools{display:flex;gap:8px;align-items:center}
+.chip{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:99px;padding:7px 14px;cursor:pointer;font-weight:600;font-size:.85rem;transition:.25s;color:#f7f3ea;display:inline-flex;gap:6px;align-items:center}
 .chip:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-1px)}
-
+.chip.call{background:var(--amber);color:#2a1c00;border-color:var(--amber)}.chip.call:hover{color:#2a1c00;box-shadow:0 8px 22px -6px var(--glow)}
 /* hero */
-.hero{position:relative;padding:72px 0 90px;overflow:hidden}
-.hero::before{content:"";position:absolute;width:620px;height:620px;right:-120px;top:-80px;background:radial-gradient(circle,var(--glow),transparent 65%);animation:pulse 6s ease-in-out infinite}
-@keyframes pulse{50%{transform:scale(1.15);opacity:.7}}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
-.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--bg2);padding:6px 14px;border-radius:99px;font-size:.85rem;color:var(--mute)}
-.badge b{width:8px;height:8px;border-radius:50%;background:#3ecf6e;box-shadow:0 0 0 0 #3ecf6e;animation:ping 1.8s infinite}
-@keyframes ping{70%{box-shadow:0 0 0 9px transparent}}
-h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.12;font-weight:800;margin:18px 0;letter-spacing:-.02em}
+.hero{position:relative;padding:70px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:760px;height:760px;right:-200px;top:-160px;background:radial-gradient(circle,var(--glow),transparent 62%);animation:pulse 7s ease-in-out infinite}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 70%)}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.65}}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative;z-index:1}
+.badge{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);background:var(--bg2);padding:7px 16px;border-radius:99px;font-size:.85rem;color:var(--mute)}
+.badge b{width:8px;height:8px;border-radius:50%;background:#3ecf6e;animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(62,207,110,.7)}70%,100%{box-shadow:0 0 0 10px transparent}}
+h1{font-size:clamp(2.3rem,5.4vw,4.2rem);line-height:1.1;font-weight:800;margin:20px 0;letter-spacing:-.025em}
 h1 span{display:block;background:linear-gradient(90deg,var(--amber),var(--amber2),var(--amber));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
 @keyframes shine{to{background-position:200%}}
 .lead{color:var(--mute);max-width:46ch;font-size:1.08rem}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:14px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--bg2);transition:.3s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:16px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--bg2);transition:.3s;position:relative;overflow:hidden}
 .btn:hover{transform:translateY(-3px)}
-.btn.pri{background:linear-gradient(135deg,var(--amber),#f59a0c);color:#2a1c00;border:0;box-shadow:0 10px 30px -8px var(--glow)}
-.btn.pri:hover{box-shadow:0 16px 36px -6px var(--glow)}
-.stats{display:flex;gap:34px;margin-top:38px}
-.stats b{font-size:1.8rem;color:var(--amber);display:block;line-height:1.1}
-.stats small{color:var(--mute)}
-
-/* exchange estimator (signature element) */
-.est{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);position:relative}
-.est::after{content:"";position:absolute;inset:-1px;border-radius:27px;padding:1px;background:linear-gradient(140deg,var(--amber),transparent 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.est h3{font-size:1.25rem;display:flex;gap:10px;align-items:center}
-.est p.s{color:var(--mute);font-size:.9rem;margin-bottom:14px}
-label{display:block;font-size:.82rem;color:var(--mute);margin:12px 0 6px}
-select{width:100%;padding:12px 14px;border-radius:12px;background:var(--bg);border:1px solid var(--line);cursor:pointer}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.seg button{padding:10px 6px;border-radius:12px;background:var(--bg);border:1px solid var(--line);cursor:pointer;transition:.25s;font-size:.9rem}
-.seg button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);font-weight:700;transform:scale(1.04)}
-.res{margin-top:20px;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(251,176,45,.16),rgba(251,176,45,.04));border:1px dashed var(--amber);text-align:center}
-.res small{color:var(--mute)}
-.res b{display:block;font-size:2.1rem;color:var(--amber);font-weight:800;line-height:1.2}
-
-/* sections */
-section{padding:84px 0}
-.alt{background:var(--bg2)}
-.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:34px;flex-wrap:wrap}
-h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.01em}
-.head p{color:var(--mute);max-width:48ch}
+.btn.pri{background:linear-gradient(135deg,var(--amber),#f59a0c);color:#2a1c00;border:0;box-shadow:0 12px 32px -8px var(--glow)}
+.btn.pri::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sweep 3.6s infinite}
+@keyframes sweep{60%,100%{left:130%}}
+.stats{display:flex;gap:36px;margin-top:40px}.stats b{font-size:1.9rem;color:var(--amber);display:block;line-height:1.1}.stats small{color:var(--mute)}
+.stage{position:relative;aspect-ratio:1;max-width:480px;margin:auto;width:100%;perspective:900px}
+.disc{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 30%,#fff,#e6e2d8);box-shadow:0 0 0 12px rgba(251,176,45,.12),0 0 0 26px rgba(251,176,45,.06),0 40px 90px -20px var(--glow)}
+.ring{position:absolute;inset:-2%;border-radius:50%;border:1.5px dashed var(--amber);opacity:.5;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tilt{position:absolute;inset:0;transition:transform .2s;transform-style:preserve-3d}
+.slide{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.88) translateY(14px);transition:.9s cubic-bezier(.2,.8,.2,1)}
+.slide.on{opacity:1;transform:none}
+.slide img{height:86%;max-width:70%;object-fit:contain;filter:drop-shadow(0 28px 26px rgba(0,0,0,.35));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.float{position:absolute;background:rgba(30,25,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);color:#f7f3ea;border-radius:16px;padding:10px 14px;font-size:.85rem;display:flex;gap:8px;align-items:center;animation:float 6s ease-in-out infinite;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.float.a{left:-2%;top:16%}.float.b{right:-3%;bottom:20%;animation-delay:-2.5s}.float svg{color:var(--amber)}
+.pname{text-align:center;margin-top:14px;font-weight:700;min-height:3em}.pname small{display:block;color:var(--amber);font-size:1.05rem}
+/* brands marquee */
+.brands{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:18px 0}
+.mq{display:flex;gap:56px;width:max-content;animation:mq 34s linear infinite}.brands:hover .mq{animation-play-state:paused}
+.mq span{font-weight:800;font-size:1.35rem;color:var(--mute);opacity:.7;transition:.3s;letter-spacing:.02em}.mq span:hover{color:var(--amber);opacity:1}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:88px 0}.alt{background:var(--bg2)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.015em}.head p{color:var(--mute);max-width:48ch}
+/* spotlight cards */
+.sp{position:relative;overflow:hidden}
+.sp::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--glow),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.sp:hover::before{opacity:1}.sp>*{position:relative}
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.cat{padding:30px;border-radius:24px;background:var(--card);border:1px solid var(--line);transition:.4s;position:relative;overflow:hidden}
-.cat:hover{transform:translateY(-8px);border-color:var(--amber);box-shadow:0 24px 50px -24px var(--glow)}
-.cat .ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:rgba(251,176,45,.14);color:var(--amber);font-size:1.7rem;margin-bottom:18px;transition:.4s}
+.cat{padding:32px;border-radius:26px;background:var(--card);border:1px solid var(--line);transition:.4s}
+.cat:hover{transform:translateY(-8px);border-color:var(--amber)}
+.cat .ic{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;background:rgba(251,176,45,.14);color:var(--amber);font-size:1.7rem;margin-bottom:18px;transition:.4s}
 .cat:hover .ic{background:var(--amber);color:#2a1c00;transform:rotate(-8deg) scale(1.08)}
 .cat h3{margin-bottom:6px}.cat p{color:var(--mute);font-size:.95rem}
 .tabs{display:flex;gap:8px;margin-bottom:26px;overflow-x:auto;padding-bottom:4px}
 .tabs button{white-space:nowrap;padding:9px 20px;border-radius:99px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:.25s}
 .tabs button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);font-weight:700}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.p{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;transition:.35s;display:flex;flex-direction:column}
-.p:hover{transform:translateY(-7px);box-shadow:0 22px 44px -22px var(--glow);border-color:var(--amber)}
-.p .img{height:170px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,var(--c),transparent 72%),var(--bg)}
-.p .img svg{height:130px;transition:.45s}
-.p:hover .img svg{transform:scale(1.1) rotate(-6deg)}
-.tag{position:absolute;top:10px;left:10px;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--amber);color:#2a1c00}
-.p h4{margin-top:14px;font-size:1.02rem}
-.p .meta{color:var(--mute);font-size:.84rem}
-.price{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px}
-.price b{font-size:1.18rem;color:var(--amber)}
-.price s{color:var(--mute);font-size:.82rem;margin-left:6px}
-.add{width:40px;height:40px;border-radius:12px;border:0;cursor:pointer;background:rgba(251,176,45,.15);color:var(--amber);font-size:1.1rem;transition:.3s}
-.add:hover{background:var(--amber);color:#2a1c00;transform:rotate(90deg)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
-.st{padding:26px;border-radius:22px;border:1px solid var(--line);background:var(--card);position:relative;counter-increment:s}
-.st::before{content:counter(s);position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2a1c00;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 6px var(--bg2)}
-.st h3{margin:8px 0 4px;font-size:1.05rem}.st p{color:var(--mute);font-size:.92rem}
-.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.trust div{padding:22px}.trust .ic{font-size:2rem;color:var(--amber)}.trust h4{margin:8px 0 2px}.trust p{color:var(--mute);font-size:.9rem}
-footer{background:#15120e;color:#f7f3ea;padding:56px 0 28px}
-.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
-footer img{height:42px;margin-bottom:14px}
-footer p,footer li{color:#a79f90;font-size:.93rem}
-footer ul{list-style:none;display:grid;gap:8px}
-footer h5{margin-bottom:12px;color:var(--amber);font-size:1rem}
+.p{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:14px;transition:.35s;display:flex;flex-direction:column;animation:pop .5s both}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.p:hover{transform:translateY(-8px);border-color:var(--amber);box-shadow:0 26px 50px -26px var(--glow)}
+.p .img{height:190px;border-radius:18px;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#fff,#e8e4da);position:relative;overflow:hidden}
+.p .img img{height:88%;max-width:80%;object-fit:contain;transition:.5s;filter:drop-shadow(0 12px 12px rgba(0,0,0,.25))}
+.p:hover .img img{transform:scale(1.1) rotate(-4deg)}
+.tag{position:absolute;top:10px;left:10px;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:99px;background:#1b1812;color:var(--amber)}
+.heart{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.08);cursor:pointer;font-size:1rem;color:#555;transition:.3s}
+.heart.on{background:#ff4d6d;color:#fff;transform:scale(1.15)}
+.p h4{margin-top:14px;font-size:1.02rem;line-height:1.3}.p .meta{color:var(--mute);font-size:.84rem}
+.price{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px}.price b{font-size:1.2rem;color:var(--amber)}
+.wa-b{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:rgba(37,211,102,.14);color:#25d366;transition:.3s;font-size:1.15rem}
+.wa-b:hover{background:#25d366;color:#fff;transform:scale(1.1) rotate(-6deg)}
+.more{text-align:center;margin-top:34px}
+/* estimator */
+.est-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.est{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:0 30px 70px -34px rgba(0,0,0,.55)}
+.est h3{font-size:1.25rem;margin-bottom:4px}label{display:block;font-size:.82rem;color:var(--mute);margin:14px 0 6px}
+select{width:100%;padding:13px 14px;border-radius:13px;background:var(--bg);border:1px solid var(--line);cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{padding:11px 6px;border-radius:13px;background:var(--bg);border:1px solid var(--line);cursor:pointer;transition:.25s;font-size:.9rem}
+.seg button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);font-weight:700;transform:scale(1.04)}
+.res{margin-top:22px;padding:20px;border-radius:20px;background:linear-gradient(135deg,rgba(251,176,45,.18),rgba(251,176,45,.04));border:1px dashed var(--amber);text-align:center}
+.res small{color:var(--mute)}.res b{display:block;font-size:2.3rem;color:var(--amber);font-weight:800;line-height:1.2}
+.steps{display:grid;gap:14px;margin-top:22px;counter-reset:s}
+.st{display:flex;gap:14px;align-items:flex-start;counter-increment:s}
+.st::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2a1c00;font-weight:800;display:grid;place-items:center}
+.st h4{line-height:1.3}.st p{color:var(--mute);font-size:.92rem}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tr{padding:26px;border-radius:22px;border:1px solid var(--line);background:var(--card);display:flex;gap:16px;transition:.35s}
+.tr:hover{transform:translateY(-5px);border-color:var(--amber)}
+.tr .ic{flex:none;width:50px;height:50px;border-radius:16px;display:grid;place-items:center;background:rgba(251,176,45,.14);color:var(--amber);font-size:1.5rem}
+.tr h4{line-height:1.3}.tr p{color:var(--mute);font-size:.9rem}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.store{padding:30px;border-radius:26px;background:var(--card);border:1px solid var(--line)}
+.store h3{font-size:1.3rem;margin-bottom:6px}.store p{color:var(--mute);margin-bottom:4px}
+.store .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.store .btn{padding:11px 20px;font-size:.92rem}
+footer{background:#120f0b;color:#f7f3ea;padding:60px 0 28px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}footer img{height:42px;margin-bottom:14px}
+footer p,footer li{color:#a79f90;font-size:.93rem}footer ul{list-style:none;display:grid;gap:8px}footer h5{margin-bottom:12px;color:var(--amber);font-size:1rem}
+.soc{display:flex;gap:10px;margin-top:16px}.soc a{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;font-weight:700;font-size:.8rem;transition:.3s}.soc a:hover{background:var(--amber);color:#2a1c00;transform:translateY(-3px)}
 .copy{border-top:1px solid rgba(255,255,255,.09);margin-top:34px;padding-top:18px;color:#a79f90;font-size:.85rem;text-align:center}
-.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 10px 28px -6px rgba(37,211,102,.6);animation:bob 2.6s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-6px)}}
-.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,30px);opacity:0;background:var(--amber);color:#2a1c00;padding:10px 20px;border-radius:99px;font-weight:700;transition:.4s;z-index:70;pointer-events:none}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
-/* motion: one page-load sequence + gentle scroll reveal */
-.in{opacity:0;transform:translateY(22px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes up{to{opacity:1;transform:none}}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
-.rv.vis{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.in,.rv{opacity:1;transform:none}}
-
-@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}.grid,.steps,.trust{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:1fr}.nav nav{display:none}.tools{margin-left:auto}.fg{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.grid{gap:12px}.p{padding:12px}.p .img{height:130px}.p .img svg{height:100px}.steps,.trust{grid-template-columns:1fr}.fg{grid-template-columns:1fr}.stats{gap:20px}section{padding:60px 0}.hero{padding:44px 0 60px}.nav img{height:30px}}
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 10px 28px -6px rgba(37,211,102,.6);animation:float 2.8s ease-in-out infinite}
+.in{opacity:0;transform:translateY(24px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}@keyframes up{to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}.rv.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.in,.rv{opacity:1;transform:none}.slide.on{opacity:1}}
+@media(max-width:960px){.hero .wrap,.est-wrap,.stores{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.cats,.trust{grid-template-columns:1fr}.nav nav{display:none}.tools{margin-left:auto}.fg{grid-template-columns:1fr 1fr}.stage{max-width:380px}}
+@media(max-width:560px){.grid{gap:12px}.p{padding:10px}.p .img{height:140px}.fg{grid-template-columns:1fr}.stats{gap:22px}section{padding:60px 0}.hero{padding:44px 0 60px}.nav img{height:30px}.chip.call span{display:none}.float{display:none}}
 </style>
 </head>
 <body>
-
+<div id="bar"></div>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><circle cx="12" cy="18.5" r=".6"/></symbol>
 <symbol id="swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
@@ -136,160 +139,186 @@ footer h5{margin-bottom:12px;color:var(--amber);font-size:1rem}
 <symbol id="truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h5l3 3v4h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
 <symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
 <symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
-<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
 <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+<symbol id="card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
+<symbol id="undo" viewBox="0 0 24 24"><path d="M9 7L4 12l5 5M4 12h11a5 5 0 010 10"/></symbol>
 </defs></svg>
 
-<header>
-  <div class="wrap nav">
-    <a href="#top" aria-label="MobiZone BD"><img src="logo.png" alt="MobiZone BD — Buy Sell Exchange"></a>
-    <nav>
-      <a href="#cats" data-i="n1"></a><a href="#shop" data-i="n2"></a><a href="#how" data-i="n3"></a><a href="#contact" data-i="n4"></a>
-    </nav>
-    <div class="tools">
-      <button class="chip" id="lang" aria-label="Language">EN</button>
-      <button class="chip" id="theme" aria-label="Theme">☀️</button>
-    </div>
+<header><div class="wrap nav">
+  <a href="#top"><img src="logo.png" alt="MobiZone BD"></a>
+  <nav><a href="#shop" data-i="n1"></a><a href="#exchange" data-i="n2"></a><a href="#why" data-i="n3"></a><a href="#stores" data-i="n4"></a></nav>
+  <div class="tools">
+    <a class="chip call" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span data-i="call"></span></a>
+    <button class="chip" id="lang" aria-label="Language">EN</button>
+    <button class="chip" id="theme" aria-label="Theme">☀️</button>
   </div>
-</header>
+</div></header>
 
 <main id="top">
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <span class="badge in" style="animation-delay:.05s"><b></b><span data-i="open"></span></span>
-      <h1 class="in" style="animation-delay:.15s"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
-      <p class="lead in" style="animation-delay:.3s" data-i="lead"></p>
-      <div class="cta in" style="animation-delay:.45s">
-        <a class="btn pri" href="#shop"><svg class="i"><use href="#phone"/></svg><span data-i="c1"></span></a>
-        <a class="btn" href="#est"><svg class="i"><use href="#swap"/></svg><span data-i="c2"></span></a>
-      </div>
-      <div class="stats in" style="animation-delay:.6s">
-        <div><b data-n="5000" data-s="+">0</b><small data-i="s1"></small></div>
-        <div><b data-n="1200" data-s="+">0</b><small data-i="s2"></small></div>
-        <div><b data-n="98" data-s="%">0</b><small data-i="s3"></small></div>
-      </div>
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="badge in" style="animation-delay:.05s"><b></b><span data-i="open"></span></span>
+    <h1 class="in" style="animation-delay:.15s"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
+    <p class="lead in" style="animation-delay:.3s" data-i="lead"></p>
+    <div class="cta in" style="animation-delay:.45s">
+      <a class="btn pri" href="#shop"><svg class="i"><use href="#phone"/></svg><span data-i="c1"></span></a>
+      <a class="btn" href="#exchange"><svg class="i"><use href="#swap"/></svg><span data-i="c2"></span></a>
     </div>
-
-    <div class="est in" id="est" style="animation-delay:.4s">
-      <h3><svg class="i"><use href="#swap"/></svg><span data-i="e1"></span></h3>
-      <p class="s" data-i="e2"></p>
-      <label data-i="e3"></label>
-      <select id="model"></select>
-      <label data-i="e4"></label>
-      <div class="seg" id="cond"></div>
-      <div class="res"><small data-i="e5"></small><b id="val">৳0</b></div>
-      <a class="btn pri" style="width:100%;justify-content:center;margin-top:14px" href="#contact"><svg class="i"><use href="#chat"/></svg><span data-i="e6"></span></a>
+    <div class="stats in" style="animation-delay:.6s">
+      <div><b data-n="2016" data-s="">0</b><small data-i="s1"></small></div>
+      <div><b data-n="2" data-s="">0</b><small data-i="s2"></small></div>
+      <div><b data-n="36" data-s="">0</b><small data-i="s3"></small></div>
     </div>
   </div>
-</div>
+  <div class="in" style="animation-delay:.35s">
+    <div class="stage" id="stage"><div class="ring"></div><div class="disc"></div>
+      <div class="tilt" id="tilt"></div>
+      <div class="float a"><svg class="i"><use href="#shield"/></svg><span data-i="f_a"></span></div>
+      <div class="float b"><svg class="i"><use href="#truck"/></svg><span data-i="f_b"></span></div>
+    </div>
+    <div class="pname" id="pname"></div>
+  </div>
+</div></div>
 
-<section class="alt" id="cats"><div class="wrap">
+<div class="brands"><div class="mq" id="mq"></div></div>
+
+<section><div class="wrap">
   <div class="head rv"><h2 data-i="k1"></h2><p data-i="k2"></p></div>
   <div class="cats">
-    <a class="cat rv" href="#shop"><div class="ic"><svg class="i"><use href="#phone"/></svg></div><h3 data-i="k3"></h3><p data-i="k4"></p></a>
-    <a class="cat rv" href="#est"><div class="ic"><svg class="i"><use href="#swap"/></svg></div><h3 data-i="k5"></h3><p data-i="k6"></p></a>
-    <a class="cat rv" href="#shop"><div class="ic"><svg class="i"><use href="#watch"/></svg></div><h3 data-i="k7"></h3><p data-i="k8"></p></a>
+    <a class="cat sp rv" href="#shop"><div class="ic"><svg class="i"><use href="#phone"/></svg></div><h3 data-i="k3"></h3><p data-i="k4"></p></a>
+    <a class="cat sp rv" href="#exchange"><div class="ic"><svg class="i"><use href="#swap"/></svg></div><h3 data-i="k5"></h3><p data-i="k6"></p></a>
+    <a class="cat sp rv" href="#shop"><div class="ic"><svg class="i"><use href="#watch"/></svg></div><h3 data-i="k7"></h3><p data-i="k8"></p></a>
   </div>
 </div></section>
 
-<section id="shop"><div class="wrap">
+<section class="alt" id="shop"><div class="wrap">
   <div class="head rv"><h2 data-i="p1"></h2><p data-i="p2"></p></div>
   <div class="tabs rv" id="tabs"></div>
   <div class="grid" id="grid"></div>
+  <div class="more"><a class="btn" href="https://mobizonebd.vercel.app/products"><span data-i="all_p"></span> →</a></div>
 </div></section>
 
-<section class="alt" id="how"><div class="wrap">
-  <div class="head rv"><h2 data-i="h_1"></h2></div>
-  <div class="steps">
-    <div class="st rv"><h3 data-i="t1"></h3><p data-i="t1d"></p></div>
-    <div class="st rv"><h3 data-i="t2"></h3><p data-i="t2d"></p></div>
-    <div class="st rv"><h3 data-i="t3"></h3><p data-i="t3d"></p></div>
-    <div class="st rv"><h3 data-i="t4"></h3><p data-i="t4d"></p></div>
+<section id="exchange"><div class="wrap est-wrap">
+  <div class="rv">
+    <h2 data-i="e1"></h2><p style="color:var(--mute);margin-top:8px" data-i="e2"></p>
+    <div class="steps">
+      <div class="st"><div><h4 data-i="t1"></h4><p data-i="t1d"></p></div></div>
+      <div class="st"><div><h4 data-i="t2"></h4><p data-i="t2d"></p></div></div>
+      <div class="st"><div><h4 data-i="t3"></h4><p data-i="t3d"></p></div></div>
+    </div>
+  </div>
+  <div class="est rv">
+    <h3 data-i="e3t"></h3>
+    <label data-i="e3"></label><select id="model"></select>
+    <label data-i="e4"></label><div class="seg" id="cond"></div>
+    <div class="res"><small data-i="e5"></small><b id="val">৳0</b></div>
+    <a class="btn pri" id="estwa" style="width:100%;justify-content:center;margin-top:16px" target="_blank" rel="noopener"><svg class="i"><use href="#chat"/></svg><span data-i="e6"></span></a>
   </div>
 </div></section>
 
-<section><div class="wrap trust">
-  <div class="rv"><div class="ic"><svg class="i"><use href="#shield"/></svg></div><h4 data-i="u1"></h4><p data-i="u1d"></p></div>
-  <div class="rv"><div class="ic"><svg class="i"><use href="#truck"/></svg></div><h4 data-i="u2"></h4><p data-i="u2d"></p></div>
-  <div class="rv"><div class="ic"><svg class="i"><use href="#tag"/></svg></div><h4 data-i="u3"></h4><p data-i="u3d"></p></div>
-  <div class="rv"><div class="ic"><svg class="i"><use href="#chat"/></svg></div><h4 data-i="u4"></h4><p data-i="u4d"></p></div>
+<section class="alt" id="why"><div class="wrap">
+  <div class="head rv"><h2 data-i="w1"></h2><p data-i="w2"></p></div>
+  <div class="trust">
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#shield"/></svg></div><div><h4 data-i="u1"></h4><p data-i="u1d"></p></div></div>
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#undo"/></svg></div><div><h4 data-i="u2"></h4><p data-i="u2d"></p></div></div>
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#swap"/></svg></div><div><h4 data-i="u3"></h4><p data-i="u3d"></p></div></div>
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#card"/></svg></div><div><h4 data-i="u4"></h4><p data-i="u4d"></p></div></div>
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#truck"/></svg></div><div><h4 data-i="u5"></h4><p data-i="u5d"></p></div></div>
+    <div class="tr sp rv"><div class="ic"><svg class="i"><use href="#tag"/></svg></div><div><h4 data-i="u6"></h4><p data-i="u6d"></p></div></div>
+  </div>
+</div></section>
+
+<section id="stores"><div class="wrap">
+  <div class="head rv"><h2 data-i="v1"></h2><p data-i="v2"></p></div>
+  <div class="stores">
+    <div class="store sp rv"><h3>Islam Market</h3><p data-i="a1"></p><p>+880 1960-880808</p>
+      <div class="row"><a class="btn pri" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span data-i="call"></span></a><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/twkM5Y3keG1K4bdh9"><svg class="i"><use href="#pin"/></svg><span data-i="map"></span></a></div></div>
+    <div class="store sp rv"><h3>Concord Mueen Square</h3><p data-i="a2"></p><p>+880 1866-303471</p>
+      <div class="row"><a class="btn pri" href="tel:+8801866303471"><svg class="i"><use href="#call"/></svg><span data-i="call"></span></a><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Concord+Mueen+Square+Nasirabad+Chattogram"><svg class="i"><use href="#pin"/></svg><span data-i="map"></span></a></div></div>
+  </div>
 </div></section>
 </main>
 
-<footer id="contact"><div class="wrap">
+<footer><div class="wrap">
   <div class="fg">
-    <div><img src="logo.png" alt="MobiZone BD"><p data-i="f1"></p></div>
-    <div><h5 data-i="f2"></h5><ul><li><svg class="i"><use href="#pin"/></svg> <span data-i="addr"></span></li><li>📞 01XXX-XXXXXX</li><li>✉️ info@mobizonebd.com</li></ul></div>
+    <div><img src="logo.png" alt="MobiZone BD"><p data-i="f1"></p>
+      <div class="soc"><a href="https://www.facebook.com/share/19xVDGVDzy/" target="_blank" rel="noopener" aria-label="Facebook">f</a><a href="https://www.instagram.com/mobizone2bd" target="_blank" rel="noopener" aria-label="Instagram">ig</a><a href="https://youtube.com/@mobizone_2bd" target="_blank" rel="noopener" aria-label="YouTube">yt</a><a href="https://wa.me/8801960880808" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a></div></div>
+    <div><h5 data-i="f2"></h5><ul><li>📞 +880 1960-880808</li><li>📞 +880 1866-303471</li><li>✉️ hello@mobizone.com.bd</li></ul></div>
     <div><h5 data-i="f3"></h5><ul><li data-i="hr1"></li><li data-i="hr2"></li></ul></div>
   </div>
-  <p class="copy">© 2026 MobiZone BD</p>
+  <p class="copy">© 2026 MobiZone BD · Chattogram</p>
 </div></footer>
-
-<a class="wa" href="https://wa.me/8801XXXXXXXXX" aria-label="WhatsApp"><svg class="i"><use href="#chat"/></svg></a>
-<div class="toast" id="toast"></div>
+<a class="wa" href="https://wa.me/8801960880808" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#chat"/></svg></a>
 
 <script>
-/* ===== ১. ডেমো ডাটা (পরে এখানে আসল তথ্য বসবে) ===== */
-const PRODUCTS=[
- {n:"iPhone 15 Pro",t:"new",m:"256GB · Natural",p:149000,o:155000,c:"#8a8f9c"},
- {n:"Galaxy S24 Ultra",t:"new",m:"512GB · Titanium",p:139000,o:146000,c:"#6b7a99"},
- {n:"Redmi Note 13 Pro",t:"new",m:"8/256GB · Midnight",p:31500,o:34000,c:"#5a4fcf"},
- {n:"iPhone 13",t:"used",m:"128GB · 92% Battery",p:58000,o:0,c:"#e0587a"},
- {n:"Galaxy A54",t:"used",m:"8/128GB · Like new",p:29000,o:0,c:"#3fa7a0"},
- {n:"AirPods Pro 2",t:"gadget",m:"USB-C · Sealed",p:26500,o:28500,c:"#c9cdd6"},
- {n:"Smart Watch S9",t:"gadget",m:"45mm · GPS",p:9800,o:11500,c:"#fbb02d"},
- {n:"Anker 20,000mAh",t:"gadget",m:"PD 22.5W",p:3900,o:4400,c:"#2d3340"}
-];
-const MODELS=[["iPhone 15 Pro",120000],["iPhone 13",52000],["Galaxy S23",65000],["Galaxy A54",24000],["Redmi Note 12",15000]];
-const CONDS=[["c_good",1],["c_fair",.82],["c_poor",.62]];
-
-/* ===== ২. বাংলা / ইংরেজি ===== */
-const T={bn:{n1:"ক্যাটাগরি",n2:"শপ",n3:"এক্সচেঞ্জ",n4:"যোগাযোগ",open:"এখন খোলা · ঢাকা",h1a:"কিনুন, বিক্রি করুন,",h1b:"এক্সচেঞ্জ করুন।",lead:"নতুন মোবাইল, ব্যবহৃত ফোন আর স্মার্ট গ্যাজেট — এক জায়গায়। পুরাতন ফোন দিয়ে নতুন ফোন নিন, সহজে ও নিরাপদে।",c1:"ফোন দেখুন",c2:"দাম জানুন",s1:"সন্তুষ্ট ক্রেতা",s2:"এক্সচেঞ্জ সম্পন্ন",s3:"পজিটিভ রিভিউ",e1:"ফোনের দাম জানুন",e2:"মডেল ও অবস্থা বেছে নিন, সাথে সাথে আনুমানিক দাম দেখুন।",e3:"আপনার ফোন",e4:"ফোনের অবস্থা",e5:"আনুমানিক এক্সচেঞ্জ মূল্য",e6:"দোকানে নিশ্চিত করুন",c_good:"ভালো",c_fair:"মোটামুটি",c_poor:"পুরাতন",k1:"আপনি কী খুঁজছেন?",k2:"তিনটি সহজ পথ — কিনুন, বদলান অথবা গ্যাজেট নিন।",k3:"নতুন মোবাইল",k4:"অফিসিয়াল ওয়ারেন্টি সহ সব ব্র্যান্ড।",k5:"পুরাতন ফোন এক্সচেঞ্জ",k6:"পুরাতন ফোন দিন, নতুনের সাথে মিলিয়ে নিন।",k7:"গ্যাজেট ও এক্সেসরিজ",k8:"ইয়ারবাড, স্মার্টওয়াচ, পাওয়ার ব্যাংক ও আরও।",p1:"জনপ্রিয় পণ্য",p2:"ডেমো পণ্য — পরে আপনার আসল স্টক বসবে।",all:"সব",new:"নতুন ফোন",used:"ব্যবহৃত",gadget:"গ্যাজেট",h_1:"এক্সচেঞ্জ হয় চার ধাপে",t1:"ফোন বেছে নিন",t1d:"আপনার পছন্দের নতুন ফোনটি ঠিক করুন।",t2:"দাম জেনে নিন",t2d:"পুরাতন ফোনের আনুমানিক দাম দেখুন।",t3:"দোকানে যাচাই",t3d:"আমাদের টেকনিশিয়ান ফোনটি পরীক্ষা করবেন।",t4:"নতুন ফোন নিয়ে যান",t4d:"পার্থক্যের টাকা দিন, সাথে সাথে ফোন নিন।",u1:"১০০% অরিজিনাল",u1d:"প্রতিটি ফোনে ওয়ারেন্টি।",u2:"সারা দেশে ডেলিভারি",u2d:"৬৪ জেলায় দ্রুত পৌঁছে দিই।",u3:"সেরা দাম",u3d:"বাজারদরের সাথে মিল রেখে।",u4:"সরাসরি সাপোর্ট",u4d:"হোয়াটসঅ্যাপে যেকোনো সময়।",f1:"কিনুন · বিক্রি করুন · এক্সচেঞ্জ করুন। বাংলাদেশের বিশ্বস্ত মোবাইল শপ।",f2:"যোগাযোগ",f3:"খোলার সময়",addr:"আপনার দোকানের ঠিকানা, ঢাকা",hr1:"শনি–বৃহস্পতি: সকাল ১০টা – রাত ৯টা",hr2:"শুক্রবার: বিকাল ৩টা – রাত ৯টা",added:"কার্টে যোগ হয়েছে",cur:"bn-BD"},
-en:{n1:"Categories",n2:"Shop",n3:"Exchange",n4:"Contact",open:"Open now · Dhaka",h1a:"Buy. Sell.",h1b:"Exchange.",lead:"New phones, pre-owned devices and smart gadgets in one place. Trade in your old phone for a new one — simply and safely.",c1:"Browse phones",c2:"Get my price",s1:"Happy customers",s2:"Exchanges done",s3:"Positive reviews",e1:"Know your phone's value",e2:"Pick your model and condition to see an instant estimate.",e3:"Your phone",e4:"Condition",e5:"Estimated exchange value",e6:"Confirm in store",c_good:"Good",c_fair:"Fair",c_poor:"Worn",k1:"What are you looking for?",k2:"Three easy ways: buy, swap, or grab a gadget.",k3:"New phones",k4:"All major brands with official warranty.",k5:"Phone exchange",k6:"Hand in your old phone and put it toward a new one.",k7:"Gadgets & accessories",k8:"Earbuds, smartwatches, power banks and more.",p1:"Popular picks",p2:"Demo products — your real stock goes here.",all:"All",new:"New phones",used:"Pre-owned",gadget:"Gadgets",h_1:"Exchange in four steps",t1:"Choose a phone",t1d:"Pick the new phone you want.",t2:"Check your price",t2d:"See an estimate for your old phone.",t3:"Verify in store",t3d:"Our technician inspects your phone.",t4:"Take it home",t4d:"Pay the difference and walk out with your new phone.",u1:"100% genuine",u1d:"Warranty on every phone.",u2:"Nationwide delivery",u2d:"Fast shipping to all 64 districts.",u3:"Best prices",u3d:"Matched to the market rate.",u4:"Direct support",u4d:"On WhatsApp, any time.",f1:"Buy · Sell · Exchange. A trusted mobile shop in Bangladesh.",f2:"Contact",f3:"Opening hours",addr:"Your shop address, Dhaka",hr1:"Sat–Thu: 10 AM – 9 PM",hr2:"Fri: 3 PM – 9 PM",added:"Added to cart",cur:"en-US"}};
-
-let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,rate=1;
-const $=s=>document.querySelector(s),L=()=>T[lang];
-const fmt=n=>"৳"+Math.round(n).toLocaleString(L().cur);
-const phoneSVG=c=>`<svg viewBox="0 0 60 110"><rect x="4" y="2" width="52" height="106" rx="10" fill="#111" stroke="${c}" stroke-width="2"/><rect x="8" y="8" width="44" height="94" rx="7" fill="${c}" opacity=".85"/><rect x="22" y="10" width="16" height="4" rx="2" fill="#111"/></svg>`;
-
+const IMG="https://br-falling-bonus-azat8gdm.storage.c-3.ap-southeast-1.aws.neon.tech/assets/uploads/";
+const P=[
+ ["Samsung Galaxy S26 Ultra 5G","05e00f9e-77fe-4d7a-9e83-713311e650e3",196899,"flag"],
+ ["Apple iPhone 14 Pro","43e2f662-001d-4386-9927-05c371ff157c",98000,"flag"],
+ ["Oppo Find X9 Pro","6f63a5c3-e86b-4d66-964a-0d5ee63cb862",94990,"flag"],
+ ["OnePlus 15R 5G","5329bf12-faf4-4863-9ad2-8ffe2d4e5b76",75000,"flag"],
+ ["Honor 400 Pro 5G","a137b517-2c8e-4376-9d9c-a8a66a8ccde8",69999,"flag"],
+ ["Samsung Galaxy S24","e1d69a8b-5854-44fb-a08d-dd0a91b20565",54999,"mid"],
+ ["realme 16 Pro 5G","4780ba4c-9309-45f0-b5b0-3a59b2d6383e",39499,"mid"],
+ ["Honor 200","5754ddd7-753b-42af-b121-70f700a527b1",37999,"mid"],
+ ["Motorola Moto G67 Power 5G","ae0b91c8-6288-4816-85f4-6e3306491f0f",29399,"mid"],
+ ["Xiaomi Redmi 15C 4G","32d47648-80f7-48bf-9f3a-eae33f7e6fbc",16999,"mid"],
+ ["Samsung Galaxy Tab S10 FE","ad4658f7-69c9-443c-b4a0-8d184487bb1d",48500,"tab"],
+ ["Xiaomi Pad 8","f989f5d7-a6e6-4bef-8c04-dbe356890659",44800,"tab"]];
+const HERO=[0,1,2,5];
+const BR=["Apple","Samsung","Xiaomi","realme","vivo","Oppo","OnePlus","Honor","Motorola","Infinix","Tecno","itel","Nokia","Huawei","Asus","LG"];
+const M=[["iPhone 14 Pro",78000],["iPhone 13",52000],["iPhone 11",30000],["Galaxy S24",42000],["Galaxy A54",24000],["Redmi Note 13",15000]];
+const C=[["c1",1],["c2",.82],["c3",.62]];
+const T={bn:{n1:"শপ",n2:"এক্সচেঞ্জ",n3:"কেন আমরা",n4:"স্টোর",call:"কল করুন",open:"চট্টগ্রাম · ২০১৬ থেকে · প্রতিদিন খোলা",h1a:"সঠিক ফোন,",h1b:"কোনো ঝামেলা ছাড়াই।",lead:"সিল করা ফোন, সৎ ট্রেড-ইন, আর পাশে থাকা এক দোকান। ক্যাটাগরি দেখুন, অথবা কী লাগবে আমাদের বলুন।",c1:"পণ্য দেখুন",c2:"পুরাতন ফোনের দাম",s1:"থেকে চট্টগ্রামে",s2:"টি স্টোর",s3:"মাসের কিস্তি",f_a:"১২ মাস কাভারেজ",f_b:"চট্টগ্রামে দ্রুত ডেলিভারি",k1:"আপনি কী খুঁজছেন?",k2:"তিনটি সহজ পথ: কিনুন, বদলান অথবা গ্যাজেট নিন।",k3:"নতুন ফোন",k4:"সিল করা, যাচাই করা, ওয়ারেন্টি সহ।",k5:"পুরাতন ফোন এক্সচেঞ্জ",k6:"একই ভিজিটে পুরাতন ফোন দিয়ে নতুনটি নিন।",k7:"ট্যাবলেট ও গ্যাজেট",k8:"ট্যাব, স্মার্টওয়াচ, অডিও ও এক্সেসরিজ।",p1:"জনপ্রিয় পণ্য",p2:"আমাদের স্টকের আসল পণ্য ও দাম। অর্ডার করুন WhatsApp-এ।",all:"সব",flag:"ফ্ল্যাগশিপ",mid:"৫৫ হাজারের নিচে",tab:"ট্যাবলেট",all_p:"সব পণ্য দেখুন",stock:"স্টকে আছে",e1:"পুরাতন ফোন দিয়ে নতুন ফোন",e2:"মডেল ও অবস্থা বেছে দাম দেখুন। চূড়ান্ত দাম দোকানে ফোন দেখে ঠিক হবে।",t1:"দাম জেনে নিন",t1d:"এখানে আনুমানিক দাম দেখুন।",t2:"দোকানে আনুন",t2d:"আমাদের টেকনিশিয়ান ফোনটি পরীক্ষা করবেন।",t3:"নতুন ফোন নিয়ে যান",t3d:"পার্থক্যের টাকা দিন, সাথে সাথে ফোন নিন।",e3t:"আপনার ফোনের দাম",e3:"আপনার ফোন",e4:"অবস্থা",e5:"আনুমানিক ট্রেড-ইন মূল্য (ডেমো)",e6:"WhatsApp-এ নিশ্চিত করুন",w1:"আত্মবিশ্বাস নিয়ে কিনুন",w2:"প্রতিটি পণ্যে আমাদের প্রতিশ্রুতি।",u1:"১০০% আসল পণ্য",u1d:"সিল করা স্টক, বিক্রির আগে যাচাই।",u2:"১৫ দিনে ফেরত",u2d:"মত বদলালে ফেরত নিয়ে আসুন।",u3:"২ বছর রিপ্লেসমেন্ট",u3d:"কেনার পরের ত্রুটি কাভার করা।",u4:"৩৬ মাসের কিস্তি",u4d:"মাসে মাসে খরচ ভাগ করে নিন।",u5:"সুপার ফাস্ট ডেলিভারি",u5d:"চট্টগ্রাম জুড়ে দ্রুত ডেলিভারি।",u6:"সেরা দাম",u6d:"দাম তুলনা করে দেখুন।",v1:"আমাদের দুটি স্টোর",v2:"প্রতিদিন খোলা। সরাসরি এসে দেখে নিন।",a1:"রিয়াজউদ্দিন বাজার, চট্টগ্রাম",a2:"শপ ৫২৫, ৪র্থ তলা, নাসিরাবাদ, ২নং গেট, চট্টগ্রাম",map:"ম্যাপ",f1:"কিনুন · বিক্রি করুন · এক্সচেঞ্জ করুন। চট্টগ্রামের বিশ্বস্ত ফোন ও গ্যাজেট শপ।",f2:"যোগাযোগ",f3:"খোলার সময়",hr1:"Islam Market: প্রতিদিন সকাল ১০টা – রাত ৯টা",hr2:"Concord Mueen Square: প্রতিদিন সকাল ১০টা – রাত ১০টা",cur:"bn-BD"},
+en:{n1:"Shop",n2:"Exchange",n3:"Why us",n4:"Stores",call:"Call now",open:"Chattogram · Since 2016 · Open daily",h1a:"The right phone,",h1b:"without the runaround.",lead:"Sealed stock, honest trade-ins, and a shop that stands behind the phone. Browse by category or tell us what you need.",c1:"Explore products",c2:"Value my old phone",s1:"Serving Chattogram",s2:"Stores",s3:"Month installments",f_a:"12-month cover",f_b:"Fast delivery in Chattogram",k1:"What are you looking for?",k2:"Three easy ways: buy, swap, or grab a gadget.",k3:"New phones",k4:"Sealed, verified and under warranty.",k5:"Phone exchange",k6:"Trade in your old phone on the same visit.",k7:"Tablets & gadgets",k8:"Tablets, smartwatches, audio and accessories.",p1:"Popular picks",p2:"Real products and prices from our stock. Order on WhatsApp.",all:"All",flag:"Flagship",mid:"Under ৳55k",tab:"Tablets",all_p:"View all products",stock:"In stock",e1:"Trade in your old phone",e2:"Pick your model and condition. The final price is set in store after we see the phone.",t1:"Check your price",t1d:"See an estimate right here.",t2:"Bring it in",t2d:"Our technician inspects your phone.",t3:"Take the new one home",t3d:"Pay the difference and walk out with it.",e3t:"Your phone's value",e3:"Your phone",e4:"Condition",e5:"Estimated trade-in value (demo)",e6:"Confirm on WhatsApp",w1:"Shop with confidence",w2:"Our promise on every product.",u1:"100% genuine",u1d:"Sealed stock, verified before sale.",u2:"15-day return",u2d:"Change your mind? Bring it back.",u3:"2-year replacement",u3d:"Faults covered after purchase.",u4:"36-month installments",u4d:"Spread the cost monthly.",u5:"Super fast delivery",u5d:"Quick delivery across Chattogram.",u6:"Best price",u6d:"Compare us on price.",v1:"Our two stores",v2:"Open daily. Come and see the phone in person.",a1:"Reazuddin Bazar, Chattogram",a2:"Shop 525, 4th Floor, Nasirabad, 2no Gate, Chattogram",map:"Map",f1:"Buy · Sell · Exchange. A trusted phone and gadget shop in Chattogram.",f2:"Contact",f3:"Opening hours",hr1:"Islam Market: daily 10 AM – 9 PM",hr2:"Concord Mueen Square: daily 10 AM – 10 PM",cur:"en-US"}};
+const CK=["g1","g2","g3"];T.bn.g1="ভালো";T.bn.g2="মোটামুটি";T.bn.g3="পুরাতন";T.en.g1="Good";T.en.g2="Fair";T.en.g3="Worn";
+let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,cur=0,hs=0,rate=0,likes=new Set;
+const $=s=>document.querySelector(s),t=()=>T[lang];
+const fmt=n=>"৳"+Math.round(n).toLocaleString(t().cur);
+const img=(u,n)=>`<img src="${IMG+u}.webp" alt="${n}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📱',style:'font-size:4rem'}))">`;
 function render(){
-  const t=L();document.documentElement.lang=lang;
-  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t[e.dataset.i]);
-  $("#lang").textContent=lang==="bn"?"EN":"বাং";
-  $("#model").innerHTML=MODELS.map((m,i)=>`<option value="${i}">${m[0]}</option>`).join("");
-  $("#model").value=window._mi||0;
-  $("#cond").innerHTML=CONDS.map((c,i)=>`<button class="${i===cond?"on":""}" data-c="${i}">${t[c[0]]}</button>`).join("");
-  $("#tabs").innerHTML=["all","new","used","gadget"].map(k=>`<button class="${k===filter?"on":""}" data-f="${k}">${t[k]}</button>`).join("");
-  $("#grid").innerHTML=PRODUCTS.filter(p=>filter==="all"||p.t===filter).map(p=>`<article class="p"><div class="img" style="--c:${p.c}55">${phoneSVG(p.c)}<span class="tag">${t[p.t]}</span></div><h4>${p.n}</h4><div class="meta">${p.m}</div><div class="price"><div><b>${fmt(p.p)}</b>${p.o?`<s>${fmt(p.o)}</s>`:""}</div><button class="add" aria-label="add" data-add>+</button></div></article>`).join("");
-  document.querySelectorAll("[data-n]").forEach(e=>e.dataset.done&&(e.textContent=Number(e.dataset.n).toLocaleString(t.cur)+e.dataset.s));
-  estimate(true);
+ const L=t();document.documentElement.lang=lang;
+ document.querySelectorAll("[data-i]").forEach(e=>e.textContent=L[e.dataset.i]);
+ $("#lang").textContent=lang==="bn"?"EN":"বাং";
+ $("#mq").innerHTML=[...BR,...BR].map(b=>`<span>${b}</span>`).join("");
+ $("#model").innerHTML=M.map((m,i)=>`<option value="${i}">${m[0]}</option>`).join("");$("#model").value=window._mi||0;
+ $("#cond").innerHTML=CK.map((k,i)=>`<button class="${i===cur?"on":""}" data-c="${i}">${L[k]}</button>`).join("");
+ $("#tabs").innerHTML=["all","flag","mid","tab"].map(k=>`<button class="${k===filter?"on":""}" data-f="${k}">${L[k]}</button>`).join("");
+ $("#grid").innerHTML=P.map((p,i)=>[p,i]).filter(([p])=>filter==="all"||p[3]===filter).map(([p,i],k)=>`<article class="p sp" style="animation-delay:${k*.05}s"><div class="img">${img(p[1],p[0])}<span class="tag">${L.stock}</span><button class="heart ${likes.has(i)?"on":""}" data-h="${i}" aria-label="like">♥</button></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><a class="wa-b" target="_blank" rel="noopener" aria-label="WhatsApp order" href="https://wa.me/8801960880808?text=${encodeURIComponent((lang==="bn"?"আমি কিনতে চাই: ":"I want to buy: ")+p[0])}"><svg class="i"><use href="#chat"/></svg></a></div></article>`).join("");
+ document.querySelectorAll("[data-n]").forEach(e=>e.dataset.done&&(e.textContent=(+e.dataset.n).toLocaleString(L.cur,{useGrouping:false})));
+ hero();est(true);
 }
-function estimate(now){
-  const target=MODELS[$("#model").value][1]*CONDS[cond][1],el=$("#val");
-  if(now){el.textContent=fmt(target);rate=target;return}
-  const from=rate,t0=performance.now();
-  (function f(t){const k=Math.min((t-t0)/600,1),e=1-Math.pow(1-k,3);el.textContent=fmt(from+(target-from)*e);k<1?requestAnimationFrame(f):rate=target})(t0);
+function hero(){
+ $("#tilt").innerHTML=HERO.map((h,i)=>`<div class="slide ${i===hs?"on":""}">${img(P[h][1],P[h][0])}</div>`).join("");
+ const p=P[HERO[hs]];$("#pname").innerHTML=`${p[0]}<small>${fmt(p[2])}</small>`;
+}
+function est(now){
+ const m=M[$("#model").value],v=m[1]*C[cur][1],el=$("#val"),from=rate,t0=performance.now();
+ $("#estwa").href="https://wa.me/8801960880808?text="+encodeURIComponent((lang==="bn"?"ফোন এক্সচেঞ্জ: ":"Exchange: ")+m[0]+" / "+t()[CK[cur]]+" / ~"+fmt(v));
+ if(now){el.textContent=fmt(v);rate=v;return}
+ (function f(n){const k=Math.min((n-t0)/600,1);el.textContent=fmt(from+(v-from)*(1-Math.pow(1-k,3)));k<1?requestAnimationFrame(f):rate=v})(t0);
 }
 document.addEventListener("click",e=>{
-  const c=e.target.closest("[data-c]"),f=e.target.closest("[data-f]");
-  if(c){cond=+c.dataset.c;document.querySelectorAll("#cond button").forEach(b=>b.classList.toggle("on",b===c));estimate()}
-  if(f){filter=f.dataset.f;render()}
-  if(e.target.closest("[data-add]")){const x=$("#toast");x.textContent="✓ "+L().added;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1600)}
+ const c=e.target.closest("[data-c]"),f=e.target.closest("[data-f]"),h=e.target.closest("[data-h]");
+ if(c){cur=+c.dataset.c;document.querySelectorAll("#cond button").forEach(b=>b.classList.toggle("on",b===c));est()}
+ if(f){filter=f.dataset.f;render()}
+ if(h){const i=+h.dataset.h;likes.has(i)?likes.delete(i):likes.add(i);h.classList.toggle("on")}
 });
-$("#model").addEventListener("change",e=>{window._mi=e.target.value;estimate()});
+document.addEventListener("pointermove",e=>{const s=e.target.closest(".sp");if(s){const r=s.getBoundingClientRect();s.style.setProperty("--mx",e.clientX-r.left+"px");s.style.setProperty("--my",e.clientY-r.top+"px")}});
+$("#stage").addEventListener("pointermove",e=>{const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$("#tilt").style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg)`});
+$("#stage").addEventListener("pointerleave",()=>$("#tilt").style.transform="");
+$("#model").addEventListener("change",e=>{window._mi=e.target.value;est()});
 $("#lang").onclick=()=>{lang=lang==="bn"?"en":"bn";localStorage.setItem("mz_lang",lang);render()};
 const root=document.documentElement,setTheme=m=>{root.dataset.theme=m;$("#theme").textContent=m==="dark"?"☀️":"🌙";localStorage.setItem("mz_theme",m)};
-setTheme(localStorage.getItem("mz_theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"));
-$("#theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
-
+setTheme(localStorage.getItem("mz_theme")||"dark");$("#theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
 render();
-
-/* scroll reveal + count-up */
-const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target)}}),{threshold:.15});
+setInterval(()=>{hs=(hs+1)%HERO.length;document.querySelectorAll(".slide").forEach((s,i)=>s.classList.toggle("on",i===hs));const p=P[HERO[hs]];$("#pname").innerHTML=`${p[0]}<small>${fmt(p[2])}</small>`},3800);
+addEventListener("scroll",()=>{$("#bar").style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+"%"},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target)}}),{threshold:.12});
 document.querySelectorAll(".rv").forEach(e=>io.observe(e));
 document.querySelectorAll("[data-n]").forEach(e=>{const n=+e.dataset.n,t0=performance.now()+700;
-  (function f(t){const k=Math.max(0,Math.min((t-t0)/1600,1));e.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString(L().cur)+e.dataset.s;k<1?requestAnimationFrame(f):e.dataset.done=1})(t0)});
+ (function f(x){const k=Math.max(0,Math.min((x-t0)/1500,1));e.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString(t().cur,{useGrouping:false});k<1?requestAnimationFrame(f):e.dataset.done=1})(t0)});
 </script>
 </body>
 </html>
