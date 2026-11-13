@@ -409,6 +409,31 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
  .fbar .ftg{justify-content:center;padding:0 12px}.fbar .ftg::before{display:none}
  .fbar .sort{flex:none}.fbar .sort select{width:100%;min-width:0;padding-left:44px;padding-right:38px;background-position:left 16px center,right 14px center}
 }
+/* ===== collapsible search: icon only, field opens on tap ===== */
+.fbar .srch{flex:none;width:52px;padding:0 7px;gap:10px;overflow:hidden;transition:width .55s var(--ease)}
+.fbar .srch.open{width:min(380px,62vw);padding:0 12px 0 7px}
+.fbar .srch .sbtn{box-sizing:border-box;flex:none;width:38px;height:38px;padding:9px;border:0;border-radius:50%;background:rgba(251,176,45,.13);color:var(--amber);cursor:pointer;display:grid;place-items:center;transition:background .35s var(--ease),box-shadow .35s var(--ease),transform .3s var(--ease)}
+.fbar .srch .sbtn svg{width:100%;height:100%;font-size:inherit;color:inherit}
+.fbar .srch .sbtn:hover{background:rgba(251,176,45,.24)}
+.fbar .srch:not(.open) .sbtn:active{transform:scale(.9)}
+.fbar .srch.open .sbtn{background:linear-gradient(135deg,#ffe3a0,#fbb02d 60%,#e8890a);color:#2a1c00;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 18px -8px var(--glow)}
+.fbar .srch kbd{display:none}
+.fbar .srch:not(.open) input,.fbar .srch:not(.open) #qx{display:none}
+.fbar .srch.open input{animation:srchIn .45s var(--ease) both}
+@keyframes srchIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.fbar>.frow.top{grid-template-columns:auto auto auto;justify-self:start;max-width:100%}
+@media(max-width:680px){
+ .fbar>.frow.top{grid-template-columns:auto auto minmax(0,1fr);justify-self:stretch;padding:4px}
+ .fbar .srch{grid-column:auto;height:52px;border-bottom:0;margin-bottom:0;border-radius:22px}
+ .fbar .ftg{padding:0 10px;gap:8px}
+ .fbar .ftg::before,.fbar .sort::before{display:block}
+ .fbar .sort select{padding-left:38px;padding-right:30px;background-position:left 13px center,right 11px center;text-overflow:ellipsis}
+ .fbar>.frow.top.so{grid-template-columns:1fr 1fr}
+ .fbar>.frow.top.so .srch{grid-column:1/-1;width:auto;height:54px;padding:0 12px 0 6px;border-radius:0;border-bottom:1px solid var(--line);margin-bottom:4px}
+ .fbar>.frow.top.so .ftg{padding:0 12px}
+ .fbar>.frow.top.so .ftg::before{display:none}
+ .fbar>.frow.top.so .sort select{padding-left:44px;padding-right:38px;background-position:left 16px center,right 14px center}
+}
 
 /* ---- brand logo marquee ---- */
 
@@ -850,7 +875,7 @@ window.mzFb=function(i){
   <div class="head rv"><h2 data-i="p1"></h2></div>
   <div class="fbar rv" id="fbar">
     <div class="frow top">
-      <div class="srch" id="sw"><svg class="i"><use href="#search"/></svg><input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="Search"><kbd>/</kbd><button type="button" id="qx" aria-label="Clear">&times;</button></div>
+      <div class="srch" id="sw"><button type="button" class="sbtn" id="sbtn" aria-label="Search" aria-expanded="false" aria-controls="q"><svg class="i"><use href="#search"/></svg></button><input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="Search"><kbd>/</kbd><button type="button" id="qx" aria-label="Clear">&times;</button></div>
       <button type="button" class="ftg" id="ftg" aria-expanded="false" aria-controls="fpan" data-fn="0"><svg class="i"><use href="#sliders"/></svg><span data-i="flt"></span><em></em></button>
       <div class="sort"><select id="sort" aria-label="Sort"></select></div>
     </div>
@@ -1068,16 +1093,21 @@ function fbRender(){const L=t();
  if(cl!==lang){cl=lang;$("#q").placeholder=L.ph_s;$("#sort").innerHTML=[L.so0,L.so1,L.so2].map((x,i)=>`<option value="${i}">${x}</option>`).join("");$("#sort").value=F.sort;
   $("#bchips").innerHTML=`<button type="button" class="bc" data-b="">${L.allb}</button>`+BRS.map(([b,c],k)=>`<button type="button" class="bc" style="--k:${k}" data-b="${b}">${b}<i>${c.toLocaleString(L.cur)}</i></button>`).join("");chips()}
  rng();buildGrid()}
-function reset(){F.q="";F.b.clear();F.min=LO;F.max=HI;F.sort="0";$("#q").value="";$("#sort").value="0";$("#sw").classList.remove("has");chips();rng();apply()}
+function reset(){F.q="";F.b.clear();F.min=LO;F.max=HI;F.sort="0";$("#q").value="";$("#sort").value="0";$("#sw").classList.remove("has");sClose();chips();rng();apply()}
 let dt;$("#q").addEventListener("input",e=>{F.q=e.target.value.trim();$("#sw").classList.toggle("has",!!e.target.value);clearTimeout(dt);dt=setTimeout(apply,140)});
 $("#qx").onclick=()=>{$("#q").value="";F.q="";$("#sw").classList.remove("has");$("#q").focus();apply()};
+/* collapsible search: icon only until tapped */
+function sOpen(){const w=$("#sw");w.classList.add("open");w.parentNode.classList.add("so");$("#sbtn").setAttribute("aria-expanded","true");$("#q").focus({preventScroll:true})}
+function sClose(){const w=$("#sw");if($("#q").value)return;w.classList.remove("open");w.parentNode.classList.remove("so");$("#sbtn").setAttribute("aria-expanded","false")}
+$("#sbtn").onclick=()=>{$("#sw").classList.contains("open")?$("#q").focus():sOpen()};
+$("#q").addEventListener("blur",()=>setTimeout(()=>{if(!$("#sw").contains(document.activeElement))sClose()},150));
 $("#sort").addEventListener("change",e=>{F.sort=e.target.value;apply()});
 $("#bchips").addEventListener("click",e=>{const b=e.target.closest(".bc");if(!b)return;const v=b.dataset.b;if(!v)F.b.clear();else F.b.has(v)?F.b.delete(v):F.b.add(v);chips();apply()});
 ["#rmin","#rmax"].forEach((id,k)=>$(id).addEventListener("input",e=>{const v=+e.target.value;if(k)F.max=Math.max(v,F.min);else F.min=Math.min(v,F.max);rng();apply()}));
 $("#rst").onclick=$("#rst2").onclick=reset;
 addEventListener("keydown",e=>{const el=document.activeElement,ty=el&&/INPUT|SELECT|TEXTAREA/.test(el.tagName);
- if(e.key==="/"&&!ty){e.preventDefault();$("#q").focus();$("#q").scrollIntoView({block:"center",behavior:RM?"auto":"smooth"})}
- else if(e.key==="Escape"&&el===$("#q")&&$("#q").value)$("#qx").click()});
+ if(e.key==="/"&&!ty){e.preventDefault();sOpen();$("#sw").scrollIntoView({block:"center",behavior:RM?"auto":"smooth"})}
+ else if(e.key==="Escape"&&el===$("#q")){if($("#q").value)$("#qx").click();else{$("#q").blur();sClose()}}});
 $("#ftg").onclick=()=>{const o=$("#fpan").classList.toggle("open");$("#ftg").setAttribute("aria-expanded",o)};
 const r=render;render=function(){r();fbRender()};fbRender();
 })();
