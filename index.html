@@ -429,7 +429,7 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
   <div class="trow"><div class="tabs rv" id="tabs"></div><div class="fres"><span id="cnt" aria-live="polite"></span><button type="button" class="reset" id="rst" data-i="rs" hidden></button></div></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" hidden><div class="ei"><svg class="i"><use href="#search"/></svg></div><h4 data-i="nm1"></h4><p data-i="nm2"></p><button type="button" class="btn" id="rst2"><span data-i="rs"></span></button></div>
-  <div class="more"><a class="btn" href="https://mobizonebd.vercel.app/products"><span data-i="all_p"></span></a></div>
+  <div class="more"><button type="button" class="btn" id="allp"><span data-i="all_p"></span></button></div>
 </div></section>
 
 <section id="exchange"><div class="wrap est-wrap">
@@ -664,6 +664,11 @@ document.addEventListener("click",e=>{const g=s=>e.target.closest(s);let x;
 document.addEventListener("change",e=>{if(e.target.id==="f_d"){S.d=e.target.value;upd()}});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")close();if(e.key==="Enter"&&e.target.id==="t_i")lookup()});
 })();
+</script>
+<script>
+/* "Full collection": stay on this page, clear every filter and show all devices */
+document.getElementById("allp").addEventListener("click",()=>{filter="all";document.getElementById("rst2").click();render();
+ document.getElementById("shop").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})});
 </script>
 </body>
 </html>
