@@ -1247,18 +1247,20 @@ requestAnimationFrame(()=>{const on=tb.querySelector("button.on");if(on)tb.scrol
 html.qv-lock{overflow:hidden}
 .qv{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:20px}.qv[hidden]{display:none}
 .qv-bg{position:absolute;inset:0;background:rgba(8,6,3,.72);backdrop-filter:blur(8px);animation:ofade .4s both}
-.qv-m{position:relative;width:min(1000px,100%);max-height:min(730px,100%);display:grid;grid-template-columns:.92fr 1.08fr;background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 50px 120px -30px #000,0 0 0 1px rgba(251,176,45,.08);animation:qin .6s var(--ease) both;outline:0}
+.qv-m{position:relative;width:min(1040px,100%);height:min(720px,calc(100vh - 40px));height:min(720px,calc(100dvh - 40px));display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);grid-template-rows:minmax(0,1fr);background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 50px 120px -30px #000,0 0 0 1px rgba(251,176,45,.08);animation:qin .6s var(--ease) both;outline:0}
 @keyframes qin{from{opacity:0;transform:translateY(26px) scale(.965)}}
 .qv.out .qv-m{animation:qin .3s var(--ease) reverse both}.qv.out .qv-bg{animation:ofade .3s reverse both}
-.qv-x{position:absolute;top:14px;right:14px;z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:1.3rem;line-height:1;transition:.3s}.qv-x:hover{background:var(--amber);color:#2a1c00;transform:rotate(90deg)}
-.qv-med{position:relative;display:grid;place-items:center;min-height:420px;background:radial-gradient(circle at 50% 28%,#fff,#e6e2d6 70%);overflow:hidden}
-.qv-med::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(251,176,45,.55);animation:spin 40s linear infinite}
-.qv-med img{position:relative;height:76%;max-width:74%;object-fit:contain;filter:drop-shadow(0 30px 26px rgba(0,0,0,.34));animation:float 5.5s ease-in-out infinite}
+.qv-x{position:absolute;top:14px;right:14px;z-index:6;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-size:1.3rem;line-height:1;transition:.3s;display:grid;place-items:center;padding:0}.qv-x:hover{background:var(--amber);color:#2a1c00;transform:rotate(90deg)}
+.qv-med{position:relative;min-height:0;min-width:0;background:radial-gradient(circle at 50% 28%,#fff,#e6e2d6 70%);overflow:hidden;touch-action:pan-y}
+.qv-med::before{content:"";position:absolute;left:50%;top:44%;translate:-50% -50%;width:70%;aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(251,176,45,.55);animation:spin 40s linear infinite}
+.qv-med img{position:absolute;inset:9% 9% 14%;width:82%;height:77%;object-fit:contain;border-radius:18px;filter:drop-shadow(0 26px 24px rgba(0,0,0,.28));animation:qimg .7s var(--ease) both,qfloat 6s ease-in-out .7s infinite}
+.qv-med .mzfb{position:absolute;inset:0;width:100%;height:100%}.qv-med .mzfb svg{height:62%;max-width:50%}
+@keyframes qimg{from{opacity:0;transform:scale(.94) translateY(10px)}}@keyframes qfloat{50%{transform:translateY(-7px)}}
 .qv-med .bdgs{top:16px;left:16px}
 .qv-ct{position:absolute;left:16px;bottom:16px;font-size:.8rem;font-weight:700;color:#5b5444;background:rgba(255,255,255,.7);padding:5px 12px;border-radius:99px;backdrop-filter:blur(6px)}
 .qv-nav{position:absolute;right:16px;bottom:14px;display:flex;gap:8px}.qv-nav button,.qv-hr{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;background:rgba(27,24,18,.86);color:#ffd27a;font-size:1.05rem;transition:.3s}.qv-nav button:hover{background:var(--amber);color:#2a1c00;transform:scale(1.1)}
 .qv-hr{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.1);color:#555}.qv-hr.on{background:#ff4d6d;color:#fff}
-.qv-r{display:flex;flex-direction:column;min-height:0}.qv-b{flex:1;overflow:auto;padding:30px 30px 8px;overscroll-behavior:contain}
+.qv-r{display:flex;flex-direction:column;min-height:0;min-width:0}.qv-b{flex:1;min-height:0;overflow:auto;padding:30px 30px 14px;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(251,176,45,.45) transparent}
 .qv-b>*{animation:qrise .6s var(--ease) both}.qv-b>*:nth-child(2){animation-delay:.05s}.qv-b>*:nth-child(3){animation-delay:.1s}.qv-b>*:nth-child(4){animation-delay:.15s}.qv-b>*:nth-child(5){animation-delay:.2s}.qv-b>*:nth-child(n+6){animation-delay:.25s}
 @keyframes qrise{from{opacity:0;transform:translateY(12px)}}
 .qv-eb{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);padding-right:48px}
@@ -1272,8 +1274,24 @@ html[lang=bn] .qv-eb{letter-spacing:0}
 .qv-hl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}.qv-hl div{padding:13px 15px;border-radius:18px;background:var(--card);border:1px solid var(--line)}.qv-hl small{display:block;color:var(--mute);font-size:.76rem}.qv-hl b{font-size:.95rem;line-height:1.35;display:block;margin-top:2px}
 .qv-sp{margin-top:6px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.qv-sp div{display:flex;justify-content:space-between;gap:18px;padding:11px 16px;font-size:.9rem}.qv-sp div:nth-child(odd){background:var(--card)}.qv-sp span{color:var(--mute);flex:none}.qv-sp b{font-weight:600;text-align:right}
 .qv-pk{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0 12px}.qv-pk div{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:var(--mute);line-height:1.45}.qv-pk svg{color:var(--amber);flex:none;font-size:1.3em;margin-top:2px}.qv-pk b{display:block;color:var(--text);font-size:.88rem}
-.qv-act{flex:none;display:flex;gap:10px;padding:16px 30px 22px;background:var(--bg2);border-top:1px solid var(--line)}.qv-act .btn{padding:0 20px;height:50px;justify-content:center;flex:1}.qv-act .btn.ic{flex:none;width:50px;padding:0}
-@media(max-width:820px){.qv{padding:0;align-items:end}.qv-m{grid-template-columns:1fr;max-height:94dvh;overflow:auto;border-radius:28px 28px 0 0;overscroll-behavior:contain}.qv-med{min-height:270px}.qv-med img{height:80%}.qv-b{overflow:visible;padding:22px 18px 8px}.qv-b h3{font-size:1.3rem}.qv-act{position:sticky;bottom:0;padding:12px 18px calc(14px + env(safe-area-inset-bottom,0px))}.qv-act .btn{padding:0 12px;font-size:.9rem}.qv-x{position:fixed;top:auto;right:14px;bottom:auto;margin-top:12px}.qv-pk{grid-template-columns:1fr}}
+.qv-act{flex:none;display:flex;align-items:center;gap:10px;padding:14px 30px 20px;background:var(--bg2);border-top:1px solid var(--line);position:relative}
+.qv-act::before{content:"";position:absolute;left:0;right:0;top:-29px;height:28px;background:linear-gradient(transparent,var(--bg2));pointer-events:none}
+.qv-act .btn{flex:1 1 0;min-width:0;height:50px;min-height:50px;padding:0 16px;gap:8px;justify-content:center;white-space:nowrap;font-size:.92rem}
+.qv-act .btn::after{display:none}.qv-act .btn svg{flex:none;width:1.15em;height:1.15em}
+.qv-act .btn.pri{flex:1.25 1 0}
+.qv-act .btn.ic{flex:none;width:50px;padding:0;font-size:1.1rem}
+@media(max-width:820px){.qv{padding:0;align-items:end}
+.qv-m{display:block;width:100%;height:auto;max-height:92vh;max-height:92dvh;overflow-y:auto;overflow-x:hidden;border-radius:28px 28px 0 0;border-bottom:0;overscroll-behavior:contain;animation-name:qsheet}
+@keyframes qsheet{from{opacity:0;transform:translateY(60px)}}
+.qv-x{position:sticky;top:12px;float:none;display:grid;margin:12px 12px -52px auto;background:rgba(27,24,18,.82);color:#ffd27a;border-color:rgba(251,176,45,.35);backdrop-filter:blur(8px)}
+.qv-med{height:min(88vw,380px);min-height:0}
+.qv-med::after{content:"";position:absolute;top:8px;left:50%;width:42px;height:4px;margin-left:-21px;border-radius:9px;background:rgba(0,0,0,.18);z-index:4}
+.qv-med img{inset:11% 10% 15%;width:80%;height:74%}
+.qv-hr{top:66px;right:14px}
+.qv-r{display:block}.qv-b{overflow:visible;padding:20px 18px 8px}.qv-b h3{font-size:1.3rem;padding-right:0}.qv-eb{padding-right:0}
+.qv-act{position:sticky;bottom:0;z-index:4;padding:12px 14px calc(14px + env(safe-area-inset-bottom,0px))}.qv-act .btn{padding:0 10px;font-size:.86rem}.qv-act .btn.ic{width:46px;height:46px;min-height:46px}.qv-act::before{display:none}
+.qv-pk{grid-template-columns:1fr}.qv-hl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:360px){.qv-hl{grid-template-columns:1fr}.qv-act .btn span{white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){.qv-m,.qv-b>*,.qv-med img,.qv-med::before{animation:none}}
 </style>
 <div class="qv" id="qv" hidden><div class="qv-bg" data-qx></div><div class="qv-m" id="qvm" role="dialog" aria-modal="true" tabindex="-1"></div></div>
@@ -1324,6 +1342,9 @@ function draw(){const i=S.i,p=P[i],d=QV[i]||{},s=d.s||{},L=ql(),v=d.v||[],c=d.c|
 function wa(){const i=S.i,d=QV[i]||{},p=P[i],a=$("#qvwa");if(!a)return;const x=[p[0],d.v&&d.v[S.v],d.c&&d.c[S.c]&&d.c[S.c][0],fmt(p[2])].filter(Boolean).join(" · ");a.href="https://wa.me/"+W+"?text="+encodeURIComponent((lang==="bn"?"এই ফোনটি সম্পর্কে জানতে চাই: ":"I'd like to know more about: ")+x)}
 function open(i,list,from){S={i,list,v:0,c:0};opener=from||document.activeElement;sync();draw();Q.classList.remove("out");Q.hidden=false;root.classList.add("qv-lock");M.scrollTop=0;setTimeout(()=>M.focus({preventScroll:true}),30)}
 function close(){if(Q.hidden)return;Q.classList.add("out");setTimeout(()=>{Q.hidden=true;Q.classList.remove("out");root.classList.remove("qv-lock");opener&&opener.focus&&opener.focus({preventScroll:true})},RM?0:300)}
+let sx=null;
+M.addEventListener("touchstart",e=>{sx=e.target.closest(".qv-med")&&e.touches.length===1?e.touches[0].clientX:null},{passive:true});
+M.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>56&&S.list.length>1)go(dx<0?1:-1)},{passive:true});
 function go(n){const l=S.list;S.i=l[(l.indexOf(S.i)+n+l.length)%l.length];S.v=S.c=0;draw();M.scrollTop=0}
 const idx=c=>{const e=c.dataset.k!=null?c.dataset.k:(c.querySelector("[data-o]")||{dataset:{}}).dataset.o;return e==null?-1:+e};
 document.addEventListener("click",e=>{const g=s=>e.target.closest(s);let x;
