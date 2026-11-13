@@ -436,17 +436,21 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .slide .frm>span{position:relative;z-index:1}
 .pname{margin-top:22px}
 
-/* ---- hero showcase v2: guaranteed arch crop, no hard rectangle ---- */
-.slide .frm{width:62%;height:82%;border-radius:999px 999px 36px 36px;clip-path:inset(0 round 999px 999px 36px 36px);background:#1a150d;
- box-shadow:0 0 0 1px rgba(251,176,45,.7),0 0 0 9px rgba(251,176,45,.10),0 0 0 10px rgba(251,176,45,.35),0 50px 80px -34px rgba(0,0,0,.55),0 30px 100px -30px var(--glow)}
-.slide .frm .fgi{inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;transform:none!important;object-fit:cover;object-position:50% 38%;-webkit-mask:none!important;mask:none!important}
-.slide .frm .bgi{display:none}
-.slide .frm::after{background:linear-gradient(165deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%),linear-gradient(0deg,rgba(10,6,0,.5),transparent 34%)}
+/* ---- hero showcase v3: round frame, any photo fits fully ---- */
+.slide .frm{width:84%;height:84%;border-radius:50%;clip-path:none;background:#1a150d;
+ box-shadow:0 0 0 1px rgba(251,176,45,.7),0 0 0 10px rgba(251,176,45,.10),0 0 0 11px rgba(251,176,45,.32),0 50px 80px -34px rgba(0,0,0,.55),0 30px 100px -30px var(--glow)}
+/* blurred copy of the same photo fills the circle, so there are never empty bars */
+.slide .frm .bgi{display:block;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(26px) saturate(1.35) brightness(.7)}
+/* sharp photo: shown whole (never cropped), inside the circle's safe area */
+.slide .frm .fgi{inset:auto!important;left:50%!important;top:50%!important;width:auto!important;height:auto!important;max-width:76%;max-height:76%;
+ transform:translate(-50%,-50%)!important;object-fit:contain;border-radius:20px;-webkit-mask:none!important;mask:none!important;
+ box-shadow:0 22px 44px -16px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.14)}
+.slide .frm::after{background:linear-gradient(165deg,rgba(255,255,255,.16),rgba(255,255,255,0) 30%),linear-gradient(0deg,rgba(10,6,0,.35),transparent 36%)}
 .disc{inset:2%;background:radial-gradient(circle at 50% 48%,rgba(251,176,45,.34),rgba(251,176,45,.10) 55%,transparent 72%)}
 .float{padding:10px 16px;border-radius:99px;background:rgba(22,18,12,.78);box-shadow:0 18px 36px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);z-index:4}
-.float.a{left:-7%;top:9%}.float.b{right:-9%;bottom:12%}
+.float.a{left:-4%;top:10%}.float.b{right:-5%;bottom:12%}
 .pname{font-size:1.1rem;margin-top:26px}.pname small{margin-top:2px;font-size:1.15rem;font-weight:800}
-@media(max-width:560px){.slide .frm{width:70%}.float.a{left:-2%}.float.b{right:-2%}}
+@media(max-width:560px){.float.a{left:-1%}.float.b{right:-1%}}
 </style>
 </head>
 <body>
