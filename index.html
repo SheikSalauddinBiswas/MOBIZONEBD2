@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#120f0b">
 <title>MobiZone BD — Buy · Sell · Exchange | Chattogram</title>
 <meta name="description" content="Sealed phones, honest trade-ins and genuine gadgets. Two stores in Chattogram: Reazuddin Bazar and Nasirabad.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -570,6 +571,127 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .bdg.pre{background:linear-gradient(135deg,#6d5bff,#3a2bd1);color:#fff}
 .bdg.offer{background:#1b1812;color:#ffd27a;border:1px solid rgba(251,176,45,.65)}
 @media(max-width:560px){.bdg{font-size:.66rem;padding:3px 9px 3px 7px}.bdgs{top:8px;left:8px}}
+
+/* =====================================================================
+   MOBILE-ONLY LAYER
+   Everything below sits inside phone/tablet media queries (or touch-only
+   hover resets), so desktop / PC layout is untouched.
+   ===================================================================== */
+
+/* ---- touch devices: no "sticky" hover states after a tap ---- */
+@media (hover:none){
+ .btn:hover,.cat:hover,.tr:hover,.p:hover,.ob:hover,.bc:hover,.ftg:hover,.soc a:hover,.mq .bl:hover,.xp-s li:hover,
+ .cat.rv.done:hover,.tr.rv.done:hover,.paths .cat:hover,.paths .cat.rv.done:hover,.ofr-s:hover .ofr-cta{transform:none}
+ .chip:hover{transform:none}
+ .chip:not(.call):hover{color:#f7f3ea;border-color:rgba(255,255,255,.18)}
+ .p:hover{border-color:var(--line);box-shadow:none}
+ .cat:hover{border-color:var(--line)}.tr:hover{border-color:var(--line)}
+ .p:hover .img img{transform:none}
+ .p:hover .img::after{transform:translateX(-120%)}
+ .cat:hover .ic{background:rgba(251,176,45,.14);color:var(--amber);transform:none}
+ .sp::before,.sp:hover::before{display:none}
+ .soc a::after,.soc a:hover::after{display:none}
+ .ofr-s:hover .k0{transform:translateY(-46%) rotate(-9deg)}
+ .ofr-s:hover .k1{transform:translateY(-53%) rotate(2deg)}
+ .ofr-s:hover .k2{transform:translateY(-44%) rotate(10deg)}
+ .ofr-s:hover .cb-go{transform:none}
+ .btn:hover::after{transform:none}
+}
+
+@media (max-width:960px){
+ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ a,button,input,select,textarea,label,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ /* 16px inputs: stops iOS from zooming the page when a field is focused */
+ input,select,textarea,.fbar .srch input{font-size:16px}
+ /* smoother scrolling: no live blur layers, no heavy parallax or 3D */
+ header,.opg-top{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(18,15,11,.96)}
+ .ovl-bg{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(8,6,3,.74)}
+ .chip,.ofr-cd div,.opg-cd div{-webkit-backdrop-filter:none;backdrop-filter:none}
+ .rv{filter:none;transform:translateY(22px)}
+ @keyframes pop{from{opacity:0;transform:translateY(22px) scale(.97)}}
+ @keyframes upB{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+ @keyframes lineIn{from{opacity:0;transform:translateY(.4em);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(-25% -10% -45% -10%)}}
+ .hero::before{width:480px;height:480px;right:-190px;top:-130px;animation:none;translate:none}
+ .stage{translate:none}
+ .tilt{transform:none!important}
+ .disc,.float{translate:none!important}
+ .slide{transform:scale(.92) translateY(18px)}
+ /* touch-friendly tap targets */
+ .chip{min-height:40px}
+ .heart{width:40px;height:40px}
+ .cbar-x{width:36px;height:36px}
+ #qx{width:34px;height:34px}
+ .qs button{width:36px;height:36px}
+ .ox{width:44px;height:44px}
+ .bc{height:40px}
+ .reset{padding:10px 18px}
+ .crm{min-height:36px;display:inline-flex;align-items:center;padding:0 2px}
+ .bc[data-b=""]{padding-right:18px}
+ .ofr-dots{gap:10px}.ofr-dots button{position:relative}.ofr-dots button::after{content:"";position:absolute;inset:-14px -5px}
+ .tabs{scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}.tabs::-webkit-scrollbar{display:none}
+ /* price slider: bigger thumbs */
+ .rtrack{height:30px}.rtrack::before,.rfill{top:13px}
+ .rtrack input{height:30px}.rtrack input::-webkit-slider-runnable-track{height:30px}
+ .rtrack input::-webkit-slider-thumb{width:28px;height:28px;border-width:7px;margin-top:1px}
+ .rtrack input::-moz-range-thumb{width:28px;height:28px;border-width:7px}
+ /* cart / order / track sheet */
+ .ovl-p{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ .opg{-webkit-overflow-scrolling:touch}
+ .toast{max-width:calc(100% - 100px);text-align:center;bottom:calc(22px + env(safe-area-inset-bottom,0px))}
+}
+
+@media (max-width:560px){
+ /* header: logo + 5 buttons always fit, never push the page sideways */
+ .nav.wrap{width:calc(100% - 20px)}
+ .nav,.nav{gap:8px;height:62px}
+ header.stuck .nav{height:54px}
+ .nav>a:first-child{flex:0 1 auto;min-width:0;max-width:34%;display:flex;align-items:center;min-height:40px}
+ .nav img,header .nav img,header.stuck .nav img{width:auto;height:auto;max-height:28px;max-width:100%;display:block}
+ header.stuck .nav img{max-height:25px}
+ .tools{gap:6px;flex:none}
+ .tools .chip{min-width:40px;height:40px;padding:0 10px;justify-content:center;font-size:.82rem}
+ #cbadge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;line-height:18px;padding:0 4px;font-size:.68rem;box-shadow:0 0 0 2px #120f0b}
+ .cbar-t{padding-left:14px}
+ /* offer page top bar */
+ .opg-top .wrap{gap:8px;width:calc(100% - 20px)}
+ .opg-top .chip{min-width:40px;height:40px;padding:0 12px;justify-content:center}
+ .opg-top img{max-width:34%;width:auto;height:auto;max-height:26px;margin:0 auto 0 2px}
+ .opg-cta .btn{flex:1 1 100%;justify-content:space-between}
+ /* hero */
+ .hero .wrap{gap:30px}
+ .cta .btn{flex:1 1 100%;justify-content:space-between}
+ .stats{justify-content:space-between;gap:10px}.stats b{font-size:1.7rem}
+ .stage{max-width:340px}
+ /* section heads + cards */
+ .head{flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:22px}
+ .paths .head{flex-direction:row;align-items:center}
+ .tr{padding:18px 16px;gap:14px}
+ .store{padding:22px 18px}
+ .store .row .btn{flex:1 1 100%;justify-content:space-between}
+ .price{gap:6px}.price b{white-space:nowrap}
+ footer{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+ /* bottom sheet */
+ .ovl-p{padding:18px 16px calc(28px + env(safe-area-inset-bottom,0px))}
+ .wa{width:52px;height:52px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));font-size:1.55rem}
+}
+
+@media (max-width:380px){
+ .tools{gap:4px}
+ .tools .chip{min-width:36px;height:38px;padding:0 8px}
+ .opg-top .chip{min-width:38px;padding:0 9px}
+ h1{font-size:2.05rem}
+ .price b{font-size:1rem}.cart-b{width:38px;height:38px}
+ .p h4{font-size:.94rem}
+ .oi,.cl .oi{grid-template-columns:60px 1fr auto;gap:10px;padding:10px}.oim{height:60px}
+ .tcode{font-size:1.3rem}
+ .opg-cd b{font-size:1.3rem}
+ .ofr-cd div{min-width:44px}
+}
+
+/* track-order sheet: button must not squash the input */
+@media (max-width:960px){.tf .btn.pri{width:auto;flex:none}.tf input{min-width:0}}
+/* offer page: label is hidden on phones, so show an arrow instead of an empty circle */
+@media (max-width:560px){.opg-top .chip[data-oclose]::before{content:"\2190";font-size:1.3rem;line-height:1}}
 </style>
 </head>
 <body>
@@ -791,17 +913,17 @@ document.querySelectorAll("[data-n]").forEach(e=>{const n=+e.dataset.n,t0=perfor
 </script>
 <script>
 (()=>{
-const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,q=s=>document.querySelector(s);
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,NH=matchMedia("(hover:none)"),q=s=>document.querySelector(s);
 /* stagger siblings in reveal groups; free them for hover once revealed */
 document.querySelectorAll(".cats,.trust,.stores,.head").forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty("--d",i*110+"ms")));
 document.addEventListener("transitionend",e=>{const t=e.target;if(t.classList&&t.classList.contains("rv")&&t.classList.contains("vis")&&e.propertyName==="transform")t.classList.add("done")});
 /* smoothed pointer parallax on hero stage */
 const st=q("#stage");let tx=0,ty=0,cx=0,cy=0,raf;
 function loop(){cancelAnimationFrame(raf);(function f(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;st.style.setProperty("--px",cx.toFixed(3));st.style.setProperty("--py",cy.toFixed(3));if(Math.abs(tx-cx)+Math.abs(ty-cy)>.001)raf=requestAnimationFrame(f)})()}
-if(!RM){st.addEventListener("pointermove",e=>{const r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;loop()});
+if(!RM&&!NH.matches){st.addEventListener("pointermove",e=>{const r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5;loop()});
 st.addEventListener("pointerleave",()=>{tx=ty=0;loop()})}
 /* header shrink + scroll parallax var */
-let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const y=scrollY;document.documentElement.style.setProperty("--sy",Math.min(y,1400));q("header").classList.toggle("stuck",y>24)})},{passive:true});
+let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const y=scrollY;if(!NH.matches)document.documentElement.style.setProperty("--sy",Math.min(y,1400));q("header").classList.toggle("stuck",y>24)})},{passive:true});
 /* magnetic buttons */
 if(!RM&&matchMedia("(hover:hover) and (pointer:fine)").matches)document.querySelectorAll(".cta .btn,.store .btn,.more .btn,.chip.call").forEach(b=>{b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();b.style.translate=`${(e.clientX-r.left-r.width/2)*.22}px ${(e.clientY-r.top-r.height/2)*.32}px`});b.addEventListener("pointerleave",()=>b.style.translate="")});
 /* product images fade in once loaded */
@@ -1030,7 +1152,7 @@ function page(id){const it=A.find(x=>x.c.id===id);if(!it)return false;const{c,k,
  wa="https://wa.me/8801960880808?text="+encodeURIComponent(T.t),
  card=i=>{const p=P[i];return `<article class="p sp"><div class="img">${img(p[1],p[0])}<div class="bdgs">${badges(i,1)}</div></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><button type="button" class="cart-b" data-a="${i}" aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><b>+</b></button></div><button type="button" class="ob" data-o="${i}"><span>${M.ob}</span></button></article>`},
  perks=[["shield",M.u1,M.u1d],["undo",M.u2,M.u2d],["swap",M.u3,M.u3d]];
- $("#opg").innerHTML=`<div class="opg-top"><div class="wrap"><button type="button" class="chip" data-oclose><span>← ${L.back}</span></button><img src="logo.png" alt="MobiZone BD"><button type="button" class="chip oc" data-ocart aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><em id="ocb" hidden>0</em></button><a class="chip call" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span>${M.call}</span></a></div></div>
+ $("#opg").innerHTML=`<div class="opg-top"><div class="wrap"><button type="button" class="chip" data-oclose aria-label="${L.back}"><span>← ${L.back}</span></button><img src="logo.png" alt="MobiZone BD"><button type="button" class="chip oc" data-ocart aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><em id="ocb" hidden>0</em></button><a class="chip call" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span>${M.call}</span></a></div></div>
  <div class="opg-h"><div class="wrap opg-hg"><div><span class="ofr-tag"><i class="dt ${k}"></i>${k==="live"?L.live:L.soon}</span><h2>${T.t}</h2><p class="opg-d">${T.d}</p><div class="opg-lab">${k==="live"?L.ends:L.starts}</div>${cd(to,"opg-cd")}
  <div class="opg-cta">${has?`<button type="button" class="btn pri" data-oscroll><span>${L.see}</span></button><a class="btn" target="_blank" rel="noopener" href="${wa}"><span>${L.ask}</span></a>`:`<a class="btn pri" target="_blank" rel="noopener" href="${wa}"><span>${M.xc2}</span></a><button type="button" class="btn" data-oscroll><span>${L.how}</span></button>`}</div></div><div class="opg-r">${thumbs(c,3)}</div></div></div>
  <section id="ofitems"><div class="wrap">${has?`<div class="head"><div><span class="eyebrow">${L.off}</span><h2>${L.items}</h2></div><p>${L.itemsd}</p></div><div class="grid">${c.items.map(card).join("")}</div>`
@@ -1068,6 +1190,12 @@ setInterval(()=>{if(A.length<2||$("#cbar").hidden)return;const e=$("#cbt");e.cla
 setInterval(()=>{if(A.length>1&&!hov&&!document.hidden&&!cur)goSlide((si+1)%A.length)},6500);
 const r=render;render=function(){r();paint()};paint();route();
 })();
+</script>
+<script>
+/* phones: keep the chosen category tab centred in its scrolling row */
+(()=>{const tb=document.getElementById("tabs");if(!tb)return;
+tb.addEventListener("click",e=>{if(!e.target.closest("button")||!matchMedia("(max-width:960px)").matches)return;
+requestAnimationFrame(()=>{const on=tb.querySelector("button.on");if(on)tb.scrollTo({left:on.offsetLeft-(tb.clientWidth-on.offsetWidth)/2,behavior:"smooth"})})})})();
 </script>
 </body>
 </html>
