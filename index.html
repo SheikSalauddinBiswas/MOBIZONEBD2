@@ -479,8 +479,7 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .cbar-t.sw{opacity:0;transform:translateY(-8px)}
 .cb-tag{font-weight:800;letter-spacing:.01em}
 .cb-cd{padding:3px 12px;border-radius:99px;background:#241700;color:#ffdc8a;font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.cb-go{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(36,23,0,.9);color:#ffdc8a;font-size:.8rem;transition:transform .5s var(--ease)}
-.cbar-t:hover .cb-go{transform:translateX(4px)}
+
 .cbar-x{position:absolute;right:12px;top:50%;translate:0 -50%;width:28px;height:28px;border-radius:50%;border:0;background:rgba(36,23,0,.12);color:#241700;cursor:pointer;font-size:1.15rem;line-height:1;transition:.5s var(--ease)}
 .cbar-x:hover{background:#241700;color:#ffdc8a;transform:rotate(90deg)}
 @media(max-width:640px){.cb-tx{display:none}.cbar-t{padding:6px 46px;font-size:.84rem}}
@@ -506,9 +505,7 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .ofr-cd b{display:block;font-size:1.2rem;line-height:1.15;font-weight:800;color:#ffd27a;font-variant-numeric:tabular-nums}
 .ofr-cd small{font-size:.66rem;color:#a79f90}
 .ofr-cta{display:inline-flex;align-items:center;gap:10px;padding:5px 5px 5px 20px;border-radius:99px;font-weight:800;font-size:.92rem;color:#241700;background:linear-gradient(135deg,#ffdc8a,#fbb02d 50%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 14px 30px -12px var(--glow);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
-.ofr-cta .cb-go{width:30px;height:30px;font-size:1rem;background:#241700}
 .ofr-s:hover .ofr-cta{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 20px 36px -12px var(--glow)}
-.ofr-s:hover .cb-go{transform:translateX(3px) rotate(-45deg)}
 .ofr-r{position:relative;height:160px}
 .ofr-t{position:absolute;top:50%;width:106px;height:138px;border-radius:20px;overflow:hidden;background:#1a150d;border:1px solid rgba(251,176,45,.55);box-shadow:0 26px 42px -16px rgba(0,0,0,.75);transition:transform .9s var(--ease)}
 .ofr-t img{width:100%;height:100%;object-fit:cover;display:block}
@@ -616,7 +613,6 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
  .ofr-s:hover .k0{transform:translateY(-46%) rotate(-9deg)}
  .ofr-s:hover .k1{transform:translateY(-53%) rotate(2deg)}
  .ofr-s:hover .k2{transform:translateY(-44%) rotate(10deg)}
- .ofr-s:hover .cb-go{transform:none}
  .btn:hover::after{transform:none}
 }
 
@@ -725,9 +721,9 @@ header.stuck .nav img{height:38px}
 .cbar-t{flex-wrap:nowrap;white-space:nowrap;gap:10px}
 .cb-tag{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .cb-tx{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
-.cb-cd,.cb-go{flex:none}
+.cb-cd,
 @media(max-width:640px){.cbar-t{padding:6px 44px 6px 12px;gap:8px;font-size:.82rem}.cb-cd{font-size:.72rem;padding:3px 9px}}
-@media(max-width:400px){.cb-go{display:none}.cbar-t{padding-left:10px;gap:6px}.cb-cd{font-size:.68rem;padding:3px 8px}}
+@media(max-width:400px){.cbar-t{padding-left:10px;gap:6px}.cb-cd{font-size:.68rem;padding:3px 8px}}
 </style>
 <script>
 window.mzFb=function(i){
@@ -765,6 +761,7 @@ window.mzFb=function(i){
 <symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
 <symbol id="cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 8H6.5"/><circle cx="9" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></symbol>
 <symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="share" viewBox="0 0 24 24"><path d="M8.4 10.6l7.2-4.2M8.4 13.4l7.2 4.2"/><circle cx="18" cy="5.5" r="2.9" fill="currentColor"/><circle cx="6" cy="12" r="2.9" fill="currentColor"/><circle cx="18" cy="18.5" r="2.9" fill="currentColor"/></symbol>
 <symbol id="call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
 <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
 <symbol id="card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
@@ -1204,11 +1201,11 @@ const thumbs=(c,n)=>c.items&&c.items.length?c.items.slice(0,n).map((i,k)=>`<span
 
 /* classic top bar */
 function barText(){const it=A[bi%A.length],T=it.c[lang],e=$("#cbt");e.href="#offer/"+it.c.id;e.dataset.offer=it.c.id;
- e.innerHTML=`<span class="cb-tag">${T.tag}</span><span class="cb-tx">${T.bar}</span><span class="cb-cd" id="cbc"></span><span class="cb-go">→</span>`;tick()}
+ e.innerHTML=`<span class="cb-tag">${T.tag}</span><span class="cb-tx">${T.bar}</span><span class="cb-cd" id="cbc"></span>`;tick()}
 
 /* banner under the header */
 function banner(){const L=X[lang],box=$("#ofr"),inn=$("#ofrin");box.hidden=!A.length;if(!A.length){inn.innerHTML="";return}si%=A.length;
- inn.innerHTML=A.map(({c,k,to},i)=>{const T=c[lang];return `<a class="ofr-s ${i===si?"on":""}" href="#offer/${c.id}" data-offer="${c.id}"><div class="ofr-l"><span class="ofr-tag"><i class="dt ${k}"></i>${k==="live"?L.live:L.soon}</span><h3>${T.t}</h3><p>${T.s}</p><div class="ofr-row"><span class="ofr-lab">${k==="live"?L.e2:L.s2}</span>${cd(to,"ofr-cd")}<span class="ofr-cta">${T.cta}<span class="cb-go">→</span></span></div></div><div class="ofr-r">${thumbs(c,3)}</div></a>`}).join("")
+ inn.innerHTML=A.map(({c,k,to},i)=>{const T=c[lang];return `<a class="ofr-s ${i===si?"on":""}" href="#offer/${c.id}" data-offer="${c.id}"><div class="ofr-l"><span class="ofr-tag"><i class="dt ${k}"></i>${k==="live"?L.live:L.soon}</span><h3>${T.t}</h3><p>${T.s}</p><div class="ofr-row"><span class="ofr-lab">${k==="live"?L.e2:L.s2}</span>${cd(to,"ofr-cd")}<span class="ofr-cta">${T.cta}</span></div></div><div class="ofr-r">${thumbs(c,3)}</div></a>`}).join("")
  +(A.length>1?`<div class="ofr-dots">${A.map((_,i)=>`<button type="button" class="${i===si?"on":""}" data-od="${i}" aria-label="${i+1}"></button>`).join("")}</div>`:"")}
 function goSlide(i){si=i;$$(".ofr-s").forEach((e,k)=>e.classList.toggle("on",k===si));$$(".ofr-dots button").forEach((e,k)=>e.classList.toggle("on",k===si))}
 
@@ -1359,7 +1356,7 @@ function draw(){const i=S.i,p=P[i],d=QV[i]||{},s=d.s||{},L=ql(),v=d.v||[],c=d.c|
   ${hl?`<div class="qv-hl">${hl}</div>`:""}
   ${rows?`<div class="qv-lb"><span>${L.sp}</span></div><div class="qv-sp">${rows}</div>`:""}
   <div class="qv-pk"><div>${ic("shield")}<span><b>${L.w}</b>${L.wd}</span></div><div>${ic("truck")}<span><b>${L.d}</b>${L.dd}</span></div><div>${ic("undo")}<span><b>${L.r}</b>${L.rd}</span></div><div>${ic("swap")}<span><b>${L.x}</b>${L.xd}</span></div></div></div>
-  <div class="qv-act"><button type="button" class="btn" data-a="${i}">${ic("cart")}<span>${L.cart}</span></button><button type="button" class="btn pri" data-o="${i}"><span>${L.ord}</span></button><a class="btn ic" id="qvwa" target="_blank" rel="noopener" aria-label="${L.wa}" title="${L.wa}">${ic("chat")}</a><button type="button" class="btn ic" data-qs aria-label="${L.sh}" title="${L.sh}">↗</button></div></div>`;
+  <div class="qv-act"><button type="button" class="btn" data-a="${i}">${ic("cart")}<span>${L.cart}</span></button><button type="button" class="btn pri" data-o="${i}"><span>${L.ord}</span></button><a class="btn ic" id="qvwa" target="_blank" rel="noopener" aria-label="${L.wa}" title="${L.wa}">${ic("chat")}</a><button type="button" class="btn ic" data-qs aria-label="${L.sh}" title="${L.sh}">${ic("share")}</button></div></div>`;
  wa()}
 function wa(){const i=S.i,d=QV[i]||{},p=P[i],a=$("#qvwa");if(!a)return;const x=[p[0],d.v&&d.v[S.v],d.c&&d.c[S.c]&&d.c[S.c][0],fmt(p[2])].filter(Boolean).join(" · ");a.href="https://wa.me/"+W+"?text="+encodeURIComponent((lang==="bn"?"এই ফোনটি সম্পর্কে জানতে চাই: ":"I'd like to know more about: ")+x)}
 function open(i,list,from){S={i,list,v:0,c:0};opener=from||document.activeElement;sync();draw();Q.classList.remove("out");Q.hidden=false;root.classList.add("qv-lock");M.scrollTop=0;setTimeout(()=>M.focus({preventScroll:true}),30)}
