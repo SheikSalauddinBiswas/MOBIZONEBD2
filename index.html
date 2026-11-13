@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#120f0b">
+<meta name="theme-color" content="#f3f4f7">
 <!-- Favicon (site logo) -->
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="shortcut icon" href="logo.png">
@@ -16,8 +16,8 @@
 <link rel="canonical" href="https://YOUR-DOMAIN.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MobiZone BD">
-<meta property="og:locale" content="bn_BD">
-<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="bn_BD">
 <meta property="og:url" content="https://YOUR-DOMAIN.com/">
 <meta property="og:title" content="MobiZone BD — ফোন কিনুন, বেচুন, এক্সচেঞ্জ করুন | চট্টগ্রাম">
 <meta property="og:description" content="সিল্ড ফোন, সৎ ট্রেড-ইন আর অরিজিনাল গ্যাজেট। চট্টগ্রামে দুটি শোরুম: রিয়াজউদ্দিন বাজার ও নাসিরাবাদ।">
@@ -976,7 +976,7 @@ en:{n1:"Collection",n2:"Exchange",n3:"Why us",n4:"Stores",call:"Call now",open:"
 Object.assign(T.bn,{xs1:"কোনো বুকিং লাগে না",xs2:"আপনার সামনেই পরীক্ষা",xs3:"পার্থক্য মিটিয়ে নিন",t1:"সরাসরি দোকানে আসুন",t1d:"কোনো বুকিং বা অ্যাপয়েন্টমেন্ট লাগে না। দোকান খোলা থাকলে যেকোনো সময় ফোন নিয়ে চলে আসুন।",xb1:"বুকিং ছাড়াই",xb2:"প্রতিদিন খোলা",xb3:"স্বচ্ছ মূল্য",xc1:"স্টোরে চলে আসুন",xc2:"WhatsApp-এ জিজ্ঞাসা করুন"});
 Object.assign(T.en,{xs1:"No booking needed",xs2:"Checked in front of you",xs3:"Pay the difference",t1:"Just walk in",t1d:"No booking or appointment needed. Come by any time we're open with your phone.",xb1:"No booking",xb2:"Open daily",xb3:"Transparent value",xc1:"Find our stores",xc2:"Ask on WhatsApp"});
 const STORES=["Islam Market","Concord Mueen"],X={m:0,s:0,w:0};
-let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,cur=0,hs=0,rate=0,likes=new Set;
+let lang=localStorage.getItem("mz_lang")||"en",filter="all",cond=0,cur=0,hs=0,rate=0,likes=new Set;
 const $=s=>document.querySelector(s),t=()=>T[lang];
 const fmt=n=>"৳"+Math.round(n).toLocaleString(t().cur);
 const img=(u,n)=>`<img src="${IMG+u}.webp" alt="${n}" loading="lazy" onerror="mzFb(this)">`;
@@ -1002,7 +1002,7 @@ document.addEventListener("click",e=>{
 document.addEventListener("pointermove",e=>{const s=e.target.closest(".sp");if(s){const r=s.getBoundingClientRect();s.style.setProperty("--mx",e.clientX-r.left+"px");s.style.setProperty("--my",e.clientY-r.top+"px")}});
 $("#lang").onclick=()=>{lang=lang==="bn"?"en":"bn";localStorage.setItem("mz_lang",lang);render()};
 const root=document.documentElement,setTheme=m=>{root.dataset.theme=m;$("#theme").textContent=m==="dark"?"☀️":"🌙";localStorage.setItem("mz_theme",m)};
-setTheme(localStorage.getItem("mz_theme")||"dark");$("#theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
+setTheme(localStorage.getItem("mz_theme")||"light");$("#theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
 render();
 setInterval(()=>{hs=(hs+1)%HERO.length;document.querySelectorAll(".slide").forEach((s,i)=>s.classList.toggle("on",i===hs));const p=P[HERO[hs]];$("#pname").innerHTML=`${p[0]}<small>${fmt(p[2])}</small>`;const pn=$("#pname");pn.classList.remove("sw");void pn.offsetWidth;pn.classList.add("sw")},3800);
 addEventListener("scroll",()=>{$("#bar").style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+"%"},{passive:true});
@@ -1711,6 +1711,49 @@ html[lang=bn] .mzm-nav a{font-size:1.06rem}
 @media(max-width:380px){
  .tools .chip:not(.call),.tools .mzb,.tools .chip.call{width:36px;min-width:36px;height:36px}
 }
+
+/* ===== LIGHT MODE: high-contrast premium menu ===== */
+[data-theme=light] .mzm{--mz-deep:#a85d00;--mz-deep2:#7a4200;--mz-edge:rgba(168,93,0,.34);--mz-soft:rgba(168,93,0,.14)}
+[data-theme=light] .mzm-bd{background:rgba(40,28,10,.5)}
+[data-theme=light] .mzm-p{background:radial-gradient(120% 45% at 100% 0%,rgba(251,176,45,.30),transparent 62%),linear-gradient(180deg,#fffdf8,#fff7e8);border-left:1px solid var(--mz-edge);box-shadow:-30px 0 80px -24px rgba(60,35,0,.45)}
+[data-theme=light] .mzm .eyebrow{color:var(--mz-deep);font-weight:800;letter-spacing:.16em}
+[data-theme=light] .mzm-x{background:#fff;border:1px solid var(--mz-edge);color:#1b1812;box-shadow:0 8px 20px -10px rgba(60,35,0,.5)}
+
+/* nav rows become defined cards */
+[data-theme=light] .mzm-nav{gap:8px}
+[data-theme=light] .mzm-nav a{margin:0;padding:8px 10px 8px 8px;background:#fff;color:#1b1812;font-weight:700;border-radius:20px;
+ box-shadow:0 0 0 1px rgba(120,70,0,.14),0 10px 22px -14px rgba(120,70,0,.55)}
+[data-theme=light] .mzm-nav a .ic{width:44px;height:44px;border-radius:15px;color:var(--mz-deep);
+ background:linear-gradient(145deg,#fff4d9,#ffdf9a);border:1px solid var(--mz-edge);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 14px -8px rgba(168,93,0,.7)}
+[data-theme=light] .mzm-nav a .ic svg{stroke-width:2.1}
+[data-theme=light] .mzm-nav a .ar{opacity:1;color:var(--mz-deep);background:#fff1cf;border:1px solid var(--mz-edge)}
+[data-theme=light] .mzm-nav a:active,[data-theme=light] .mzm-nav a:hover{background:#fffaf0}
+[data-theme=light] .mzm-nav a:active .ar,[data-theme=light] .mzm-nav a:hover .ar{background:linear-gradient(135deg,#ffd36b,#f59a0c);color:#2a1c00;border-color:transparent}
+
+/* active row */
+[data-theme=light] .mzm-nav a.on{color:var(--mz-deep2);background:linear-gradient(90deg,#ffeab8,#fff6e0 88%);
+ box-shadow:0 0 0 1.5px rgba(232,137,10,.7),0 12px 26px -14px rgba(232,137,10,.9)}
+[data-theme=light] .mzm-nav a.on .ic{color:#2a1c00;background:linear-gradient(135deg,#ffe08a,#fbb02d 55%,#e8890a);border-color:transparent;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 22px -8px rgba(232,137,10,.9)}
+[data-theme=light] .mzm-nav a.on .ar{color:#2a1c00;background:linear-gradient(135deg,#ffdc8a,#fbb02d);border-color:transparent}
+
+/* settings rows */
+[data-theme=light] .mzm-row,[data-theme=light] .mzm-trk,[data-theme=light] .mzm-c:not(.pri){
+ background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,rgba(232,137,10,.75),rgba(168,93,0,.18) 55%) border-box;
+ border:1px solid transparent;box-shadow:0 10px 22px -16px rgba(120,70,0,.6)}
+[data-theme=light] .mzm-row>span{color:#3d3626;font-weight:700}
+[data-theme=light] .mzm-sg{background:#efe8d8;border:1px solid rgba(120,70,0,.18);box-shadow:inset 0 2px 6px rgba(80,50,0,.18)}
+[data-theme=light] .mzm-sg button{color:#4a4231;font-weight:700}
+[data-theme=light] .mzm-sg button.on{color:#2a1c00;background:linear-gradient(135deg,#ffe08a,#fbb02d 55%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 8px 16px -8px rgba(232,137,10,.9)}
+
+/* track order + CTA */
+[data-theme=light] .mzm-trk{color:#1b1812;font-weight:700}
+[data-theme=light] .mzm-trk>svg:first-child{color:var(--mz-deep);background:linear-gradient(145deg,#fff4d9,#ffdf9a);border-color:var(--mz-edge);stroke-width:2.1}
+[data-theme=light] .mzm-trk .ar{color:var(--mz-deep);background:#fff1cf;border-color:var(--mz-edge)}
+[data-theme=light] .mzm-c:not(.pri){color:#1b1812}
+[data-theme=light] .mzm-c.pri{color:#2a1c00;box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(150,80,0,.22),0 16px 30px -12px rgba(232,137,10,.85)}
+[data-theme=light] .mzm-ft{color:#5a523f;font-weight:600}
 </style>
 
 <div class="mzm" id="mzm" hidden aria-hidden="true">
