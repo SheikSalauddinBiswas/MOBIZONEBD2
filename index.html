@@ -418,6 +418,35 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .mq .bl img{pointer-events:none;-webkit-user-drag:none}
 .mq .bl img:not([data-f]){width:56px;height:20px}
 .mq .bl .bt{font-size:.9rem}
+
+/* ---- hero showcase: arch frame, ambient glow, feathered photo ---- */
+.disc{background:radial-gradient(circle at 50% 46%,rgba(251,176,45,.30),rgba(251,176,45,.09) 56%,transparent 73%);box-shadow:none}
+.slide .frm{position:relative;width:64%;height:80%;overflow:hidden;isolation:isolate;display:grid;place-items:center;
+ border-radius:50% 50% 32px 32px/30% 30% 32px 32px;background:#1a150d;
+ box-shadow:0 0 0 1px rgba(251,176,45,.6),0 0 0 8px rgba(255,255,255,.07),0 0 0 9px rgba(251,176,45,.28),0 44px 70px -30px rgba(0,0,0,.6),0 30px 90px -34px var(--glow);
+ animation:float 6s ease-in-out infinite}
+.slide .frm::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(165deg,rgba(255,255,255,.22),rgba(255,255,255,0) 32%),linear-gradient(0deg,rgba(0,0,0,.34),transparent 38%)}
+.slide .frm img{position:absolute;max-width:none;filter:none;animation:none}
+.slide .frm .bgi{inset:-14%;width:128%;height:128%;object-fit:cover;filter:blur(24px) saturate(1.3) brightness(.82);z-index:0}
+.slide .frm .fgi{z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);object-fit:fill;opacity:0;transition:opacity .8s var(--ease);
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-composite:source-in;
+ mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect}
+.slide .frm .fgi.ok{opacity:1}
+.slide .frm>span{position:relative;z-index:1}
+.pname{margin-top:22px}
+
+/* ---- hero showcase v2: guaranteed arch crop, no hard rectangle ---- */
+.slide .frm{width:62%;height:82%;border-radius:999px 999px 36px 36px;clip-path:inset(0 round 999px 999px 36px 36px);background:#1a150d;
+ box-shadow:0 0 0 1px rgba(251,176,45,.7),0 0 0 9px rgba(251,176,45,.10),0 0 0 10px rgba(251,176,45,.35),0 50px 80px -34px rgba(0,0,0,.55),0 30px 100px -30px var(--glow)}
+.slide .frm .fgi{inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;transform:none!important;object-fit:cover;object-position:50% 38%;-webkit-mask:none!important;mask:none!important}
+.slide .frm .bgi{display:none}
+.slide .frm::after{background:linear-gradient(165deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%),linear-gradient(0deg,rgba(10,6,0,.5),transparent 34%)}
+.disc{inset:2%;background:radial-gradient(circle at 50% 48%,rgba(251,176,45,.34),rgba(251,176,45,.10) 55%,transparent 72%)}
+.float{padding:10px 16px;border-radius:99px;background:rgba(22,18,12,.78);box-shadow:0 18px 36px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);z-index:4}
+.float.a{left:-7%;top:9%}.float.b{right:-9%;bottom:12%}
+.pname{font-size:1.1rem;margin-top:26px}.pname small{margin-top:2px;font-size:1.15rem;font-weight:800}
+@media(max-width:560px){.slide .frm{width:70%}.float.a{left:-2%}.float.b{right:-2%}}
 </style>
 </head>
 <body>
@@ -604,8 +633,9 @@ function render(){
  document.querySelectorAll("[data-n]").forEach(e=>e.dataset.done&&(e.textContent=(+e.dataset.n).toLocaleString(L.cur,{useGrouping:false})));
  hero();
 }
+function hf(i){const r=i.naturalWidth/i.naturalHeight,F=.8;if(!r)return;if(r>=F){i.style.width="100%";i.style.height=(F/r*100)+"%"}else{i.style.height="100%";i.style.width=(r/F*100)+"%"}i.classList.add("ok")}
 function hero(){
- $("#tilt").innerHTML=HERO.map((h,i)=>`<div class="slide ${i===hs?"on":""}">${img(P[h][1],P[h][0])}</div>`).join("");
+ $("#tilt").innerHTML=HERO.map((h,i)=>`<div class="slide ${i===hs?"on":""}"><div class="frm"><img class="bgi" src="${IMG+P[h][1]}.webp" alt="" aria-hidden="true" decoding="async"><img class="fgi" src="${IMG+P[h][1]}.webp" alt="${P[h][0]}" decoding="async" onload="hf(this)" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📱',style:'font-size:4rem;position:relative'}))"></div></div>`).join("");
  const p=P[HERO[hs]];$("#pname").innerHTML=`${p[0]}<small>${fmt(p[2])}</small>`;
 }
 document.addEventListener("click",e=>{
