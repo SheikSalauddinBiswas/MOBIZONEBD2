@@ -448,6 +448,42 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .float.a{left:-4%;top:10%}.float.b{right:-5%;bottom:12%}
 .pname{font-size:1.1rem;margin-top:26px}.pname small{margin-top:2px;font-size:1.15rem;font-weight:800}
 @media(max-width:560px){.float.a{left:-1%}.float.b{right:-1%}}
+
+/* ===== campaigns: announcement bar + offer cards ===== */
+.cbar[hidden],.camp[hidden]{display:none}
+.cbar{position:relative;z-index:60;color:#241700;font-weight:600;font-size:.9rem;background:linear-gradient(90deg,#e8890a,#fbb02d 30%,#ffdc8a 50%,#fbb02d 70%,#e8890a);background-size:200% 100%;animation:shine 9s linear infinite;box-shadow:0 10px 30px -18px #000}
+.cbar-t{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;min-height:42px;padding:6px 52px;text-align:center;color:inherit;transition:opacity .45s var(--ease),transform .55s var(--ease)}
+.cbar-t.sw{opacity:0;transform:translateY(-8px)}
+.cb-tag{font-weight:800;letter-spacing:.01em}
+.cb-cd{padding:3px 12px;border-radius:99px;background:#241700;color:#ffdc8a;font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cb-go{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(36,23,0,.9);color:#ffdc8a;font-size:.8rem;transition:transform .5s var(--ease)}
+.cbar-t:hover .cb-go{transform:translateX(4px)}
+.cbar-x{position:absolute;right:12px;top:50%;translate:0 -50%;width:28px;height:28px;border-radius:50%;border:0;background:rgba(36,23,0,.12);color:#241700;cursor:pointer;font-size:1.15rem;line-height:1;transition:.5s var(--ease)}
+.cbar-x:hover{background:#241700;color:#ffdc8a;transform:rotate(90deg)}
+.camp{padding:60px 0 8px}
+.camp .head{margin-bottom:24px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.cc{position:relative;overflow:hidden;isolation:isolate;border-radius:30px;padding:32px 34px;color:#f7f3ea;
+ background:radial-gradient(120% 140% at 100% 0%,rgba(251,176,45,.30),transparent 55%),linear-gradient(160deg,#261d11,#140f08);
+ border:1px solid rgba(251,176,45,.38);box-shadow:0 44px 80px -46px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.08);
+ animation:pop .9s var(--ease) both;transition:transform .7s var(--ease),box-shadow .7s var(--ease),border-color .4s}
+.cc:nth-child(2){animation-delay:.12s}
+.cc:hover{transform:translateY(-6px);border-color:var(--amber);box-shadow:0 50px 90px -44px var(--glow),inset 0 1px 0 rgba(255,255,255,.1)}
+.cc::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(120deg,#000,transparent 65%);mask-image:linear-gradient(120deg,#000,transparent 65%)}
+.cc .cc-ic{position:absolute;right:-28px;bottom:-34px;width:210px;height:210px;stroke:rgba(251,176,45,.17);stroke-width:.9;transform:rotate(-14deg);pointer-events:none;z-index:-1;transition:transform 1s var(--ease)}
+.cc:hover .cc-ic{transform:rotate(-6deg) scale(1.08)}
+.cc-tag{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;color:#ffd27a;background:rgba(251,176,45,.14);border:1px solid rgba(251,176,45,.45)}
+.cc-tag i{width:7px;height:7px;border-radius:50%;background:#3ecf6e;animation:ping 1.8s infinite}
+.cc.soon .cc-tag i{background:var(--amber);animation:none}
+.cc h3{font-size:clamp(1.45rem,2.7vw,1.95rem);font-weight:800;line-height:1.25;margin:16px 0 8px;letter-spacing:-.01em}
+.cc p{color:#b9b0a0;max-width:44ch}
+.cc-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:400px;margin:24px 0 8px}
+.cc-cd div{padding:12px 6px 10px;border-radius:16px;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
+.cc-cd b{display:block;font-size:1.7rem;line-height:1.15;font-weight:800;color:#ffd27a;font-variant-numeric:tabular-nums}
+.cc-cd small{font-size:.72rem;color:#a79f90}
+.cc-lab{font-size:.82rem;color:#a79f90;margin-bottom:22px}
+.cc .btn.pri{width:max-content;max-width:100%}
+@media(max-width:640px){.cb-tx{display:none}.cbar-t{padding:6px 46px;font-size:.84rem}.camp{padding:40px 0 0}.cc{padding:26px 22px;border-radius:24px}.cc-cd b{font-size:1.4rem}}
 </style>
 </head>
 <body>
@@ -475,6 +511,7 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 7h9M19 7h1M4 17h1M11 17h9"/><circle cx="16" cy="7" r="2.4"/><circle cx="8" cy="17" r="2.4"/></symbol>
 </defs></svg>
 
+<div class="cbar" id="cbar" hidden><a class="cbar-t" id="cbt" href="#camp"></a><button type="button" class="cbar-x" id="cbx" aria-label="Close">&times;</button></div>
 <header><div class="wrap nav">
   <a href="#top"><img src="logo.png" alt="MobiZone BD"></a>
   <nav><a href="#shop" data-i="n1"></a><a href="#exchange" data-i="n2"></a><a href="#why" data-i="n3"></a><a href="#stores" data-i="n4"></a></nav>
@@ -514,6 +551,12 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 </div></div>
 
 <div class="brands"><div class="mq" id="mq"></div></div>
+
+<section class="camp" id="camp" hidden><div class="wrap">
+  <div class="head rv"><div><span class="eyebrow" id="ceye"></span><h2 id="ch"></h2></div></div>
+  <div class="cgrid" id="cgrid"></div>
+</div></section>
+
 
 <section class="paths"><div class="wrap">
   <div class="head rv"><div><span class="eyebrow" data-i="ey1"></span><h2 data-i="k1"></h2></div><p data-i="k2"></p></div>
@@ -832,6 +875,49 @@ addEventListener("pointerup",()=>{drag=false;el.classList.remove("drag")});
 el.addEventListener("touchstart",()=>{tch=true;clearTimeout(tt)},{passive:true});
 el.addEventListener("touchend",()=>{clearTimeout(tt);tt=setTimeout(()=>tch=false,1800)},{passive:true});
 el.addEventListener("wheel",()=>{tch=true;clearTimeout(tt);tt=setTimeout(()=>tch=false,1500)},{passive:true});
+})();
+</script>
+<script>
+/* ===== CAMPAIGNS: edit this list. Dates are Bangladesh time. A campaign appears automatically
+   `lead` days before it starts, shows a live countdown, and disappears when it ends. ===== */
+(()=>{
+const CAMP=[
+ {id:"bf26",start:"2026-11-20T00:00:00+06:00",end:"2026-11-30T23:59:59+06:00",lead:14,href:"#shop",
+  bn:{tag:"ব্ল্যাক ফ্রাইডে সেল",bar:"বাছাই করা ফোন ও গ্যাজেটে বিশেষ অফার",t:"ব্ল্যাক ফ্রাইডে সেল",d:"বাছাই করা ফোন ও গ্যাজেটে সীমিত সময়ের বিশেষ অফার। স্টক শেষ হওয়ার আগেই বেছে নিন।",cta:"কালেকশন দেখুন"},
+  en:{tag:"Black Friday Sale",bar:"Special offers on selected phones & gadgets",t:"Black Friday Sale",d:"Limited-time offers on selected phones and gadgets. Pick yours before stock runs out.",cta:"Explore the collection"}},
+ {id:"xch26",start:"2026-11-01T00:00:00+06:00",end:"2026-12-15T23:59:59+06:00",lead:14,href:"#exchange",
+  bn:{tag:"এক্সচেঞ্জ ফেস্ট",bar:"পুরাতন ফোন দিয়ে সেদিনই নতুন ফোন",t:"এক্সচেঞ্জ ফেস্ট",d:"পুরাতন ফোন দোকানে দেখিয়ে সেদিনই নতুনটি নিন। সামনাসামনি যাচাই, স্বচ্ছ মূল্য।",cta:"এক্সচেঞ্জ করুন"},
+  en:{tag:"Exchange Fest",bar:"Trade in your old phone, leave with a new one",t:"Exchange Fest",d:"Show us your old phone in store and walk out with a new one. Face-to-face inspection, transparent value.",cta:"Exchange your phone"}}
+];
+const X={bn:{eye:"ক্যাম্পেইন",h:"চলমান ও আসন্ন অফার",live:"এখন চলছে",soon:"শিগগিরই আসছে",ends:"অফার শেষ হতে বাকি",starts:"অফার শুরু হতে বাকি",e2:"শেষ হতে",s2:"শুরু হতে",d:"দিন",hr:"ঘণ্টা",m:"মিনিট",s:"সেকেন্ড",dd:" দিন "},
+ en:{eye:"Campaigns",h:"Live & upcoming offers",live:"Live now",soon:"Starting soon",ends:"Offer ends in",starts:"Offer starts in",e2:"Ends in",s2:"Starts in",d:"Days",hr:"Hours",m:"Min",s:"Sec",dd:"d "}};
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),DAY=864e5;
+const N2=n=>n.toLocaleString(t().cur,{minimumIntegerDigits:2,useGrouping:false}),N1=n=>n.toLocaleString(t().cur,{useGrouping:false});
+const parts=ms=>{const s=Math.floor(Math.max(0,ms)/1e3);return{d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60}};
+function list(){const n=Date.now();return CAMP.map(c=>{const a=Date.parse(c.start),b=Date.parse(c.end);let k=null,to=0;
+ if(n<=b){if(n>=a){k="live";to=b}else if(a-n<=(c.lead||14)*DAY){k="soon";to=a}}return k&&{c,k,to}}).filter(Boolean)
+ .sort((x,y)=>(x.k==="live"?0:1)-(y.k==="live"?0:1)||x.to-y.to)}
+let A=[],bi=0;
+const dismissed=()=>{try{return sessionStorage.getItem("mz_cbar")==="1"}catch(e){return false}};
+function barText(){const it=A[bi%A.length],L=X[lang],T=it.c[lang];
+ $("#cbt").href=it.c.href;$("#cbt").innerHTML=`<span class="cb-tag">${T.tag}</span><span class="cb-tx">${T.bar}</span><span class="cb-cd" id="cbc"></span><span class="cb-go">→</span>`;tick()}
+function paint(){A=list();const L=X[lang],bar=$("#cbar"),sec=$("#camp");sec.hidden=!A.length;
+ if(!A.length){bar.hidden=true;$("#cgrid").innerHTML="";return}
+ $("#ceye").textContent=L.eye;$("#ch").textContent=L.h;
+ $("#cgrid").innerHTML=A.map(({c,k,to})=>{const T=c[lang];
+  return `<article class="cc sp ${k}"><svg class="i cc-ic"><use href="#tag"/></svg><span class="cc-tag"><i></i>${k==="live"?L.live:L.soon}</span><h3>${T.t}</h3><p>${T.d}</p>
+  <div class="cc-cd" data-to="${to}"><div><b data-u="d">00</b><small>${L.d}</small></div><div><b data-u="h">00</b><small>${L.hr}</small></div><div><b data-u="m">00</b><small>${L.m}</small></div><div><b data-u="s">00</b><small>${L.s}</small></div></div>
+  <div class="cc-lab">${k==="live"?L.ends:L.starts}</div><a class="btn pri" href="${c.href}"><span>${T.cta}</span></a></article>`}).join("");
+ bar.hidden=dismissed();bi%=A.length;barText()}
+function tick(){if(!A.length)return;const L=X[lang],now=Date.now();let stale=false;
+ $$(".cc-cd").forEach(el=>{const d=+el.dataset.to-now;if(d<=0)stale=true;const p=parts(d);
+  el.querySelector('[data-u="d"]').textContent=N2(p.d);el.querySelector('[data-u="h"]').textContent=N2(p.h);el.querySelector('[data-u="m"]').textContent=N2(p.m);el.querySelector('[data-u="s"]').textContent=N2(p.s)});
+ const c=$("#cbc"),it=A[bi%A.length];if(c){const p=parts(it.to-now);c.textContent=(it.k==="live"?L.e2:L.s2)+" · "+(p.d?N1(p.d)+L.dd:"")+N2(p.h)+":"+N2(p.m)+":"+N2(p.s)}
+ if(stale)paint()}
+$("#cbx").onclick=()=>{$("#cbar").hidden=true;try{sessionStorage.setItem("mz_cbar","1")}catch(e){}};
+setInterval(tick,1000);
+setInterval(()=>{if(A.length<2||$("#cbar").hidden)return;const e=$("#cbt");e.classList.add("sw");setTimeout(()=>{bi++;barText();e.classList.remove("sw")},450)},5500);
+const r=render;render=function(){r();paint()};paint();
 })();
 </script>
 </body>
