@@ -408,6 +408,16 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .paths .cat:hover,.paths .cat.rv.done:hover{transform:translateY(-4px)}
 @media(max-width:960px){.paths .cats{grid-template-columns:repeat(3,1fr);gap:10px}.paths .cat{flex-direction:column;justify-content:center;text-align:center;gap:10px;padding:16px 8px}.paths .cat p{display:none}.paths .cat h3{font-size:.9rem;line-height:1.3;margin:0}}
 @media(max-width:560px){.paths{padding:30px 0 0}.paths .head{margin-bottom:14px}.paths .cat{padding:14px 6px;border-radius:18px}.paths .cat .ic{width:42px;height:42px;font-size:1.15rem}.paths .cat h3{font-size:.8rem}}
+
+/* ---- slimmer, scrollable brand strip ---- */
+.brands{overflow-x:auto;overflow-y:hidden;padding:14px 0;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.brands::-webkit-scrollbar{display:none}.brands.drag{cursor:grabbing}.brands.drag *{user-select:none}
+.mq{animation:none;gap:12px;padding:0 40px}
+.mq .bl{min-width:92px;height:46px;padding:0 20px;border-radius:14px;box-shadow:0 6px 16px -12px rgba(0,0,0,.4)}
+.mq .bl:hover{transform:translateY(-2px);box-shadow:0 10px 20px -12px var(--glow)}
+.mq .bl img{pointer-events:none;-webkit-user-drag:none}
+.mq .bl img:not([data-f]){width:56px;height:20px}
+.mq .bl .bt{font-size:.9rem}
 </style>
 </head>
 <body>
@@ -568,7 +578,7 @@ const P=[
 const HERO=[0,1,2,5];
 const BRC={},BC={apple:"#1d1d1f",samsung:"#1428A0",xiaomi:"#FF6900",vivo:"#415FFF",oppo:"#1B9E5F",oneplus:"#F5010C",honor:"#0A59F7",motorola:"#5C92FA",infinix:"#00A94F",nokia:"#124191",huawei:"#CF0A2C",asus:"#00539B",lg:"#A50034"};
 function brFit(i){if(i.dataset.f)return;i.dataset.f=1;const k=i.alt,
- sz=(w,h)=>{const r=w/h;let hh=Math.min(34,Math.sqrt(2600/r)),ww=hh*r;if(ww>128){ww=128;hh=ww/r}i.style.height=hh+"px";i.style.width=ww+"px"};
+ sz=(w,h)=>{const r=w/h;let hh=Math.min(24,Math.sqrt(1300/r)),ww=hh*r;if(ww>92){ww=92;hh=ww/r}i.style.height=hh+"px";i.style.width=ww+"px"};
  if(BRC[k]){i.src=BRC[k].u;sz(BRC[k].w,BRC[k].h);return}
  try{const nw=i.naturalWidth||300,nh=i.naturalHeight||nw,W=480,H=Math.max(1,Math.round(W*nh/nw)),c=document.createElement("canvas");c.width=W;c.height=H;
   const x=c.getContext("2d");x.drawImage(i,0,0,W,H);const d=x.getImageData(0,0,W,H).data;let a=W,b=H,e=-1,f=-1;
@@ -589,7 +599,7 @@ function render(){
  const L=t();document.documentElement.lang=lang;
  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=L[e.dataset.i]);
  $("#lang").textContent=lang==="bn"?"EN":"বাং";
- $("#mq").innerHTML=[...BR,...BR].map(b=>`<div class="bl" title="${b}"><img src="brands/${b.toLowerCase()}.svg" alt="${b}" decoding="async" onload="brFit(this)" onerror="brErr(this)"><span class="bt">${b}</span></div>`).join("");
+ $("#mq").innerHTML=[...BR,...BR,...BR].map(b=>`<div class="bl" title="${b}"><img src="brands/${b.toLowerCase()}.svg" alt="${b}" decoding="async" onload="brFit(this)" onerror="brErr(this)"><span class="bt">${b}</span></div>`).join("");
  $("#tabs").innerHTML=["all","flag","mid","tab"].map(k=>`<button class="${k===filter?"on":""}" data-f="${k}">${L[k]}</button>`).join("");
  document.querySelectorAll("[data-n]").forEach(e=>e.dataset.done&&(e.textContent=(+e.dataset.n).toLocaleString(L.cur,{useGrouping:false})));
  hero();
@@ -771,6 +781,27 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")close();if((e.key===
 /* "Full collection": stay on this page, clear every filter and show all devices */
 document.getElementById("allp").addEventListener("click",()=>{filter="all";document.getElementById("rst2").click();render();
  document.getElementById("shop").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})});
+</script>
+<script>
+(()=>{const el=document.querySelector(".brands"),mq=document.getElementById("mq");if(!el||!mq)return;
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let hov=false,drag=false,tch=false,sx=0,sl=0,last=0,acc=0,ready=false,tt;
+const P=()=>{const k=mq.children.length/3;return k>=1&&mq.children[k]?mq.children[k].offsetLeft-mq.children[0].offsetLeft:0};
+function tick(t){const dt=Math.min(64,t-last||16);last=t;const p=P();
+ if(p>0){if(!ready){el.scrollLeft=p;ready=true}
+  if(!hov&&!drag&&!tch&&!RM){acc+=dt*.032;const n=Math.floor(acc);if(n){el.scrollLeft+=n;acc-=n}}
+  if(el.scrollLeft>=p*1.5)el.scrollLeft-=p;else if(el.scrollLeft<p*.5)el.scrollLeft+=p}
+ requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
+el.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")hov=true});
+el.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse"){hov=false;drag=false;el.classList.remove("drag")}});
+el.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"||e.button)return;drag=true;sx=e.clientX;sl=el.scrollLeft;el.classList.add("drag")});
+addEventListener("pointermove",e=>{if(drag)el.scrollLeft=sl-(e.clientX-sx)});
+addEventListener("pointerup",()=>{drag=false;el.classList.remove("drag")});
+el.addEventListener("touchstart",()=>{tch=true;clearTimeout(tt)},{passive:true});
+el.addEventListener("touchend",()=>{clearTimeout(tt);tt=setTimeout(()=>tch=false,1800)},{passive:true});
+el.addEventListener("wheel",()=>{tch=true;clearTimeout(tt);tt=setTimeout(()=>tch=false,1500)},{passive:true});
+})();
 </script>
 </body>
 </html>
