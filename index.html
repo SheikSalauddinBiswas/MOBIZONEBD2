@@ -1379,6 +1379,7 @@ try{const s=document.createElement("script");s.type="application/ld+json";s.text
 <style id="vc-css">
 /* ===== CUSTOMER VOICES + STORE GALLERY ===== */
 #reviews{padding:46px 0 38px;border-top:1px solid var(--line)}#reviews[hidden]{display:none}
+.vc-pv{margin-bottom:14px;padding:10px 16px;border-radius:14px;border:1px dashed var(--amber);background:rgba(251,176,45,.1);font-size:.84rem;color:var(--text)}
 .vc-hd{display:flex;justify-content:space-between;align-items:end;gap:14px 20px;flex-wrap:wrap;margin-bottom:16px}.vc-hd .eyebrow{margin-bottom:4px}.vc-hd h2{font-size:clamp(1.3rem,2.4vw,1.75rem)}
 .vc-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.vc-sc{display:flex;align-items:center;gap:10px;padding:7px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.86rem;color:var(--mute)}.vc-sc b{font-size:1.15rem;color:var(--text)}.vc-st{color:var(--amber);letter-spacing:1px;white-space:nowrap}
 .vc-lk{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:.85rem;transition:.3s var(--ease)}.vc-lk:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
@@ -1399,31 +1400,29 @@ try{const s=document.createElement("script");s.type="application/ld+json";s.text
 .vc-lb button{position:absolute;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;font-size:1.2rem;transition:.3s}.vc-lb button:hover{background:var(--amber);color:#2a1c00}.vc-lb .x{top:14px;right:14px}.vc-lb .p{left:14px;top:50%}.vc-lb .n{right:14px;top:50%}
 @media(max-width:560px){#reviews{padding:36px 0 30px}.vc-lb .p,.vc-lb .n{top:auto;bottom:16px}}
 </style>
+<script src="reviews-data.js"></script>
 <script>
-/* ===== REAL REVIEWS & STORE MEDIA: fill these in. Nothing shows on the site until you add real entries. =====
-   RULES: copy each review exactly as written on Google/Facebook (no edits, no invented names),
-   and paste the link to that review (or your page) in "u" so visitors can verify it.
-   Put photos/videos in a "stores" folder next to index.html.
-   Review item:  {n:"Reviewer name as shown", r:5, t:"Review text exactly as written", d:"2026-03-12", s:"google" or "facebook", u:"link to the original review"}
-   Media item:   {st:0 (first store) or 1 (second store), t:"img" or "video", src:"stores/front.jpg", poster:"stores/front-poster.jpg" (video only), alt:"short caption"}
-   RATING: enter the rating and total exactly as Google shows today, or leave 0 to hide it. */
-const VC={google:{url:"",rating:0,count:0},facebook:{url:"https://www.facebook.com/share/19xVDGVDzy/"}};
-const REVIEWS=[];
-const STORE_MEDIA=[];
+/* Reviews and store media are read from reviews-data.js (same folder). Nothing shows until real entries are added there. */
+const MZ=window.MZ_REVIEWS||{};
+const VC={google:Object.assign({url:"",rating:0,count:0},MZ.google),facebook:Object.assign({url:"https://www.facebook.com/share/19xVDGVDzy/"},MZ.facebook)};
+const REVIEWS=(Array.isArray(MZ.reviews)?MZ.reviews:[]).filter(x=>x&&x.n&&x.t).map(x=>({...x,r:Math.min(5,Math.max(0,Math.round(+x.r||0)))}));
+const STORE_MEDIA=(Array.isArray(MZ.media)?MZ.media:[]).filter(x=>x&&x.src&&(x.st===0||x.st===1));
 (()=>{
 const $=s=>document.querySelector(s),sec=$("#reviews");if(!sec)return;
 const ST=[{bn:"রেজাউদ্দিন বাজার",en:"Reazuddin Bazar"},{bn:"নাসিরাবাদ",en:"Nasirabad"}];
-const C={bn:{ey:"গ্রাহকদের কথা",h:"আসল অভিজ্ঞতা, আসল মানুষ",rv:"রিভিউ",gs:"Google রেটিং",gl:"Google-এ দেখুন",fl:"Facebook-এ দেখুন",more:"আরও পড়ুন",less:"কম দেখুন",ver:"মূল রিভিউ ↗",gh:"আমাদের স্টোর",all:"সব",nx:"পরের",pv:"আগের",cl:"বন্ধ করুন"},
-en:{ey:"Customer voices",h:"Real experiences, real people",rv:"reviews",gs:"Google rating",gl:"See on Google",fl:"See on Facebook",more:"Read more",less:"Show less",ver:"Original ↗",gh:"Our stores",all:"All",nx:"Next",pv:"Previous",cl:"Close"}};
+const C={bn:{ey:"গ্রাহকদের কথা",h:"আসল অভিজ্ঞতা, আসল মানুষ",rv:"রিভিউ",gs:"Google রেটিং",gl:"Google-এ দেখুন",fl:"Facebook-এ দেখুন",more:"আরও পড়ুন",less:"কম দেখুন",ver:"মূল রিভিউ ↗",gh:"আমাদের স্টোর",all:"সব",nx:"পরের",pv:"আগের",cl:"বন্ধ করুন",pb:"প্রিভিউ মোড: শুধু লেআউট দেখার জন্য, এখানকার কিছুই আসল নয়। সাধারণ ভিজিটর এটা দেখবেন না। আসল রিভিউ ও ছবি REVIEWS ও STORE_MEDIA তালিকায় বসালে এই অংশ নিজে থেকেই আসবে।",pn:"গ্রাহকের নাম",pt:"এখানে Google বা Facebook-এর আসল রিভিউ হুবহু বসবে।",pa:"স্টোরের ছবি"},
+en:{ey:"Customer voices",h:"Real experiences, real people",rv:"reviews",gs:"Google rating",gl:"See on Google",fl:"See on Facebook",more:"Read more",less:"Show less",ver:"Original ↗",gh:"Our stores",all:"All",nx:"Next",pv:"Previous",cl:"Close",pb:"Preview mode: layout only, nothing here is real. Regular visitors never see this. It appears on its own once you add real entries to REVIEWS and STORE_MEDIA.",pn:"Customer name",pt:"A real Google or Facebook review goes here, word for word.",pa:"Store photo"}};
 const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const star=n=>"★".repeat(Math.round(n))+"☆".repeat(5-Math.round(n));
-let sf=-1,lb=[],li=0,lbx=null;
-function gal(){const L=C[lang],m=STORE_MEDIA.map((x,i)=>({...x,i})).filter(x=>sf<0||x.st===sf);lb=m;
+let sf=-1,lb=[],li=0,lbx=null,MM=STORE_MEDIA;
+const PH=(c)=>"data:image/svg+xml;base64,"+btoa('<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480"><rect width="640" height="480" fill="'+c+'"/><text x="320" y="250" font-size="30" text-anchor="middle" fill="#888" font-family="sans-serif">PREVIEW</text></svg>');
+function gal(){const L=C[lang],m=MM.map((x,i)=>({...x,i})).filter(x=>sf<0||x.st===sf);lb=m;
  $("#vcg").innerHTML=m.map((x,k)=>`<button type="button" class="vc-th" data-vo="${k}" aria-label="${esc(x.alt||ST[x.st][lang])}">${x.t==="video"?(x.poster?`<img src="${esc(x.poster)}" alt="" loading="lazy">`:`<video src="${esc(x.src)}#t=0.1" preload="metadata" muted playsinline></video>`)+`<span class="vc-pl"><i>▶</i></span>`:`<img src="${esc(x.src)}" alt="${esc(x.alt||"")}" loading="lazy">`}<span class="vc-cp">${esc(x.alt||ST[x.st][lang])}</span></button>`).join("")}
-function build(){const L=C[lang],R=REVIEWS,M=STORE_MEDIA,G=VC.google,F=VC.facebook;sec.hidden=!(R.length||M.length);if(sec.hidden){sec.innerHTML="";return}
+function build(){const L=C[lang],pv=!REVIEWS.length&&!STORE_MEDIA.length&&/[?&]preview=reviews/.test(location.search),
+  R=pv?[0,1,2].map(()=>({n:L.pn,r:0,t:L.pt,d:"",s:"google"})):REVIEWS,M=MM=pv?[{st:0,t:"img",src:PH("#26211a"),alt:L.pa},{st:1,t:"img",src:PH("#2d271e"),alt:L.pa},{st:0,t:"img",src:PH("#26211a"),alt:L.pa}]:STORE_MEDIA,G=VC.google,F=VC.facebook;sec.hidden=!(R.length||M.length);if(sec.hidden){sec.innerHTML="";return}
  const nf=n=>(+n).toLocaleString(t().cur),dt=d=>{const x=new Date(d);return isNaN(x)?"":new Intl.DateTimeFormat(lang==="bn"?"bn-BD":"en-GB",{month:"short",year:"numeric"}).format(x)};
  const stores=[...new Set(M.map(x=>x.st))].filter(k=>ST[k]);
- sec.innerHTML=`<div class="wrap"><div class="vc-hd"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><div class="vc-r">${G.rating>0&&G.count>0?`<span class="vc-sc"><b>${(+G.rating).toLocaleString(t().cur,{minimumFractionDigits:1,maximumFractionDigits:1})}</b><span class="vc-st" role="img" aria-label="${G.rating}/5">${star(G.rating)}</span><span>${L.gs} · ${nf(G.count)} ${L.rv}</span></span>`:""}${G.url?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(G.url)}">${L.gl} ↗</a>`:""}${F.url&&R.length?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(F.url)}">${L.fl} ↗</a>`:""}</div></div>
+ sec.innerHTML=`<div class="wrap">${pv?`<p class="vc-pv">${L.pb}</p>`:""}<div class="vc-hd"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><div class="vc-r">${G.rating>0&&G.count>0?`<span class="vc-sc"><b>${(+G.rating).toLocaleString(t().cur,{minimumFractionDigits:1,maximumFractionDigits:1})}</b><span class="vc-st" role="img" aria-label="${G.rating}/5">${star(G.rating)}</span><span>${L.gs} · ${nf(G.count)} ${L.rv}</span></span>`:""}${G.url?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(G.url)}">${L.gl} ↗</a>`:""}${F.url&&R.length?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(F.url)}">${L.fl} ↗</a>`:""}</div></div>
  ${R.length?`<div class="vc-row">${R.length>2?`<button type="button" class="vc-ar p" data-va="-1" aria-label="${L.pv}">←</button><button type="button" class="vc-ar n" data-va="1" aria-label="${L.nx}">→</button>`:""}<div class="vc-sl" id="vcs">${R.map(r=>`<article class="vc-c"><span class="vc-st" role="img" aria-label="${r.r}/5">${star(r.r)}</span><p class="vc-t">${esc(r.t)}</p><button type="button" class="vc-m" data-vm hidden>${L.more}</button><div class="vc-f"><div><b>${esc(r.n)}</b><br>${dt(r.d)}</div><span class="vc-src">${r.s==="facebook"?"Facebook":"Google"}</span>${r.u?`<a target="_blank" rel="noopener" href="${esc(r.u)}">${L.ver}</a>`:""}</div></article>`).join("")}</div></div>`:""}
  ${M.length?`<div class="vc-gh"><h3>${L.gh}</h3>${stores.length>1?`<div class="vc-tb"><button type="button" class="${sf<0?"on":""}" data-vf="-1">${L.all}</button>${stores.map(k=>`<button type="button" class="${sf===k?"on":""}" data-vf="${k}">${ST[k][lang]}</button>`).join("")}</div>`:""}</div><div class="vc-g" id="vcg"></div>`:""}</div>`;
  if(M.length)gal();
