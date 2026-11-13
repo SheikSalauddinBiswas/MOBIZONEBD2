@@ -689,7 +689,16 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
  .paths .head{flex-direction:row;align-items:center}
  .tr{padding:18px 16px;gap:14px}
  .store{padding:22px 18px}
- .store .row .btn{flex:1 1 100%;justify-content:space-between}
+ /* store cards: compact premium call + map buttons, side by side */
+ .store{padding:20px 16px 16px;border-radius:22px}
+ .store h3{font-size:1.15rem}
+ .store .hrs{margin-top:12px;padding-top:12px;font-size:.86rem}
+ .store .row{flex-wrap:nowrap;gap:8px;margin-top:14px}
+ .store .row .btn{flex:1 1 0;min-width:0;justify-content:center;gap:7px;min-height:42px;padding:0 10px;font-size:.84rem;font-weight:700;white-space:nowrap;border-radius:14px}
+ .store .row .btn::after,.store .row .btn.pri::after{display:none}
+ .store .row .btn .i{width:16px;height:16px;flex:none}
+ .store .row .btn.pri{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 20px -10px var(--glow)}
+ .store .row .btn:not(.pri){color:var(--amber2)}
  .price{gap:6px}.price b{white-space:nowrap}
  footer{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
  /* bottom sheet */
@@ -1614,6 +1623,38 @@ html.mzm-lock{overflow:hidden}
 .mzm-s{opacity:0;transform:translateX(24px);transition:opacity .35s ease,transform .35s ease}
 .mzm.open .mzm-s{opacity:1;transform:none;transition:opacity .6s var(--ease) calc(var(--d,0)*55ms + 160ms),transform .7s var(--ease) calc(var(--d,0)*55ms + 160ms)}
 html[lang=bn] .mzm-nav a{font-size:1.06rem}
+/* ===== premium menu buttons ===== */
+.mzm-nav{gap:3px}
+.mzm-nav a{border-bottom:0;margin:0 -6px;padding:7px 8px 7px 6px;border-radius:18px;position:relative}
+.mzm-nav a .ic{border-radius:14px;background:linear-gradient(145deg,rgba(251,176,45,.18),rgba(251,176,45,.04));border-color:rgba(251,176,45,.30);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 6px 14px -8px rgba(0,0,0,.6)}
+.mzm-nav a .ar{box-sizing:border-box;width:28px;height:28px;padding:7px;border-radius:50%;opacity:1;color:var(--amber2);background:rgba(251,176,45,.10);border:1px solid rgba(251,176,45,.22)}
+.mzm-nav a:active,.mzm-nav a:hover{background:rgba(251,176,45,.07)}
+.mzm-nav a:active .ar,.mzm-nav a:hover .ar{background:var(--amber);color:#2a1c00;border-color:transparent;transform:translateX(2px)}
+.mzm-nav a.on{background:linear-gradient(90deg,rgba(251,176,45,.16),rgba(251,176,45,.02) 85%);box-shadow:inset 0 0 0 1px rgba(251,176,45,.28)}
+.mzm-nav a.on .ic{background:linear-gradient(135deg,#ffe3a0,#fbb02d 55%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 22px -8px var(--glow)}
+.mzm-nav a.on .ar{background:linear-gradient(135deg,#ffdc8a,#fbb02d);color:#2a1c00;border-color:transparent}
+
+.mzm-row,.mzm-trk,.mzm-c:not(.pri){background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(135deg,rgba(251,176,45,.55),var(--line) 52%) border-box;border:1px solid transparent}
+.mzm-row{border-radius:20px;padding:6px 6px 6px 18px;box-shadow:0 10px 26px -18px rgba(0,0,0,.7)}
+.mzm-row>span{letter-spacing:.01em}
+.mzm-sg{padding:4px;border-radius:15px;box-shadow:inset 0 2px 7px rgba(0,0,0,.38)}
+.mzm-sg button{border-radius:11px;min-height:36px}
+.mzm-sg button.on{background:linear-gradient(135deg,#ffe3a0,#fbb02d 55%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 18px -8px var(--glow)}
+
+.mzm-trk{min-height:56px;padding:0 10px 0 10px;gap:12px;border-radius:20px;box-shadow:0 10px 26px -18px rgba(0,0,0,.7)}
+.mzm-trk>svg:first-child{box-sizing:border-box;width:36px;height:36px;padding:8px;border-radius:12px;background:linear-gradient(145deg,rgba(251,176,45,.20),rgba(251,176,45,.05));border:1px solid rgba(251,176,45,.30)}
+.mzm-trk .ar{box-sizing:border-box;width:28px;height:28px;padding:7px;border-radius:50%;opacity:1;color:var(--amber2);background:rgba(251,176,45,.10);border:1px solid rgba(251,176,45,.22)}
+.mzm-trk:active .ar{background:var(--amber);color:#2a1c00}
+
+.mzm-cta{gap:10px}
+.mzm-c{position:relative;overflow:hidden;min-height:56px;border-radius:20px;font-size:.96rem;letter-spacing:.01em;gap:9px}
+.mzm-c svg{width:20px;height:20px;flex:none}
+.mzm-c.pri{background:linear-gradient(135deg,#ffe3a0,#fbb02d 50%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(150,80,0,.18),0 16px 34px -12px var(--glow)}
+.mzm-c.pri::before{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:sweep 3.8s infinite;pointer-events:none}
+.mzm-c:not(.pri){box-shadow:0 10px 26px -16px rgba(0,0,0,.7)}
+.mzm-c:not(.pri) svg{color:#25d366}
+.mzm-c:not(.pri){background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(135deg,rgba(37,211,102,.6),rgba(251,176,45,.25) 60%,var(--line)) border-box}
+@media(prefers-reduced-motion:reduce){.mzm-c.pri::before{animation:none}}
 @media(prefers-reduced-motion:reduce){.mzm-p,.mzm-bd,.mzm-s,.mzb .bars i{transition:none!important}}
 @media(min-width:961px){.mzm{display:none!important}}
 </style>
@@ -1640,7 +1681,7 @@ html[lang=bn] .mzm-nav a{font-size:1.06rem}
     <button type="button" class="mzm-trk mzm-s" style="--d:9" id="mzmTrk"><svg class="i"><use href="#box"/></svg><span data-i="trk"></span><svg class="i ar" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <div class="mzm-cta mzm-s" style="--d:10">
       <a class="mzm-c pri" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span data-i="call"></span></a>
-      <a class="mzm-c" href="https://wa.me/8801960880808" target="_blank" rel="noopener"><svg class="i"><use href="#chat"/></svg><span>WhatsApp</span></a>
+      <a class="mzm-c" href="https://wa.me/8801960880808" target="_blank" rel="noopener"><svg class="i"><use href="#ic-wa"/></svg><span>WhatsApp</span></a>
     </div>
     <div class="mzm-ft mzm-s" style="--d:11" data-i="open"></div>
   </aside>
