@@ -692,6 +692,12 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 @media (max-width:960px){.tf .btn.pri{width:auto;flex:none}.tf input{min-width:0}}
 /* offer page: label is hidden on phones, so show an arrow instead of an empty circle */
 @media (max-width:560px){.opg-top .chip[data-oclose]::before{content:"\2190";font-size:1.3rem;line-height:1}}
+
+/* fix: header flicker — height no longer changes on scroll, so the layout can't shift back and forth */
+header.stuck .nav{height:70px}
+header.stuck .nav img{height:38px}
+@media(max-width:560px){header.stuck .nav{height:62px}header.stuck .nav img{height:auto;max-height:28px}}
+.cbar{min-height:42px}
 </style>
 </head>
 <body>
