@@ -1367,7 +1367,7 @@ function list(){const bn=lang==="bn",L=C[lang],w=q.toLowerCase().split(/\s+/).fi
  $("#faql").innerHTML=it.length?it.map(({f,i})=>`<div class="faq-i ${i===open?"open":""}"><button type="button" class="faq-q" aria-expanded="${i===open}" aria-controls="fa${i}" data-fq="${i}"><span>${esc(f[bn?1:3])}</span>${q?`<span class="faq-tag">${L[f[0]]}</span>`:""}<em>+</em></button><div class="faq-a" id="fa${i}" role="region">${body(f[bn?2:4])}</div></div>`).join(""):`<div class="faq-no">${L.no}</div>`}
 function build(){const L=C[lang],ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;built=lang;
  g.innerHTML=`<div class="faq-hd"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><div class="faq-s">${ic("search")}<input id="faqq" type="search" placeholder="${L.ph}" value="${esc(q)}" aria-label="${L.ph}"></div></div><div class="faq-t ${q?"dim":""}" id="faqt">${["w","r","e","x"].map(k=>`<button type="button" class="${k===cat?"on":""}" data-fc="${k}">${L[k]}</button>`).join("")}</div><div id="faql"></div>
- <div class="faq-h"><b>${L.ht}</b><span class="m">${L.hp}</span><div class="sp2"><a class="btn pri" href="tel:+8801960880808">${ic("call")}<span>${L.call}</span></a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/8801960880808">${ic("chat")}<span>WhatsApp</span></a></div></div>`;list();
+ <div class="faq-h"><b>${L.ht}</b><span class="m">${L.hp}</span><div class="sp2"><a class="btn pri" aria-label="${L.call}" href="tel:+8801960880808">${ic("call")}<span>${L.call}</span></a><a class="btn" aria-label="WhatsApp" target="_blank" rel="noopener" href="https://wa.me/8801960880808">${ic("chat")}<span>WhatsApp</span></a></div></div>`;list();
  const n=$("#nfaq");if(n)n.textContent=L.nav}
 g.addEventListener("click",e=>{let x;if(x=e.target.closest("[data-fc]")){cat=x.dataset.fc;open=-1;q="";$("#faqq").value="";$("#faqt").classList.remove("dim");document.querySelectorAll("#faqt button").forEach(b=>b.classList.toggle("on",b===x));list();return}
  if(x=e.target.closest("[data-fq]")){const i=+x.dataset.fq,was=open===i;document.querySelectorAll(".faq-i.open").forEach(z=>{z.classList.remove("open");z.querySelector(".faq-q").setAttribute("aria-expanded","false")});open=was?-1:i;if(!was){x.parentNode.classList.add("open");x.setAttribute("aria-expanded","true")}}});
@@ -1632,5 +1632,50 @@ const r0=window.render;if(typeof r0==="function"){window.render=function(){const
 sync();setTimeout(sync,400);
 })();
 </script>
+<style id="mz-trust-css">
+/* ===== compact "Buy with confidence" on mobile + calmer WhatsApp button ===== */
+.wa{transition:translate .55s var(--ease),opacity .4s ease}
+.wa.hid{translate:0 120px;opacity:0;pointer-events:none}
+@media(max-width:700px){
+ #why{padding:34px 0 38px}
+ #why .head{margin-bottom:14px}
+ .trust{grid-template-columns:repeat(2,1fr);gap:10px}
+ .tr{display:grid;grid-template-columns:34px 1fr;column-gap:10px;row-gap:7px;align-content:start;align-items:center;padding:13px 12px 14px;border-radius:18px;position:relative}
+ .tr>div:not(.ic){display:contents}
+ .tr .ic{width:34px;height:34px;border-radius:11px;font-size:1rem}
+ .tr .ic svg{width:18px;height:18px}
+ .tr h4{font-size:.88rem;line-height:1.25;font-weight:700}
+ .tr p{display:none}
+ .tr{padding:12px;align-content:center;min-height:64px}
+ html[lang=bn] .tr h4{font-size:.86rem;line-height:1.35}
+ .tr:last-child:nth-child(odd){grid-column:1/-1}
+ .tr.emi-card{overflow:visible}
+ .tr .emi-tag{position:absolute;top:-9px;right:12px;margin:0;padding:0;border:0;background:none;gap:0;transform:none!important;box-shadow:0 6px 14px -6px var(--glow)}
+ .tr .emi-tag>svg,.tr .emi-tag>span{display:none}
+ .tr .emi-tag em{font-size:.62rem;padding:2px 9px;white-space:nowrap}
+ .tr.emi-card{border-color:rgba(251,176,45,.38);background:linear-gradient(160deg,rgba(251,176,45,.12),transparent 70%),var(--card)}
+}
+</style>
+<script>
+(function(){
+const w=document.querySelector(".wa");if(!w)return;
+let y=scrollY,t=false;
+addEventListener("scroll",()=>{if(t)return;t=true;requestAnimationFrame(()=>{t=false;
+ const n=scrollY,d=n-y;
+ if(innerWidth<=700){if(n<240||d<-6)w.classList.remove("hid");else if(d>6)w.classList.add("hid")}else w.classList.remove("hid");
+ y=n})},{passive:true});
+})();
+</script>
+<style id="mz-faqh-css">
+/* FAQ help bar: no arrow circles; icon-only buttons on mobile */
+.faq-h .btn::after,.faq-h .btn::before{display:none}
+.faq-h .btn{padding:0 22px;justify-content:center}
+@media(max-width:560px){
+ .faq-h .sp2{gap:10px}
+ .faq-h .btn{flex:1;min-height:50px;padding:0;gap:0}
+ .faq-h .btn>span{display:none}
+ .faq-h .btn svg.i{width:22px;height:22px}
+}
+</style>
 </body>
 </html>
