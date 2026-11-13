@@ -830,6 +830,8 @@ header.stuck .nav img{height:38px}
   </div>
 </div></section>
 
+<section id="reviews" hidden></section>
+
 <section id="faq"><div class="wrap" id="faqw"></div></section>
 
 <section id="stores"><div class="wrap">
@@ -1320,21 +1322,19 @@ const r=render;render=function(){r();sync();if(!Q.hidden)draw()};sync();
 })();
 </script>
 <style id="faq-css">
-/* ===== FAQ ===== */
-#faq{border-top:1px solid var(--line)}
-.faq-g{display:grid;grid-template-columns:1fr 330px;gap:28px;align-items:start}.faq-g>*{min-width:0}
-.faq-t{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.faq-t button{padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-weight:600;font-size:.9rem;transition:.3s var(--ease)}.faq-t button:hover{border-color:var(--amber)}.faq-t button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);box-shadow:0 10px 24px -10px var(--glow)}
-.faq-s{position:relative;margin-bottom:16px}.faq-s input{width:100%;height:50px;padding:0 18px 0 46px;border-radius:16px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;transition:.3s}.faq-s input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 4px rgba(251,176,45,.15)}.faq-s svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mute);font-size:1.2em}
-.faq-i{border:1px solid var(--line);background:var(--card);border-radius:20px;margin-bottom:10px;transition:border-color .35s,box-shadow .5s var(--ease)}.faq-i.open{border-color:var(--amber);box-shadow:0 20px 44px -26px var(--glow)}
-.faq-q{width:100%;display:flex;align-items:center;gap:14px;padding:18px 20px;background:none;border:0;cursor:pointer;text-align:left;font-weight:700;font-size:1rem;line-height:1.45}
-.faq-q em{flex:none;margin-left:auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:rgba(251,176,45,.14);color:var(--amber);transition:.45s var(--ease)}.faq-i.open .faq-q em{transform:rotate(45deg);background:var(--amber);color:#2a1c00}
-.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}.faq-i.open .faq-a{grid-template-rows:1fr}.faq-a>div{overflow:hidden}.faq-a p{padding:0 20px 20px;color:var(--mute);font-size:.95rem}.faq-a ul{padding:0 20px 18px 40px;color:var(--mute);font-size:.93rem}.faq-a li{margin-bottom:4px}
-.faq-tag{flex:none;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:99px;background:rgba(251,176,45,.14);color:var(--amber)}
-.faq-no{padding:30px;text-align:center;color:var(--mute);border:1px dashed var(--line);border-radius:20px}
-.faq-h{position:sticky;top:96px;padding:26px;border-radius:26px;background:var(--card);border:1px solid var(--line);overflow:hidden}.faq-h::before{content:"";position:absolute;width:240px;height:240px;right:-90px;top:-90px;background:radial-gradient(circle,var(--glow),transparent 65%)}
-.faq-h>*{position:relative}.faq-h h3{font-size:1.2rem;margin:6px 0}.faq-h p{color:var(--mute);font-size:.9rem;margin-bottom:16px}.faq-h .btn{width:100%;justify-content:center;margin-top:10px}
-@media(max-width:960px){.faq-g{grid-template-columns:minmax(0,1fr)}.faq-h{position:relative;top:auto}}
-@media(max-width:560px){.faq-q{padding:15px 14px;font-size:.95rem}.faq-a p{padding:0 14px 16px}.faq-a ul{padding:0 14px 16px 32px}.faq-t{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4vw;padding-inline:4vw;scrollbar-width:none}.faq-t button{flex:none}}
+/* ===== FAQ (compact) ===== */
+#faq{border-top:1px solid var(--line);padding:46px 0 40px}
+.faq-hd{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:14px}.faq-hd .eyebrow{margin-bottom:4px}.faq-hd h2{font-size:clamp(1.3rem,2.4vw,1.75rem)}
+.faq-s{position:relative;width:min(300px,100%)}.faq-s input{width:100%;height:42px;padding:0 14px 0 40px;border-radius:99px;background:var(--card);border:1px solid var(--line);font:inherit;font-size:.9rem;color:inherit;transition:.3s}.faq-s input:focus{outline:0;border-color:var(--amber);box-shadow:0 0 0 4px rgba(251,176,45,.15)}.faq-s svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mute)}
+.faq-t{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}.faq-t::-webkit-scrollbar{display:none}.faq-t button{flex:none;padding:7px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-weight:600;font-size:.86rem;transition:.3s var(--ease)}.faq-t button:hover{border-color:var(--amber)}.faq-t button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber)}.faq-t.dim button.on{background:var(--card);color:inherit;border-color:var(--line)}
+.faq-i{border:1px solid var(--line);background:var(--card);border-radius:16px;margin-bottom:8px;transition:border-color .35s,box-shadow .5s var(--ease)}.faq-i.open{border-color:var(--amber);box-shadow:0 16px 36px -24px var(--glow)}
+.faq-q{width:100%;display:flex;align-items:center;gap:12px;padding:12px 16px;background:none;border:0;cursor:pointer;text-align:left;font-weight:700;font-size:.95rem;line-height:1.4}
+.faq-q em{flex:none;margin-left:auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:rgba(251,176,45,.14);color:var(--amber);transition:.45s var(--ease)}.faq-i.open .faq-q em{transform:rotate(45deg);background:var(--amber);color:#2a1c00}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}.faq-i.open .faq-a{grid-template-rows:1fr}.faq-a>div{overflow:hidden}.faq-a p{padding:0 16px 14px;color:var(--mute);font-size:.92rem}.faq-a ul{padding:0 16px 12px 34px;color:var(--mute);font-size:.9rem}.faq-a li{margin-bottom:3px}
+.faq-tag{flex:none;font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px;background:rgba(251,176,45,.14);color:var(--amber)}
+.faq-no{padding:18px;text-align:center;color:var(--mute);border:1px dashed var(--line);border-radius:16px}
+.faq-h{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;margin-top:6px;padding:10px 12px 10px 18px;border-radius:99px;background:var(--card);border:1px solid var(--line)}.faq-h b{font-size:.92rem}.faq-h span.m{color:var(--mute);font-size:.84rem}.faq-h .sp2{margin-left:auto;display:flex;gap:8px}.faq-h .btn{padding:8px 16px;border-radius:99px;font-size:.85rem;gap:6px}
+@media(max-width:560px){#faq{padding:36px 0 30px}.faq-s{width:100%}.faq-h{border-radius:20px;padding:12px 14px}.faq-h .sp2{margin-left:0;width:100%}.faq-h .btn{flex:1;justify-content:center}}
 </style>
 <script>
 /* ===== FAQ: edit this list. Each item = [category, Bangla question, Bangla answer, English question, English answer].
@@ -1355,25 +1355,90 @@ const FAQ=[
 ["x","আগে থেকে বুকিং বা অ্যাপয়েন্টমেন্ট লাগে?","না। দোকান খোলা থাকলে যেকোনো সময় ফোন নিয়ে চলে আসুন। শুধু বিক্রি করতে চাইলেও আসতে পারেন।","Do I need to book an appointment?","No. Walk in any time we're open with your phone. You can also come just to sell it."]];
 (()=>{
 const $=s=>document.querySelector(s),g=$("#faqw");if(!g)return;
-const C={bn:{ey:"সাধারণ প্রশ্ন",h:"আপনার প্রশ্নের উত্তর",p:"ওয়ারেন্টি, ফেরত, কিস্তি আর এক্সচেঞ্জ, সব এক জায়গায়।",all:"সব",w:"ওয়ারেন্টি",r:"ফেরত",e:"কিস্তি",x:"এক্সচেঞ্জ",ph:"প্রশ্ন খুঁজুন…",no:"কোনো উত্তর মেলেনি। নিচে কল বা WhatsApp করুন।",ht:"আরও প্রশ্ন আছে?",hp:"আমাদের টিম সরাসরি উত্তর দেবে, সকাল ১০টা থেকে রাত ১০টা।",call:"কল করুন",nav:"FAQ"},
-en:{ey:"FAQ",h:"Answers to common questions",p:"Warranty, returns, installments and exchange, all in one place.",all:"All",w:"Warranty",r:"Returns",e:"Installments",x:"Exchange",ph:"Search questions…",no:"No match. Call or WhatsApp us below.",ht:"Still have a question?",hp:"Our team will answer directly, 10 AM to 10 PM.",call:"Call now",nav:"FAQ"}};
-let cat="all",q="",open=-1,built=null;
+const C={bn:{ey:"সাধারণ প্রশ্ন",h:"আপনার প্রশ্নের উত্তর",p:"ওয়ারেন্টি, ফেরত, কিস্তি আর এক্সচেঞ্জ, সব এক জায়গায়।",all:"সব",w:"ওয়ারেন্টি",r:"ফেরত",e:"কিস্তি",x:"এক্সচেঞ্জ",ph:"প্রশ্ন খুঁজুন…",no:"কোনো উত্তর মেলেনি। নিচে কল বা WhatsApp করুন।",ht:"আরও প্রশ্ন আছে?",hp:"সকাল ১০টা–রাত ১০টা, সরাসরি উত্তর।",call:"কল করুন",nav:"FAQ"},
+en:{ey:"FAQ",h:"Answers to common questions",p:"Warranty, returns, installments and exchange, all in one place.",all:"All",w:"Warranty",r:"Returns",e:"Installments",x:"Exchange",ph:"Search questions…",no:"No match. Call or WhatsApp us below.",ht:"Still have a question?",hp:"10 AM–10 PM, answered directly.",call:"Call now",nav:"FAQ"}};
+let cat="w",q="",open=-1,built=null;
 const esc=x=>x.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const body=a=>{let h="",u=[];const f=()=>{if(u.length){h+="<ul>"+u.map(l=>`<li>${esc(l)}</li>`).join("")+"</ul>";u=[]}};
  a.split("\n").filter(Boolean).forEach(l=>l.startsWith("• ")?u.push(l.slice(2)):(f(),h+=`<p>${esc(l)}</p>`));f();return `<div>${h}</div>`};
 function list(){const bn=lang==="bn",L=C[lang],w=q.toLowerCase().split(/\s+/).filter(Boolean);
- const it=FAQ.map((f,i)=>({f,i})).filter(({f})=>(cat==="all"||f[0]===cat)&&w.every(k=>(f[bn?1:3]+" "+f[bn?2:4]).toLowerCase().includes(k)));
- $("#faql").innerHTML=it.length?it.map(({f,i})=>`<div class="faq-i ${i===open?"open":""}"><button type="button" class="faq-q" aria-expanded="${i===open}" aria-controls="fa${i}" data-fq="${i}"><span>${esc(f[bn?1:3])}</span>${cat==="all"?`<span class="faq-tag">${L[f[0]]}</span>`:""}<em>+</em></button><div class="faq-a" id="fa${i}" role="region">${body(f[bn?2:4])}</div></div>`).join(""):`<div class="faq-no">${L.no}</div>`}
+ const it=FAQ.map((f,i)=>({f,i})).filter(({f})=>(q||f[0]===cat)&&w.every(k=>(f[bn?1:3]+" "+f[bn?2:4]).toLowerCase().includes(k)));
+ $("#faql").innerHTML=it.length?it.map(({f,i})=>`<div class="faq-i ${i===open?"open":""}"><button type="button" class="faq-q" aria-expanded="${i===open}" aria-controls="fa${i}" data-fq="${i}"><span>${esc(f[bn?1:3])}</span>${q?`<span class="faq-tag">${L[f[0]]}</span>`:""}<em>+</em></button><div class="faq-a" id="fa${i}" role="region">${body(f[bn?2:4])}</div></div>`).join(""):`<div class="faq-no">${L.no}</div>`}
 function build(){const L=C[lang],ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;built=lang;
- g.innerHTML=`<div class="head"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><p>${L.p}</p></div><div class="faq-g"><div><div class="faq-t" id="faqt">${["all","w","r","e","x"].map(k=>`<button type="button" class="${k===cat?"on":""}" data-fc="${k}">${L[k]}</button>`).join("")}</div><div class="faq-s">${ic("search")}<input id="faqq" type="search" placeholder="${L.ph}" value="${esc(q)}" aria-label="${L.ph}"></div><div id="faql"></div></div>
- <aside class="faq-h">${ic("chat")}<h3>${L.ht}</h3><p>${L.hp}</p><a class="btn pri" href="tel:+8801960880808">${ic("call")}<span>${L.call}</span></a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/8801960880808">${ic("chat")}<span>WhatsApp</span></a></aside></div>`;list();
+ g.innerHTML=`<div class="faq-hd"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><div class="faq-s">${ic("search")}<input id="faqq" type="search" placeholder="${L.ph}" value="${esc(q)}" aria-label="${L.ph}"></div></div><div class="faq-t ${q?"dim":""}" id="faqt">${["w","r","e","x"].map(k=>`<button type="button" class="${k===cat?"on":""}" data-fc="${k}">${L[k]}</button>`).join("")}</div><div id="faql"></div>
+ <div class="faq-h"><b>${L.ht}</b><span class="m">${L.hp}</span><div class="sp2"><a class="btn pri" href="tel:+8801960880808">${ic("call")}<span>${L.call}</span></a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/8801960880808">${ic("chat")}<span>WhatsApp</span></a></div></div>`;list();
  const n=$("#nfaq");if(n)n.textContent=L.nav}
-g.addEventListener("click",e=>{let x;if(x=e.target.closest("[data-fc]")){cat=x.dataset.fc;open=-1;document.querySelectorAll("#faqt button").forEach(b=>b.classList.toggle("on",b===x));list();return}
+g.addEventListener("click",e=>{let x;if(x=e.target.closest("[data-fc]")){cat=x.dataset.fc;open=-1;q="";$("#faqq").value="";$("#faqt").classList.remove("dim");document.querySelectorAll("#faqt button").forEach(b=>b.classList.toggle("on",b===x));list();return}
  if(x=e.target.closest("[data-fq]")){const i=+x.dataset.fq,was=open===i;document.querySelectorAll(".faq-i.open").forEach(z=>{z.classList.remove("open");z.querySelector(".faq-q").setAttribute("aria-expanded","false")});open=was?-1:i;if(!was){x.parentNode.classList.add("open");x.setAttribute("aria-expanded","true")}}});
-g.addEventListener("input",e=>{if(e.target.id==="faqq"){q=e.target.value.trim();open=-1;list()}});
+g.addEventListener("input",e=>{if(e.target.id==="faqq"){q=e.target.value.trim();open=-1;$("#faqt").classList.toggle("dim",!!q);list()}});
 const r=render;render=function(){r();build()};build();
 /* FAQ structured data for search engines */
 try{const s=document.createElement("script");s.type="application/ld+json";s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:FAQ.map(f=>({"@type":"Question",name:f[3],acceptedAnswer:{"@type":"Answer",text:f[4].replace(/\n+/g," ").replace(/• /g,"")}}))});document.head.appendChild(s)}catch(e){}
+})();
+</script>
+<style id="vc-css">
+/* ===== CUSTOMER VOICES + STORE GALLERY ===== */
+#reviews{padding:46px 0 38px;border-top:1px solid var(--line)}#reviews[hidden]{display:none}
+.vc-hd{display:flex;justify-content:space-between;align-items:end;gap:14px 20px;flex-wrap:wrap;margin-bottom:16px}.vc-hd .eyebrow{margin-bottom:4px}.vc-hd h2{font-size:clamp(1.3rem,2.4vw,1.75rem)}
+.vc-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.vc-sc{display:flex;align-items:center;gap:10px;padding:7px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.86rem;color:var(--mute)}.vc-sc b{font-size:1.15rem;color:var(--text)}.vc-st{color:var(--amber);letter-spacing:1px;white-space:nowrap}
+.vc-lk{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:.85rem;transition:.3s var(--ease)}.vc-lk:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.vc-row{position:relative}.vc-sl{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 6px;margin-inline:-2px}.vc-sl::-webkit-scrollbar{display:none}
+.vc-c{flex:0 0 min(310px,82%);scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);transition:border-color .35s,transform .6s var(--ease)}.vc-c:hover{border-color:var(--amber);transform:translateY(-3px)}
+.vc-t{color:var(--text);font-size:.92rem;line-height:1.65;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.vc-c.x .vc-t{-webkit-line-clamp:unset}.vc-m{align-self:flex-start;background:none;border:0;color:var(--amber);font-weight:600;font-size:.82rem;cursor:pointer;padding:0}
+.vc-f{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--mute)}.vc-f b{color:var(--text);font-size:.9rem}.vc-f a{margin-left:auto;font-weight:600;color:var(--amber);white-space:nowrap}
+.vc-src{padding:2px 9px;border-radius:99px;font-size:.68rem;font-weight:700;background:rgba(251,176,45,.14);color:var(--amber)}
+.vc-ar{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--bg2);color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px #000;transition:.3s}.vc-ar:hover{background:var(--amber);color:#2a1c00}.vc-ar.p{left:-12px}.vc-ar.n{right:-12px}@media(hover:none),(max-width:700px){.vc-ar{display:none}}
+.vc-gh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0 10px}.vc-gh h3{font-size:1.05rem}
+.vc-tb{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.vc-tb button{flex:none;padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-weight:600;font-size:.82rem;transition:.3s}.vc-tb button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber)}
+.vc-g{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.vc-g::-webkit-scrollbar{display:none}
+.vc-th{position:relative;flex:0 0 clamp(130px,17vw,190px);aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card);cursor:pointer;padding:0;transition:transform .6s var(--ease),border-color .3s}.vc-th:hover{transform:translateY(-3px);border-color:var(--amber)}
+.vc-th img,.vc-th video{width:100%;height:100%;object-fit:cover;display:block}.vc-pl{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 40%,rgba(0,0,0,.55))}.vc-pl i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--amber);color:#2a1c00;font-size:.9rem;padding-left:3px}
+.vc-cp{position:absolute;left:8px;bottom:6px;right:8px;font-size:.7rem;font-weight:600;color:#fff;text-align:left;text-shadow:0 1px 6px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vc-lb{position:fixed;inset:0;z-index:98;display:grid;place-items:center;background:rgba(8,6,3,.88);backdrop-filter:blur(8px);animation:ofade .35s both;padding:20px}.vc-lb[hidden]{display:none}
+.vc-lb figure{max-width:min(960px,100%);max-height:100%;display:flex;flex-direction:column;gap:10px;align-items:center}.vc-lb img,.vc-lb video{max-width:100%;max-height:78vh;border-radius:18px;background:#000}.vc-lb figcaption{color:#f7f3ea;font-size:.88rem;text-align:center}
+.vc-lb button{position:absolute;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;font-size:1.2rem;transition:.3s}.vc-lb button:hover{background:var(--amber);color:#2a1c00}.vc-lb .x{top:14px;right:14px}.vc-lb .p{left:14px;top:50%}.vc-lb .n{right:14px;top:50%}
+@media(max-width:560px){#reviews{padding:36px 0 30px}.vc-lb .p,.vc-lb .n{top:auto;bottom:16px}}
+</style>
+<script>
+/* ===== REAL REVIEWS & STORE MEDIA: fill these in. Nothing shows on the site until you add real entries. =====
+   RULES: copy each review exactly as written on Google/Facebook (no edits, no invented names),
+   and paste the link to that review (or your page) in "u" so visitors can verify it.
+   Put photos/videos in a "stores" folder next to index.html.
+   Review item:  {n:"Reviewer name as shown", r:5, t:"Review text exactly as written", d:"2026-03-12", s:"google" or "facebook", u:"link to the original review"}
+   Media item:   {st:0 (first store) or 1 (second store), t:"img" or "video", src:"stores/front.jpg", poster:"stores/front-poster.jpg" (video only), alt:"short caption"}
+   RATING: enter the rating and total exactly as Google shows today, or leave 0 to hide it. */
+const VC={google:{url:"",rating:0,count:0},facebook:{url:"https://www.facebook.com/share/19xVDGVDzy/"}};
+const REVIEWS=[];
+const STORE_MEDIA=[];
+(()=>{
+const $=s=>document.querySelector(s),sec=$("#reviews");if(!sec)return;
+const ST=[{bn:"রেজাউদ্দিন বাজার",en:"Reazuddin Bazar"},{bn:"নাসিরাবাদ",en:"Nasirabad"}];
+const C={bn:{ey:"গ্রাহকদের কথা",h:"আসল অভিজ্ঞতা, আসল মানুষ",rv:"রিভিউ",gs:"Google রেটিং",gl:"Google-এ দেখুন",fl:"Facebook-এ দেখুন",more:"আরও পড়ুন",less:"কম দেখুন",ver:"মূল রিভিউ ↗",gh:"আমাদের স্টোর",all:"সব",nx:"পরের",pv:"আগের",cl:"বন্ধ করুন"},
+en:{ey:"Customer voices",h:"Real experiences, real people",rv:"reviews",gs:"Google rating",gl:"See on Google",fl:"See on Facebook",more:"Read more",less:"Show less",ver:"Original ↗",gh:"Our stores",all:"All",nx:"Next",pv:"Previous",cl:"Close"}};
+const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const star=n=>"★".repeat(Math.round(n))+"☆".repeat(5-Math.round(n));
+let sf=-1,lb=[],li=0,lbx=null;
+function gal(){const L=C[lang],m=STORE_MEDIA.map((x,i)=>({...x,i})).filter(x=>sf<0||x.st===sf);lb=m;
+ $("#vcg").innerHTML=m.map((x,k)=>`<button type="button" class="vc-th" data-vo="${k}" aria-label="${esc(x.alt||ST[x.st][lang])}">${x.t==="video"?(x.poster?`<img src="${esc(x.poster)}" alt="" loading="lazy">`:`<video src="${esc(x.src)}#t=0.1" preload="metadata" muted playsinline></video>`)+`<span class="vc-pl"><i>▶</i></span>`:`<img src="${esc(x.src)}" alt="${esc(x.alt||"")}" loading="lazy">`}<span class="vc-cp">${esc(x.alt||ST[x.st][lang])}</span></button>`).join("")}
+function build(){const L=C[lang],R=REVIEWS,M=STORE_MEDIA,G=VC.google,F=VC.facebook;sec.hidden=!(R.length||M.length);if(sec.hidden){sec.innerHTML="";return}
+ const nf=n=>(+n).toLocaleString(t().cur),dt=d=>{const x=new Date(d);return isNaN(x)?"":new Intl.DateTimeFormat(lang==="bn"?"bn-BD":"en-GB",{month:"short",year:"numeric"}).format(x)};
+ const stores=[...new Set(M.map(x=>x.st))].filter(k=>ST[k]);
+ sec.innerHTML=`<div class="wrap"><div class="vc-hd"><div><span class="eyebrow">${L.ey}</span><h2>${L.h}</h2></div><div class="vc-r">${G.rating>0&&G.count>0?`<span class="vc-sc"><b>${(+G.rating).toLocaleString(t().cur,{minimumFractionDigits:1,maximumFractionDigits:1})}</b><span class="vc-st" role="img" aria-label="${G.rating}/5">${star(G.rating)}</span><span>${L.gs} · ${nf(G.count)} ${L.rv}</span></span>`:""}${G.url?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(G.url)}">${L.gl} ↗</a>`:""}${F.url&&R.length?`<a class="vc-lk" target="_blank" rel="noopener" href="${esc(F.url)}">${L.fl} ↗</a>`:""}</div></div>
+ ${R.length?`<div class="vc-row">${R.length>2?`<button type="button" class="vc-ar p" data-va="-1" aria-label="${L.pv}">←</button><button type="button" class="vc-ar n" data-va="1" aria-label="${L.nx}">→</button>`:""}<div class="vc-sl" id="vcs">${R.map(r=>`<article class="vc-c"><span class="vc-st" role="img" aria-label="${r.r}/5">${star(r.r)}</span><p class="vc-t">${esc(r.t)}</p><button type="button" class="vc-m" data-vm hidden>${L.more}</button><div class="vc-f"><div><b>${esc(r.n)}</b><br>${dt(r.d)}</div><span class="vc-src">${r.s==="facebook"?"Facebook":"Google"}</span>${r.u?`<a target="_blank" rel="noopener" href="${esc(r.u)}">${L.ver}</a>`:""}</div></article>`).join("")}</div></div>`:""}
+ ${M.length?`<div class="vc-gh"><h3>${L.gh}</h3>${stores.length>1?`<div class="vc-tb"><button type="button" class="${sf<0?"on":""}" data-vf="-1">${L.all}</button>${stores.map(k=>`<button type="button" class="${sf===k?"on":""}" data-vf="${k}">${ST[k][lang]}</button>`).join("")}</div>`:""}</div><div class="vc-g" id="vcg"></div>`:""}</div>`;
+ if(M.length)gal();
+ requestAnimationFrame(()=>sec.querySelectorAll(".vc-c").forEach(c=>{const p=c.querySelector(".vc-t");if(p.scrollHeight>p.clientHeight+2)c.querySelector("[data-vm]").hidden=false}))}
+function lbShow(){const x=lb[li],L=C[lang];if(!x)return;lbx.innerHTML=`<button type="button" class="x" data-vx aria-label="${L.cl}">×</button>${lb.length>1?`<button type="button" class="p" data-vn="-1" aria-label="${L.pv}">←</button><button type="button" class="n" data-vn="1" aria-label="${L.nx}">→</button>`:""}<figure>${x.t==="video"?`<video src="${esc(x.src)}" controls autoplay playsinline ${x.poster?`poster="${esc(x.poster)}"`:""}></video>`:`<img src="${esc(x.src)}" alt="${esc(x.alt||"")}">`}<figcaption>${esc(x.alt||"")} · ${ST[x.st][lang]}</figcaption></figure>`}
+lbx=document.createElement("div");lbx.className="vc-lb";lbx.hidden=true;lbx.setAttribute("role","dialog");lbx.setAttribute("aria-modal","true");document.body.appendChild(lbx);
+const lbc=()=>{lbx.hidden=true;lbx.innerHTML="";document.documentElement.classList.remove("qv-lock")};
+document.addEventListener("click",e=>{const g=s=>e.target.closest(s);let x;
+ if(x=g("[data-vo]")){li=+x.dataset.vo;lbShow();lbx.hidden=false;document.documentElement.classList.add("qv-lock");const b=lbx.querySelector(".x");b&&b.focus();return}
+ if(g("[data-vx]")||e.target===lbx)return lbc();if(x=g("[data-vn]")){li=(li+ +x.dataset.vn+lb.length)%lb.length;lbShow();return}
+ if(x=g("[data-vf]")){sf=+x.dataset.vf;document.querySelectorAll(".vc-tb button").forEach(b=>b.classList.toggle("on",b===x));gal();return}
+ if(x=g("[data-va]")){const s=$("#vcs");s.scrollBy({left:+x.dataset.va*(s.firstElementChild.offsetWidth+12),behavior:"smooth"});return}
+ if(x=g("[data-vm]")){const c=x.closest(".vc-c");c.classList.toggle("x");x.textContent=C[lang][c.classList.contains("x")?"less":"more"]}});
+document.addEventListener("keydown",e=>{if(lbx.hidden)return;if(e.key==="Escape"){e.stopPropagation();lbc()}else if(e.key==="ArrowRight"&&lb.length>1){li=(li+1)%lb.length;lbShow()}else if(e.key==="ArrowLeft"&&lb.length>1){li=(li-1+lb.length)%lb.length;lbShow()}},true);
+const r=render;render=function(){r();build()};build();
 })();
 </script>
 </body>
