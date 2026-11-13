@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobiZone BD — Buy · Sell · Exchange</title>
+<meta name="description" content="নতুন মোবাইল কিনুন, পুরাতন ফোন এক্সচেঞ্জ করুন, গ্যাজেট নিন — MobiZone BD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--amber:#fbb02d;--amber2:#ffcf6b;--bg:#15120e;--bg2:#1e1a14;--card:#241f18;--text:#f7f3ea;--mute:#a79f90;--line:rgba(255,255,255,.09);--glow:rgba(251,176,45,.28)}
+[data-theme=light]{--bg:#f4f5f7;--bg2:#fff;--card:#fff;--text:#1b1812;--mute:#6b6558;--line:rgba(0,0,0,.09);--glow:rgba(251,176,45,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Hind Siliguri',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .4s,color .4s;overflow-x:hidden}
+html[lang=bn] body{font-family:'Hind Siliguri','Outfit',sans-serif}
+a{color:inherit;text-decoration:none}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{width:min(1160px,92%);margin:auto}
+svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+
+/* header — always dark so the white logo letters stay visible */
+header{position:sticky;top:0;z-index:50;background:rgba(21,18,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);color:#f7f3ea}
+.nav{display:flex;align-items:center;gap:20px;height:68px}
+.nav img{height:38px;width:auto}
+.nav nav{margin-left:auto;display:flex;gap:26px;font-weight:500;font-size:.95rem}
+.nav nav a{opacity:.8;transition:.25s;position:relative}
+.nav nav a:hover{opacity:1;color:var(--amber)}
+.tools{display:flex;gap:8px;margin-left:auto}
+.nav nav+.tools{margin-left:0}
+.chip{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:99px;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.85rem;transition:.25s;color:#f7f3ea}
+.chip:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-1px)}
+
+/* hero */
+.hero{position:relative;padding:72px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-120px;top:-80px;background:radial-gradient(circle,var(--glow),transparent 65%);animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.7}}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--bg2);padding:6px 14px;border-radius:99px;font-size:.85rem;color:var(--mute)}
+.badge b{width:8px;height:8px;border-radius:50%;background:#3ecf6e;box-shadow:0 0 0 0 #3ecf6e;animation:ping 1.8s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px transparent}}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.12;font-weight:800;margin:18px 0;letter-spacing:-.02em}
+h1 span{display:block;background:linear-gradient(90deg,var(--amber),var(--amber2),var(--amber));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200%}}
+.lead{color:var(--mute);max-width:46ch;font-size:1.08rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:14px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--bg2);transition:.3s}
+.btn:hover{transform:translateY(-3px)}
+.btn.pri{background:linear-gradient(135deg,var(--amber),#f59a0c);color:#2a1c00;border:0;box-shadow:0 10px 30px -8px var(--glow)}
+.btn.pri:hover{box-shadow:0 16px 36px -6px var(--glow)}
+.stats{display:flex;gap:34px;margin-top:38px}
+.stats b{font-size:1.8rem;color:var(--amber);display:block;line-height:1.1}
+.stats small{color:var(--mute)}
+
+/* exchange estimator (signature element) */
+.est{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 30px 70px -30px rgba(0,0,0,.5);position:relative}
+.est::after{content:"";position:absolute;inset:-1px;border-radius:27px;padding:1px;background:linear-gradient(140deg,var(--amber),transparent 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.est h3{font-size:1.25rem;display:flex;gap:10px;align-items:center}
+.est p.s{color:var(--mute);font-size:.9rem;margin-bottom:14px}
+label{display:block;font-size:.82rem;color:var(--mute);margin:12px 0 6px}
+select{width:100%;padding:12px 14px;border-radius:12px;background:var(--bg);border:1px solid var(--line);cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{padding:10px 6px;border-radius:12px;background:var(--bg);border:1px solid var(--line);cursor:pointer;transition:.25s;font-size:.9rem}
+.seg button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);font-weight:700;transform:scale(1.04)}
+.res{margin-top:20px;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(251,176,45,.16),rgba(251,176,45,.04));border:1px dashed var(--amber);text-align:center}
+.res small{color:var(--mute)}
+.res b{display:block;font-size:2.1rem;color:var(--amber);font-weight:800;line-height:1.2}
+
+/* sections */
+section{padding:84px 0}
+.alt{background:var(--bg2)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.01em}
+.head p{color:var(--mute);max-width:48ch}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat{padding:30px;border-radius:24px;background:var(--card);border:1px solid var(--line);transition:.4s;position:relative;overflow:hidden}
+.cat:hover{transform:translateY(-8px);border-color:var(--amber);box-shadow:0 24px 50px -24px var(--glow)}
+.cat .ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:rgba(251,176,45,.14);color:var(--amber);font-size:1.7rem;margin-bottom:18px;transition:.4s}
+.cat:hover .ic{background:var(--amber);color:#2a1c00;transform:rotate(-8deg) scale(1.08)}
+.cat h3{margin-bottom:6px}.cat p{color:var(--mute);font-size:.95rem}
+.tabs{display:flex;gap:8px;margin-bottom:26px;overflow-x:auto;padding-bottom:4px}
+.tabs button{white-space:nowrap;padding:9px 20px;border-radius:99px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:.25s}
+.tabs button.on{background:var(--amber);color:#2a1c00;border-color:var(--amber);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;transition:.35s;display:flex;flex-direction:column}
+.p:hover{transform:translateY(-7px);box-shadow:0 22px 44px -22px var(--glow);border-color:var(--amber)}
+.p .img{height:170px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,var(--c),transparent 72%),var(--bg)}
+.p .img svg{height:130px;transition:.45s}
+.p:hover .img svg{transform:scale(1.1) rotate(-6deg)}
+.tag{position:absolute;top:10px;left:10px;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--amber);color:#2a1c00}
+.p h4{margin-top:14px;font-size:1.02rem}
+.p .meta{color:var(--mute);font-size:.84rem}
+.price{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px}
+.price b{font-size:1.18rem;color:var(--amber)}
+.price s{color:var(--mute);font-size:.82rem;margin-left:6px}
+.add{width:40px;height:40px;border-radius:12px;border:0;cursor:pointer;background:rgba(251,176,45,.15);color:var(--amber);font-size:1.1rem;transition:.3s}
+.add:hover{background:var(--amber);color:#2a1c00;transform:rotate(90deg)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.st{padding:26px;border-radius:22px;border:1px solid var(--line);background:var(--card);position:relative;counter-increment:s}
+.st::before{content:counter(s);position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2a1c00;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 6px var(--bg2)}
+.st h3{margin:8px 0 4px;font-size:1.05rem}.st p{color:var(--mute);font-size:.92rem}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.trust div{padding:22px}.trust .ic{font-size:2rem;color:var(--amber)}.trust h4{margin:8px 0 2px}.trust p{color:var(--mute);font-size:.9rem}
+footer{background:#15120e;color:#f7f3ea;padding:56px 0 28px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:42px;margin-bottom:14px}
+footer p,footer li{color:#a79f90;font-size:.93rem}
+footer ul{list-style:none;display:grid;gap:8px}
+footer h5{margin-bottom:12px;color:var(--amber);font-size:1rem}
+.copy{border-top:1px solid rgba(255,255,255,.09);margin-top:34px;padding-top:18px;color:#a79f90;font-size:.85rem;text-align:center}
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 10px 28px -6px rgba(37,211,102,.6);animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,30px);opacity:0;background:var(--amber);color:#2a1c00;padding:10px 20px;border-radius:99px;font-weight:700;transition:.4s;z-index:70;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* motion: one page-load sequence + gentle scroll reveal */
+.in{opacity:0;transform:translateY(22px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.in,.rv{opacity:1;transform:none}}
+
+@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}.grid,.steps,.trust{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:1fr}.nav nav{display:none}.tools{margin-left:auto}.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{gap:12px}.p{padding:12px}.p .img{height:130px}.p .img svg{height:100px}.steps,.trust{grid-template-columns:1fr}.fg{grid-template-columns:1fr}.stats{gap:20px}section{padding:60px 0}.hero{padding:44px 0 60px}.nav img{height:30px}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><circle cx="12" cy="18.5" r=".6"/></symbol>
+<symbol id="swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
+<symbol id="watch" viewBox="0 0 24 24"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6l1-3h4l1 3M9 18l1 3h4l1-3"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+<symbol id="truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h5l3 3v4h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+</defs></svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="MobiZone BD"><img src="logo.png" alt="MobiZone BD — Buy Sell Exchange"></a>
+    <nav>
+      <a href="#cats" data-i="n1"></a><a href="#shop" data-i="n2"></a><a href="#how" data-i="n3"></a><a href="#contact" data-i="n4"></a>
+    </nav>
+    <div class="tools">
+      <button class="chip" id="lang" aria-label="Language">EN</button>
+      <button class="chip" id="theme" aria-label="Theme">☀️</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge in" style="animation-delay:.05s"><b></b><span data-i="open"></span></span>
+      <h1 class="in" style="animation-delay:.15s"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
+      <p class="lead in" style="animation-delay:.3s" data-i="lead"></p>
+      <div class="cta in" style="animation-delay:.45s">
+        <a class="btn pri" href="#shop"><svg class="i"><use href="#phone"/></svg><span data-i="c1"></span></a>
+        <a class="btn" href="#est"><svg class="i"><use href="#swap"/></svg><span data-i="c2"></span></a>
+      </div>
+      <div class="stats in" style="animation-delay:.6s">
+        <div><b data-n="5000" data-s="+">0</b><small data-i="s1"></small></div>
+        <div><b data-n="1200" data-s="+">0</b><small data-i="s2"></small></div>
+        <div><b data-n="98" data-s="%">0</b><small data-i="s3"></small></div>
+      </div>
+    </div>
+
+    <div class="est in" id="est" style="animation-delay:.4s">
+      <h3><svg class="i"><use href="#swap"/></svg><span data-i="e1"></span></h3>
+      <p class="s" data-i="e2"></p>
+      <label data-i="e3"></label>
+      <select id="model"></select>
+      <label data-i="e4"></label>
+      <div class="seg" id="cond"></div>
+      <div class="res"><small data-i="e5"></small><b id="val">৳0</b></div>
+      <a class="btn pri" style="width:100%;justify-content:center;margin-top:14px" href="#contact"><svg class="i"><use href="#chat"/></svg><span data-i="e6"></span></a>
+    </div>
+  </div>
+</div>
+
+<section class="alt" id="cats"><div class="wrap">
+  <div class="head rv"><h2 data-i="k1"></h2><p data-i="k2"></p></div>
+  <div class="cats">
+    <a class="cat rv" href="#shop"><div class="ic"><svg class="i"><use href="#phone"/></svg></div><h3 data-i="k3"></h3><p data-i="k4"></p></a>
+    <a class="cat rv" href="#est"><div class="ic"><svg class="i"><use href="#swap"/></svg></div><h3 data-i="k5"></h3><p data-i="k6"></p></a>
+    <a class="cat rv" href="#shop"><div class="ic"><svg class="i"><use href="#watch"/></svg></div><h3 data-i="k7"></h3><p data-i="k8"></p></a>
+  </div>
+</div></section>
+
+<section id="shop"><div class="wrap">
+  <div class="head rv"><h2 data-i="p1"></h2><p data-i="p2"></p></div>
+  <div class="tabs rv" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="alt" id="how"><div class="wrap">
+  <div class="head rv"><h2 data-i="h_1"></h2></div>
+  <div class="steps">
+    <div class="st rv"><h3 data-i="t1"></h3><p data-i="t1d"></p></div>
+    <div class="st rv"><h3 data-i="t2"></h3><p data-i="t2d"></p></div>
+    <div class="st rv"><h3 data-i="t3"></h3><p data-i="t3d"></p></div>
+    <div class="st rv"><h3 data-i="t4"></h3><p data-i="t4d"></p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap trust">
+  <div class="rv"><div class="ic"><svg class="i"><use href="#shield"/></svg></div><h4 data-i="u1"></h4><p data-i="u1d"></p></div>
+  <div class="rv"><div class="ic"><svg class="i"><use href="#truck"/></svg></div><h4 data-i="u2"></h4><p data-i="u2d"></p></div>
+  <div class="rv"><div class="ic"><svg class="i"><use href="#tag"/></svg></div><h4 data-i="u3"></h4><p data-i="u3d"></p></div>
+  <div class="rv"><div class="ic"><svg class="i"><use href="#chat"/></svg></div><h4 data-i="u4"></h4><p data-i="u4d"></p></div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="fg">
+    <div><img src="logo.png" alt="MobiZone BD"><p data-i="f1"></p></div>
+    <div><h5 data-i="f2"></h5><ul><li><svg class="i"><use href="#pin"/></svg> <span data-i="addr"></span></li><li>📞 01XXX-XXXXXX</li><li>✉️ info@mobizonebd.com</li></ul></div>
+    <div><h5 data-i="f3"></h5><ul><li data-i="hr1"></li><li data-i="hr2"></li></ul></div>
+  </div>
+  <p class="copy">© 2026 MobiZone BD</p>
+</div></footer>
+
+<a class="wa" href="https://wa.me/8801XXXXXXXXX" aria-label="WhatsApp"><svg class="i"><use href="#chat"/></svg></a>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== ১. ডেমো ডাটা (পরে এখানে আসল তথ্য বসবে) ===== */
+const PRODUCTS=[
+ {n:"iPhone 15 Pro",t:"new",m:"256GB · Natural",p:149000,o:155000,c:"#8a8f9c"},
+ {n:"Galaxy S24 Ultra",t:"new",m:"512GB · Titanium",p:139000,o:146000,c:"#6b7a99"},
+ {n:"Redmi Note 13 Pro",t:"new",m:"8/256GB · Midnight",p:31500,o:34000,c:"#5a4fcf"},
+ {n:"iPhone 13",t:"used",m:"128GB · 92% Battery",p:58000,o:0,c:"#e0587a"},
+ {n:"Galaxy A54",t:"used",m:"8/128GB · Like new",p:29000,o:0,c:"#3fa7a0"},
+ {n:"AirPods Pro 2",t:"gadget",m:"USB-C · Sealed",p:26500,o:28500,c:"#c9cdd6"},
+ {n:"Smart Watch S9",t:"gadget",m:"45mm · GPS",p:9800,o:11500,c:"#fbb02d"},
+ {n:"Anker 20,000mAh",t:"gadget",m:"PD 22.5W",p:3900,o:4400,c:"#2d3340"}
+];
+const MODELS=[["iPhone 15 Pro",120000],["iPhone 13",52000],["Galaxy S23",65000],["Galaxy A54",24000],["Redmi Note 12",15000]];
+const CONDS=[["c_good",1],["c_fair",.82],["c_poor",.62]];
+
+/* ===== ২. বাংলা / ইংরেজি ===== */
+const T={bn:{n1:"ক্যাটাগরি",n2:"শপ",n3:"এক্সচেঞ্জ",n4:"যোগাযোগ",open:"এখন খোলা · ঢাকা",h1a:"কিনুন, বিক্রি করুন,",h1b:"এক্সচেঞ্জ করুন।",lead:"নতুন মোবাইল, ব্যবহৃত ফোন আর স্মার্ট গ্যাজেট — এক জায়গায়। পুরাতন ফোন দিয়ে নতুন ফোন নিন, সহজে ও নিরাপদে।",c1:"ফোন দেখুন",c2:"দাম জানুন",s1:"সন্তুষ্ট ক্রেতা",s2:"এক্সচেঞ্জ সম্পন্ন",s3:"পজিটিভ রিভিউ",e1:"ফোনের দাম জানুন",e2:"মডেল ও অবস্থা বেছে নিন, সাথে সাথে আনুমানিক দাম দেখুন।",e3:"আপনার ফোন",e4:"ফোনের অবস্থা",e5:"আনুমানিক এক্সচেঞ্জ মূল্য",e6:"দোকানে নিশ্চিত করুন",c_good:"ভালো",c_fair:"মোটামুটি",c_poor:"পুরাতন",k1:"আপনি কী খুঁজছেন?",k2:"তিনটি সহজ পথ — কিনুন, বদলান অথবা গ্যাজেট নিন।",k3:"নতুন মোবাইল",k4:"অফিসিয়াল ওয়ারেন্টি সহ সব ব্র্যান্ড।",k5:"পুরাতন ফোন এক্সচেঞ্জ",k6:"পুরাতন ফোন দিন, নতুনের সাথে মিলিয়ে নিন।",k7:"গ্যাজেট ও এক্সেসরিজ",k8:"ইয়ারবাড, স্মার্টওয়াচ, পাওয়ার ব্যাংক ও আরও।",p1:"জনপ্রিয় পণ্য",p2:"ডেমো পণ্য — পরে আপনার আসল স্টক বসবে।",all:"সব",new:"নতুন ফোন",used:"ব্যবহৃত",gadget:"গ্যাজেট",h_1:"এক্সচেঞ্জ হয় চার ধাপে",t1:"ফোন বেছে নিন",t1d:"আপনার পছন্দের নতুন ফোনটি ঠিক করুন।",t2:"দাম জেনে নিন",t2d:"পুরাতন ফোনের আনুমানিক দাম দেখুন।",t3:"দোকানে যাচাই",t3d:"আমাদের টেকনিশিয়ান ফোনটি পরীক্ষা করবেন।",t4:"নতুন ফোন নিয়ে যান",t4d:"পার্থক্যের টাকা দিন, সাথে সাথে ফোন নিন।",u1:"১০০% অরিজিনাল",u1d:"প্রতিটি ফোনে ওয়ারেন্টি।",u2:"সারা দেশে ডেলিভারি",u2d:"৬৪ জেলায় দ্রুত পৌঁছে দিই।",u3:"সেরা দাম",u3d:"বাজারদরের সাথে মিল রেখে।",u4:"সরাসরি সাপোর্ট",u4d:"হোয়াটসঅ্যাপে যেকোনো সময়।",f1:"কিনুন · বিক্রি করুন · এক্সচেঞ্জ করুন। বাংলাদেশের বিশ্বস্ত মোবাইল শপ।",f2:"যোগাযোগ",f3:"খোলার সময়",addr:"আপনার দোকানের ঠিকানা, ঢাকা",hr1:"শনি–বৃহস্পতি: সকাল ১০টা – রাত ৯টা",hr2:"শুক্রবার: বিকাল ৩টা – রাত ৯টা",added:"কার্টে যোগ হয়েছে",cur:"bn-BD"},
+en:{n1:"Categories",n2:"Shop",n3:"Exchange",n4:"Contact",open:"Open now · Dhaka",h1a:"Buy. Sell.",h1b:"Exchange.",lead:"New phones, pre-owned devices and smart gadgets in one place. Trade in your old phone for a new one — simply and safely.",c1:"Browse phones",c2:"Get my price",s1:"Happy customers",s2:"Exchanges done",s3:"Positive reviews",e1:"Know your phone's value",e2:"Pick your model and condition to see an instant estimate.",e3:"Your phone",e4:"Condition",e5:"Estimated exchange value",e6:"Confirm in store",c_good:"Good",c_fair:"Fair",c_poor:"Worn",k1:"What are you looking for?",k2:"Three easy ways: buy, swap, or grab a gadget.",k3:"New phones",k4:"All major brands with official warranty.",k5:"Phone exchange",k6:"Hand in your old phone and put it toward a new one.",k7:"Gadgets & accessories",k8:"Earbuds, smartwatches, power banks and more.",p1:"Popular picks",p2:"Demo products — your real stock goes here.",all:"All",new:"New phones",used:"Pre-owned",gadget:"Gadgets",h_1:"Exchange in four steps",t1:"Choose a phone",t1d:"Pick the new phone you want.",t2:"Check your price",t2d:"See an estimate for your old phone.",t3:"Verify in store",t3d:"Our technician inspects your phone.",t4:"Take it home",t4d:"Pay the difference and walk out with your new phone.",u1:"100% genuine",u1d:"Warranty on every phone.",u2:"Nationwide delivery",u2d:"Fast shipping to all 64 districts.",u3:"Best prices",u3d:"Matched to the market rate.",u4:"Direct support",u4d:"On WhatsApp, any time.",f1:"Buy · Sell · Exchange. A trusted mobile shop in Bangladesh.",f2:"Contact",f3:"Opening hours",addr:"Your shop address, Dhaka",hr1:"Sat–Thu: 10 AM – 9 PM",hr2:"Fri: 3 PM – 9 PM",added:"Added to cart",cur:"en-US"}};
+
+let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,rate=1;
+const $=s=>document.querySelector(s),L=()=>T[lang];
+const fmt=n=>"৳"+Math.round(n).toLocaleString(L().cur);
+const phoneSVG=c=>`<svg viewBox="0 0 60 110"><rect x="4" y="2" width="52" height="106" rx="10" fill="#111" stroke="${c}" stroke-width="2"/><rect x="8" y="8" width="44" height="94" rx="7" fill="${c}" opacity=".85"/><rect x="22" y="10" width="16" height="4" rx="2" fill="#111"/></svg>`;
+
+function render(){
+  const t=L();document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t[e.dataset.i]);
+  $("#lang").textContent=lang==="bn"?"EN":"বাং";
+  $("#model").innerHTML=MODELS.map((m,i)=>`<option value="${i}">${m[0]}</option>`).join("");
+  $("#model").value=window._mi||0;
+  $("#cond").innerHTML=CONDS.map((c,i)=>`<button class="${i===cond?"on":""}" data-c="${i}">${t[c[0]]}</button>`).join("");
+  $("#tabs").innerHTML=["all","new","used","gadget"].map(k=>`<button class="${k===filter?"on":""}" data-f="${k}">${t[k]}</button>`).join("");
+  $("#grid").innerHTML=PRODUCTS.filter(p=>filter==="all"||p.t===filter).map(p=>`<article class="p"><div class="img" style="--c:${p.c}55">${phoneSVG(p.c)}<span class="tag">${t[p.t]}</span></div><h4>${p.n}</h4><div class="meta">${p.m}</div><div class="price"><div><b>${fmt(p.p)}</b>${p.o?`<s>${fmt(p.o)}</s>`:""}</div><button class="add" aria-label="add" data-add>+</button></div></article>`).join("");
+  document.querySelectorAll("[data-n]").forEach(e=>e.dataset.done&&(e.textContent=Number(e.dataset.n).toLocaleString(t.cur)+e.dataset.s));
+  estimate(true);
+}
+function estimate(now){
+  const target=MODELS[$("#model").value][1]*CONDS[cond][1],el=$("#val");
+  if(now){el.textContent=fmt(target);rate=target;return}
+  const from=rate,t0=performance.now();
+  (function f(t){const k=Math.min((t-t0)/600,1),e=1-Math.pow(1-k,3);el.textContent=fmt(from+(target-from)*e);k<1?requestAnimationFrame(f):rate=target})(t0);
+}
+document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-c]"),f=e.target.closest("[data-f]");
+  if(c){cond=+c.dataset.c;document.querySelectorAll("#cond button").forEach(b=>b.classList.toggle("on",b===c));estimate()}
+  if(f){filter=f.dataset.f;render()}
+  if(e.target.closest("[data-add]")){const x=$("#toast");x.textContent="✓ "+L().added;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1600)}
+});
+$("#model").addEventListener("change",e=>{window._mi=e.target.value;estimate()});
+$("#lang").onclick=()=>{lang=lang==="bn"?"en":"bn";localStorage.setItem("mz_lang",lang);render()};
+const root=document.documentElement,setTheme=m=>{root.dataset.theme=m;$("#theme").textContent=m==="dark"?"☀️":"🌙";localStorage.setItem("mz_theme",m)};
+setTheme(localStorage.getItem("mz_theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"));
+$("#theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
+
+render();
+
+/* scroll reveal + count-up */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+document.querySelectorAll("[data-n]").forEach(e=>{const n=+e.dataset.n,t0=performance.now()+700;
+  (function f(t){const k=Math.max(0,Math.min((t-t0)/1600,1));e.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString(L().cur)+e.dataset.s;k<1?requestAnimationFrame(f):e.dataset.done=1})(t0)});
+</script>
+</body>
+</html>
