@@ -698,6 +698,14 @@ header.stuck .nav{height:70px}
 header.stuck .nav img{height:38px}
 @media(max-width:560px){header.stuck .nav{height:62px}header.stuck .nav img{height:auto;max-height:28px}}
 .cbar{min-height:42px}
+
+/* top announcement bar: always one line, whatever the width */
+.cbar-t{flex-wrap:nowrap;white-space:nowrap;gap:10px}
+.cb-tag{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.cb-tx{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.cb-cd,.cb-go{flex:none}
+@media(max-width:640px){.cbar-t{padding:6px 44px 6px 12px;gap:8px;font-size:.82rem}.cb-cd{font-size:.72rem;padding:3px 9px}}
+@media(max-width:400px){.cb-go{display:none}.cbar-t{padding-left:10px;gap:6px}.cb-cd{font-size:.68rem;padding:3px 8px}}
 </style>
 </head>
 <body>
