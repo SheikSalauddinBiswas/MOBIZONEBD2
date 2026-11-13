@@ -532,6 +532,44 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 .opg-end .opg-cta{justify-content:center}
 @media(max-width:860px){.opg-hg{grid-template-columns:1fr}.opg-r{height:230px;order:-1}.opg-r .ofr-t{width:112px;height:148px}.opg-r .ofr-t.k1{margin-left:-56px}.opg-r .ofr-ic{width:140px;height:140px;font-size:3.4rem}.opg-h{padding:36px 0 50px}}
 @media(max-width:560px){.opg-top .chip span{display:none}.opg-top .chip.call span{display:none}.opg-cd b{font-size:1.45rem}.opg-top img{height:28px}}
+
+/* ===== exchange strip: compact premium ===== */
+#exchange{padding:36px 0}
+.xp{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:auto 1fr auto;gap:18px 34px;align-items:center;padding:20px 22px 20px 32px;border-radius:28px;color:#f7f3ea;
+ background:radial-gradient(80% 220% at 0% 0%,rgba(251,176,45,.26),transparent 55%),linear-gradient(150deg,#251c0f,#110c06);
+ border:1px solid rgba(251,176,45,.36);box-shadow:0 36px 70px -48px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.07)}
+.xp::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(110deg,#000,transparent 60%);mask-image:linear-gradient(110deg,#000,transparent 60%)}
+.xp .eyebrow{margin-bottom:2px;font-size:.7rem}
+.xp h2{color:#f7f3ea;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.25;white-space:nowrap}
+.xp-s{list-style:none;display:flex;align-items:center;justify-content:center;gap:0;min-width:0}
+.xp-s li{display:flex;align-items:center;gap:12px;padding:0 22px;position:relative;transition:transform .6s var(--ease)}
+.xp-s li+li::before{content:"";position:absolute;left:0;top:50%;width:1px;height:34px;translate:0 -50%;background:linear-gradient(transparent,rgba(251,176,45,.45),transparent)}
+.xp-s li:hover{transform:translateY(-2px)}
+.xp-n{flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;color:#2a1c00;background:linear-gradient(135deg,#ffdc8a,#fbb02d 55%,#e8890a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 20px -8px var(--glow);transition:transform .6s var(--ease)}
+.xp-s li:hover .xp-n{transform:rotate(-8deg) scale(1.08)}
+.xp-s h4{font-size:.95rem;line-height:1.3;white-space:nowrap}
+.xp-s p{color:#a79f90;font-size:.8rem;line-height:1.4;white-space:nowrap}
+.xp .xp-c{white-space:nowrap;min-height:46px;padding:5px 5px 5px 20px;font-size:.92rem;color:#241700}
+.xp .xp-c::after{width:34px;height:34px}
+@media(max-width:1060px){.xp{grid-template-columns:1fr auto;padding:18px 20px 18px 26px}.xp-s{grid-column:1/-1;grid-row:2;justify-content:flex-start;padding-top:14px;border-top:1px dashed rgba(251,176,45,.3)}.xp-s li:first-child{padding-left:0}}
+@media(max-width:640px){#exchange{padding:26px 0}.xp{grid-template-columns:1fr;gap:14px;padding:18px 16px;border-radius:22px}.xp h2{white-space:normal}.xp-s{grid-row:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding-top:12px}
+ .xp-s li{flex-direction:column;text-align:center;gap:8px;padding:0 4px}.xp-s li+li::before{height:46px;top:21px}.xp-s li:first-child{padding-left:4px}.xp-s h4{white-space:normal;font-size:.8rem}.xp-s p{display:none}.xp-n{width:38px;height:38px}.xp .xp-c{justify-content:space-between;width:100%}}
+
+/* ===== product badges ===== */
+.bdgs{position:absolute;top:10px;left:10px;z-index:2;display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px;max-width:calc(100% - 58px)}
+.bdg{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:6px;padding:4px 11px 4px 8px;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:.01em;white-space:nowrap;line-height:1.5;box-shadow:0 10px 20px -10px rgba(0,0,0,.6);animation:bdin .8s var(--ease) both}
+.bdg svg{font-size:.95rem;flex:none}
+@keyframes bdin{from{opacity:0;transform:translateX(-10px) scale(.92)}}
+.bd-dot{flex:none;width:7px;height:7px;border-radius:50%;background:#ff5a4d;animation:bdp 1.6s infinite}.bd-dot.ok{background:#3ecf6e;animation:ping 1.8s infinite}
+@keyframes bdp{0%{box-shadow:0 0 0 0 rgba(255,90,77,.7)}70%,100%{box-shadow:0 0 0 8px transparent}}
+.bdg.stock{background:#1b1812;color:var(--amber)}
+.bdg.new{background:linear-gradient(135deg,#ffe29a,#fbb02d 55%,#e8890a);color:#2a1c00;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 20px -10px rgba(232,137,10,.8)}
+.bdg.new::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:sweep 3.4s infinite}
+.bdg.low{background:rgba(42,14,10,.92);color:#ffb3a6;border:1px solid rgba(255,107,90,.55)}
+.bdg.hot{background:linear-gradient(135deg,#ff8a4c,#e63a12);color:#fff}
+.bdg.pre{background:linear-gradient(135deg,#6d5bff,#3a2bd1);color:#fff}
+.bdg.offer{background:#1b1812;color:#ffd27a;border:1px solid rgba(251,176,45,.65)}
+@media(max-width:560px){.bdg{font-size:.66rem;padding:3px 9px 3px 7px}.bdgs{top:8px;left:8px}}
 </style>
 </head>
 <body>
@@ -557,6 +595,9 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
 <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
 <symbol id="box" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
 <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 7h9M19 7h1M4 17h1M11 17h9"/><circle cx="16" cy="7" r="2.4"/><circle cx="8" cy="17" r="2.4"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="M11 3l1.9 5.6L18.5 10.5 12.9 12.4 11 18l-1.9-5.6L3.5 10.5l5.6-1.9z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+<symbol id="flame" viewBox="0 0 24 24"><path d="M12 3c.8 3.2 5 5.2 5 10a5 5 0 01-10 0c0-2.2 1-3.4 2.2-4.6.2 1.6.9 2.4 2 2.6C10.6 8 10.6 5.4 12 3z"/></symbol>
+<symbol id="clockf" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
 </defs></svg>
 
 <div class="cbar" id="cbar" hidden><a class="cbar-t" id="cbt" href="#camp"></a><button type="button" class="cbar-x" id="cbx" aria-label="Close">&times;</button></div>
@@ -629,14 +670,15 @@ h1 span:nth-child(1){animation-delay:0s,.25s}h1 span:nth-child(2){animation-dela
   <div class="more"><button type="button" class="btn" id="allp"><span data-i="all_p"></span></button></div>
 </div></section>
 
-<section id="exchange"><div class="wrap est-wrap">
-  <div class="rv">
-    <span class="eyebrow" data-i="ey2"></span><h2 data-i="e1"></h2><p style="color:var(--mute);margin-top:8px" data-i="e2"></p>
-    <div class="steps">
-      <div class="st"><div><h4 data-i="t1"></h4><p data-i="t1d"></p></div></div>
-      <div class="st"><div><h4 data-i="t2"></h4><p data-i="t2d"></p></div></div>
-      <div class="st"><div><h4 data-i="t3"></h4><p data-i="t3d"></p></div></div>
-    </div>
+<section id="exchange"><div class="wrap">
+  <div class="xp rv">
+    <div class="xp-l"><span class="eyebrow" data-i="ey2"></span><h2 data-i="e1"></h2></div>
+    <ol class="xp-s">
+      <li><span class="xp-n"><svg class="i"><use href="#pin"/></svg></span><div><h4 data-i="t1"></h4><p data-i="xs1"></p></div></li>
+      <li><span class="xp-n"><svg class="i"><use href="#shield"/></svg></span><div><h4 data-i="t2"></h4><p data-i="xs2"></p></div></li>
+      <li><span class="xp-n"><svg class="i"><use href="#phone"/></svg></span><div><h4 data-i="t3"></h4><p data-i="xs3"></p></div></li>
+    </ol>
+    <a class="btn pri xp-c" href="#stores"><svg class="i"><use href="#pin"/></svg><span data-i="xc1"></span></a>
   </div>
 </div></section>
 
@@ -709,6 +751,8 @@ function brErr(i){if(/\.svg$/.test(i.src)){i.src=i.src.replace(/\.svg$/,".png")}
 const BR=["Apple","Samsung","Xiaomi","realme","vivo","Oppo","OnePlus","Honor","Motorola","Infinix","Tecno","itel","Nokia","Huawei","Asus","LG"];
 const T={bn:{n1:"কালেকশন",n2:"এক্সচেঞ্জ",n3:"কেন আমরা",n4:"স্টোর",call:"কল করুন",open:"চট্টগ্রাম · ২০১৬ থেকে বিশ্বস্ত · প্রতিদিন খোলা",h1a:"নিখুঁত ফোন।",h1b:"নিশ্চিন্ত অভিজ্ঞতা।",lead:"সিল করা আসল ডিভাইস, যাচাই করা ওয়ারেন্টি আর নিজের চোখে দেখে নেওয়ার স্বাধীনতা। সবই চট্টগ্রামের বিশ্বস্ত ঠিকানায়।",c1:"কালেকশন দেখুন",c2:"ফোন এক্সচেঞ্জ",s1:"সাল থেকে বিশ্বস্ত",s2:"প্রিমিয়াম স্টোর",s3:"মাস পর্যন্ত কিস্তি",f_a:"১২ মাস নিরাপত্তা",f_b:"চট্টগ্রামে দ্রুত ডেলিভারি",ey1:"শুরু করুন",ey2:"এক্সচেঞ্জ ও বিক্রি",k1:"আপনার পথ বেছে নিন",k2:"কেনা, বদলানো কিংবা নতুন গ্যাজেটের সংগ্রহ, সবই এক ছাদের নিচে।",k3:"নতুন ফোন",k4:"সিল করা, যাচাই করা, সম্পূর্ণ ওয়ারেন্টিসহ।",k5:"এক্সচেঞ্জ ও বিক্রি",k6:"পুরাতন ফোন দোকানে দেখিয়ে, সেদিনই নতুনটি নিন।",k7:"ট্যাব ও গ্যাজেট",k8:"ট্যাবলেট, স্মার্টওয়াচ, অডিও ও বাছাই করা এক্সেসরিজ।",p1:"নির্বাচিত কালেকশন",all:"সব",flag:"ফ্ল্যাগশিপ",mid:"৫৫ হাজারের নিচে",tab:"ট্যাবলেট",all_p:"সম্পূর্ণ কালেকশন",stock:"স্টকে আছে",e1:"পুরাতন ফোন। নতুন শুরু।",e2:"আপনার ফোনের সঠিক মূল্য নির্ধারিত হয় দোকানে, আমাদের বিশেষজ্ঞের সামনে। অনুমান নয়, সরাসরি ও স্বচ্ছ মূল্য।",t1:"ভিজিট বুক করুন",t1d:"আপনার সুবিধামতো সময় WhatsApp-এ বা ফোনে জানান।",t2:"সামনাসামনি যাচাই",t2d:"আমাদের টেকনিশিয়ান আপনার সামনেই ফোনটি পরীক্ষা করে মূল্য জানাবেন।",t3:"সেদিনই নতুন ফোন",t3d:"পার্থক্যের টাকা মিটিয়ে নতুন ডিভাইস হাতে নিয়ে ফিরুন।",e3t:"স্টোর ভিজিট রিকোয়েস্ট",x1:"আপনার বর্তমান ফোন",x1p:"যেমন: iPhone 13, 128GB",x2:"যে ফোনটি নিতে চান",x2n:"এখনো ঠিক করিনি",x3:"আপনি কী করতে চান",m1:"এক্সচেঞ্জ",m2:"বিক্রি",x4:"পছন্দের স্টোর",x5:"কখন আসবেন",w_1:"আজ",w_2:"আগামীকাল",w_3:"এই সপ্তাহে",mt:"আমি স্টোর ভিজিট করতে চাই",e6:"WhatsApp-এ রিকোয়েস্ট পাঠান",note:"অনলাইনে কোনো মূল্য নির্ধারণ হয় না। ফোন হাতে দেখে সঠিক দাম সাথে সাথে জানানো হয়।",w1:"নিশ্চিন্তে কিনুন",w2:"প্রতিটি ডিভাইসের সাথে আমাদের অঙ্গীকার।",u1:"শতভাগ আসল",u1d:"সিল করা স্টক, বিক্রির আগে সম্পূর্ণ যাচাই।",u2:"১৫ দিনের ফেরত সুবিধা",u2d:"মত বদলালে নির্দ্বিধায় ফিরিয়ে আনুন।",u3:"২ বছরের রিপ্লেসমেন্ট",u3d:"কেনার পরের ত্রুটিতেও আমরা আপনার পাশে।",u4:"৩৬ মাসের কিস্তি",u4d:"সুবিধামতো মাসিক কিস্তিতে স্বপ্নের ফোন।",u5:"অতি দ্রুত ডেলিভারি",u5d:"চট্টগ্রাম জুড়ে দ্রুত ও নিরাপদে পৌঁছে দেওয়া।",u6:"সেরা মূল্য",u6d:"বাজারের সাথে মিলিয়ে দেখুন, আমরা আত্মবিশ্বাসী।",v1:"আমাদের দুটি স্টোর",v2:"প্রতিদিন খোলা। আসুন, নিজের হাতে অনুভব করে নিন।",a1:"রিয়াজউদ্দিন বাজার, চট্টগ্রাম",a2:"শপ ৫২৫, ৪র্থ তলা, নাসিরাবাদ, ২নং গেট, চট্টগ্রাম",map:"ম্যাপে দেখুন",f1:"কিনুন · বিক্রি করুন · এক্সচেঞ্জ করুন। চট্টগ্রামের প্রিমিয়াম ফোন ও গ্যাজেট গন্তব্য।",f2:"যোগাযোগ",f3:"খোলার সময়",hr1:"Islam Market: প্রতিদিন সকাল ১০টা – রাত ৯টা",hr2:"Concord Mueen Square: প্রতিদিন সকাল ১০টা – রাত ১০টা",trk:"অর্ডার ট্র্যাক",ob:"অর্ডার করুন",flt:"ফিল্টার",ph_s:"ফোনের নাম বা ব্র্যান্ড লিখুন",so0:"জনপ্রিয়",so1:"দাম: কম থেকে বেশি",so2:"দাম: বেশি থেকে কম",pr:"দামের সীমা",rs:"রিসেট",allb:"সব ব্র্যান্ড",nm1:"কোনো ডিভাইস পাওয়া যায়নি",nm2:"অন্য নাম লিখে দেখুন, অথবা ফিল্টার কমিয়ে নিন।",oh1:"প্রতিদিন সকাল ১০টা – রাত ৯টা",oh2:"প্রতিদিন সকাল ১০টা – রাত ১০টা",on:"এখন খোলা",off:"এখন বন্ধ",emi2:"EMI ক্যালকুলেটর",emi5:"শিগগিরই আসছে",cur:"bn-BD"},
 en:{n1:"Collection",n2:"Exchange",n3:"Why us",n4:"Stores",call:"Call now",open:"Chattogram · Trusted since 2016 · Open daily",h1a:"The perfect phone.",h1b:"Zero compromise.",lead:"Sealed, genuine devices with verified warranty, and the freedom to see them in person. Chattogram's most trusted address.",c1:"Explore the collection",c2:"Exchange your phone",s1:"Trusted since",s2:"Flagship stores",s3:"Months of installments",f_a:"12-month cover",f_b:"Fast delivery in Chattogram",ey1:"Get started",ey2:"Exchange & sell",k1:"Choose your path",k2:"Buy, trade up, or explore new gadgets. All under one roof.",k3:"New phones",k4:"Sealed, verified, fully under warranty.",k5:"Exchange & sell",k6:"Show us your phone in store and leave with a new one, the same day.",k7:"Tablets & gadgets",k8:"Tablets, smartwatches, audio and curated accessories.",p1:"The collection",all:"All",flag:"Flagship",mid:"Under ৳55k",tab:"Tablets",all_p:"Full collection",stock:"In stock",e1:"Your old phone. A fresh start.",e2:"Your phone's true value is set in store, in front of our specialist. No online guesswork, just a direct and transparent price.",t1:"Book a visit",t1d:"Tell us a time that suits you.",t2:"Inspected face to face",t2d:"Our technician checks your phone in front of you and quotes the value.",t3:"Leave with the new one",t3d:"Pay the difference and walk out with your new device.",e3t:"Store visit request",x1:"Your current phone",x1p:"e.g. iPhone 13, 128GB",x2:"The phone you want",x2n:"Not decided yet",x3:"What would you like to do",m1:"Exchange",m2:"Sell",x4:"Preferred store",x5:"When will you come",w_1:"Today",w_2:"Tomorrow",w_3:"This week",mt:"I'd like to visit the store",e6:"Send request on WhatsApp",note:"No prices are set online. We inspect the phone in hand and quote the exact value on the spot.",w1:"Buy with confidence",w2:"Our promise with every device.",u1:"100% genuine",u1d:"Sealed stock, fully verified before sale.",u2:"15-day returns",u2d:"Changed your mind? Bring it back, no fuss.",u3:"2-year replacement",u3d:"Covered for faults long after you buy.",u4:"36-month installments",u4d:"Your dream phone, split into easy monthly payments.",u5:"Lightning delivery",u5d:"Fast and secure across Chattogram.",u6:"Best price",u6d:"Compare us with the market. We're confident.",v1:"Our two stores",v2:"Open daily. Come and feel the difference in person.",a1:"Reazuddin Bazar, Chattogram",a2:"Shop 525, 4th Floor, Nasirabad, 2no Gate, Chattogram",map:"View on map",f1:"Buy · Sell · Exchange. Chattogram's premium destination for phones and gadgets.",f2:"Contact",f3:"Opening hours",hr1:"Islam Market: daily 10 AM – 9 PM",hr2:"Concord Mueen Square: daily 10 AM – 10 PM",trk:"Track order",ob:"Order now",flt:"Filters",ph_s:"Search phones or brands",so0:"Featured",so1:"Price: low to high",so2:"Price: high to low",pr:"Price range",rs:"Reset",allb:"All brands",nm1:"No devices found",nm2:"Try another name or loosen the filters.",oh1:"Daily 10 AM – 9 PM",oh2:"Daily 10 AM – 10 PM",on:"Open now",off:"Closed now",emi2:"EMI Calculator",emi5:"Coming soon",cur:"en-US"}};
+Object.assign(T.bn,{xs1:"কোনো বুকিং লাগে না",xs2:"আপনার সামনেই পরীক্ষা",xs3:"পার্থক্য মিটিয়ে নিন",t1:"সরাসরি দোকানে আসুন",t1d:"কোনো বুকিং বা অ্যাপয়েন্টমেন্ট লাগে না। দোকান খোলা থাকলে যেকোনো সময় ফোন নিয়ে চলে আসুন।",xb1:"বুকিং ছাড়াই",xb2:"প্রতিদিন খোলা",xb3:"স্বচ্ছ মূল্য",xc1:"স্টোরে চলে আসুন",xc2:"WhatsApp-এ জিজ্ঞাসা করুন"});
+Object.assign(T.en,{xs1:"No booking needed",xs2:"Checked in front of you",xs3:"Pay the difference",t1:"Just walk in",t1d:"No booking or appointment needed. Come by any time we're open with your phone.",xb1:"No booking",xb2:"Open daily",xb3:"Transparent value",xc1:"Find our stores",xc2:"Ask on WhatsApp"});
 const STORES=["Islam Market","Concord Mueen"],X={m:0,s:0,w:0};
 let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,cur=0,hs=0,rate=0,likes=new Set;
 const $=s=>document.querySelector(s),t=()=>T[lang];
@@ -780,6 +824,23 @@ document.querySelectorAll("[data-open]").forEach(e=>{const[a,b]=e.dataset.open.s
 const r=render;render=function(){r();upd()};upd();setInterval(upd,6e4)})();
 </script>
 <script>
+/* ===== PRODUCT BADGES: edit this list. Keys are product numbers from P (0 = first phone).
+   Types: "new" (New arrival) · "low:N" (only N left; plain "low" = Low stock) · "hot" (Popular) · "pre" (Pre-order) · "offer".
+   "offer" is added automatically for products inside a running campaign. Max 2 badges show per card. ===== */
+const BADGE={0:["new"],1:["hot"],2:["new"],3:["low:2"],5:["hot"],6:["new"],8:["low:3"],10:["new"]};
+const BD={bn:{new:"নতুন এসেছে",low:"স্টক কম",lown:n=>"মাত্র "+n.toLocaleString("bn-BD")+"টি বাকি",hot:"জনপ্রিয়",pre:"প্রি-অর্ডার",offer:"অফার",stock:"স্টকে আছে"},
+ en:{new:"New arrival",low:"Low stock",lown:n=>"Only "+n+" left",hot:"Popular",pre:"Pre-order",offer:"Offer",stock:"In stock"}};
+const BI={new:"spark",low:"clockf",hot:"flame",pre:"clockf",offer:"tag"};
+function badges(i,force){const L=BD[lang],o=new Set((BADGE[i]||[]).map(String));
+ if(force||(window.MZ_OFFER&&window.MZ_OFFER.has(i)))o.add("offer");
+ const out=[];for(const k of["low","new","hot","pre","offer"]){const m=[...o].find(x=>x===k||x.startsWith(k+":"));if(!m)continue;
+  const n=+m.split(":")[1],txt=k==="low"&&n?L.lown(n):L[k];
+  out.push(`<span class="bdg ${k}">${k==="low"?'<i class="bd-dot"></i>':`<svg class="i"><use href="#${BI[k]}"/></svg>`}${txt}</span>`)}
+ if(!out.length)out.push(`<span class="bdg stock"><i class="bd-dot ok"></i>${L.stock}</span>`);
+ return out.slice(0,2).join("")}
+window.mzBadges=()=>document.querySelectorAll("#grid [data-bi]").forEach(e=>e.innerHTML=badges(+e.dataset.bi));
+</script>
+<script>
 (()=>{
 const $=s=>document.querySelector(s),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const LO=Math.floor(Math.min(...P.map(p=>p[2]))/1e3)*1e3,HI=Math.ceil(Math.max(...P.map(p=>p[2]))/1e3)*1e3;
@@ -793,7 +854,7 @@ const act=()=>F.q||F.b.size||F.min>LO||F.max<HI||F.sort!=="0";
 const cnt=n=>lang==="bn"?n.toLocaleString(t().cur)+"টি ডিভাইস":n+" device"+(n===1?"":"s");
 let gl=null,cl=null;
 function buildGrid(){const L=t(),g=$("#grid");if(gl===lang&&g.children.length)return apply();gl=lang;
- g.innerHTML=P.map((p,i)=>`<article class="p sp" data-k="${i}"><div class="img">${img(p[1],p[0])}<span class="tag">${L.stock}</span><button class="heart ${likes.has(i)?"on":""}" data-h="${i}" aria-label="like">♥</button></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><button type="button" class="cart-b" data-a="${i}" aria-label="${lang==='bn'?'কার্টে যোগ করুন':'Add to cart'}" title="${lang==='bn'?'কার্টে যোগ করুন':'Add to cart'}"><svg class="i"><use href="#cart"/></svg><b>+</b></button></div><button type="button" class="ob" data-o="${i}"><span>${L.ob}</span></button></article>`).join("");apply(true)}
+ g.innerHTML=P.map((p,i)=>`<article class="p sp" data-k="${i}"><div class="img">${img(p[1],p[0])}<div class="bdgs" data-bi="${i}">${badges(i)}</div><button class="heart ${likes.has(i)?"on":""}" data-h="${i}" aria-label="like">♥</button></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><button type="button" class="cart-b" data-a="${i}" aria-label="${lang==='bn'?'কার্টে যোগ করুন':'Add to cart'}" title="${lang==='bn'?'কার্টে যোগ করুন':'Add to cart'}"><svg class="i"><use href="#cart"/></svg><b>+</b></button></div><button type="button" class="ob" data-o="${i}"><span>${L.ob}</span></button></article>`).join("");apply(true)}
 function apply(first){const g=$("#grid"),cs=[...g.children],bf=new Map();
  if(!first)cs.forEach(c=>{if(!c.hidden)bf.set(c,c.getBoundingClientRect())});
  const vis=cs.filter(c=>ok(P[c.dataset.k])),pr=c=>P[c.dataset.k][2],sv=F.sort;
@@ -937,9 +998,9 @@ const CAMP=[
    terms:["The offer is valid for a limited time and while stock lasts.","Please confirm offer pricing and details in store.","Every device is sealed and genuine, with full warranty."]}},
  {id:"xch26",start:"2026-11-01T00:00:00+06:00",end:"2026-12-15T23:59:59+06:00",lead:14,items:[],icon:"swap",
   bn:{tag:"এক্সচেঞ্জ ফেস্ট",bar:"পুরাতন ফোন দিয়ে সেদিনই নতুন ফোন",t:"এক্সচেঞ্জ ফেস্ট",s:"পুরাতন ফোন দেখান, সেদিনই নতুন ফোন নিয়ে ফিরুন",d:"আপনার পুরাতন ফোন দোকানে দেখিয়ে সেদিনই নতুনটি নিন। সামনাসামনি যাচাই, স্বচ্ছ মূল্য, কোনো অনুমান নয়।",cta:"বিস্তারিত দেখুন",
-   terms:["ফোনের মূল্য দোকানে সামনাসামনি যাচাই করে নির্ধারিত হয়।","অনলাইনে কোনো মূল্য নির্ধারণ হয় না।","আসার আগে WhatsApp বা কলে সময় জানিয়ে নিন।"]},
+   terms:["ফোনের মূল্য দোকানে সামনাসামনি যাচাই করে নির্ধারিত হয়।","অনলাইনে কোনো মূল্য নির্ধারণ হয় না।","কোনো বুকিং লাগে না, খোলা সময়ে সরাসরি চলে আসুন।"]},
   en:{tag:"Exchange Fest",bar:"Trade in your old phone, leave with a new one",t:"Exchange Fest",s:"Show us your old phone, leave with a new one the same day",d:"Show us your old phone in store and walk out with a new one the same day. Face-to-face inspection, transparent value, no guesswork.",cta:"See details",
-   terms:["Your phone's value is set in store, face to face.","No prices are set online.","Please message or call us on WhatsApp before you visit."]}}
+   terms:["Your phone's value is set in store, face to face.","No prices are set online.","No booking needed. Walk in any time we're open."]}}
 ];
 const X={bn:{e2:"শেষ হতে",s2:"শুরু হতে",live:"এখন চলছে",soon:"শিগগিরই আসছে",ends:"অফার শেষ হতে বাকি",starts:"অফার শুরু হতে বাকি",u:["দিন","ঘণ্টা","মিনিট","সেকেন্ড"],dd:" দিন ",back:"ফিরে যান",off:"অফার",items:"অফারের ডিভাইস",itemsd:"এই ক্যাম্পেইনের বাছাই করা ডিভাইস। অর্ডার করতে নিচের বাটন ব্যবহার করুন।",how:"কীভাবে কাজ করে",see:"ডিভাইস দেখুন",ask:"WhatsApp-এ জিজ্ঞাসা করুন",terms:"শর্তাবলি",more:"আরও জানতে যোগাযোগ করুন",home:"হোমে ফিরুন",cart:"কার্ট"},
  en:{e2:"Ends in",s2:"Starts in",live:"Live now",soon:"Starting soon",ends:"Offer ends in",starts:"Offer starts in",u:["Days","Hours","Min","Sec"],dd:"d ",back:"Back",off:"Offer",items:"Devices in this offer",itemsd:"Selected devices for this campaign. Use the buttons below to order.",how:"How it works",see:"See devices",ask:"Ask on WhatsApp",terms:"Terms",more:"Questions? Get in touch",home:"Back to home",cart:"Cart"}};
@@ -967,11 +1028,11 @@ function goSlide(i){si=i;$$(".ofr-s").forEach((e,k)=>e.classList.toggle("on",k==
 /* offer page */
 function page(id){const it=A.find(x=>x.c.id===id);if(!it)return false;const{c,k,to}=it,T=c[lang],L=X[lang],M=t(),has=c.items&&c.items.length,
  wa="https://wa.me/8801960880808?text="+encodeURIComponent(T.t),
- card=i=>{const p=P[i];return `<article class="p sp"><div class="img">${img(p[1],p[0])}<span class="tag">${L.off}</span></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><button type="button" class="cart-b" data-a="${i}" aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><b>+</b></button></div><button type="button" class="ob" data-o="${i}"><span>${M.ob}</span></button></article>`},
+ card=i=>{const p=P[i];return `<article class="p sp"><div class="img">${img(p[1],p[0])}<div class="bdgs">${badges(i,1)}</div></div><h4>${p[0]}</h4><div class="price"><b>${fmt(p[2])}</b><button type="button" class="cart-b" data-a="${i}" aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><b>+</b></button></div><button type="button" class="ob" data-o="${i}"><span>${M.ob}</span></button></article>`},
  perks=[["shield",M.u1,M.u1d],["undo",M.u2,M.u2d],["swap",M.u3,M.u3d]];
  $("#opg").innerHTML=`<div class="opg-top"><div class="wrap"><button type="button" class="chip" data-oclose><span>← ${L.back}</span></button><img src="logo.png" alt="MobiZone BD"><button type="button" class="chip oc" data-ocart aria-label="${L.cart}"><svg class="i"><use href="#cart"/></svg><em id="ocb" hidden>0</em></button><a class="chip call" href="tel:+8801960880808"><svg class="i"><use href="#call"/></svg><span>${M.call}</span></a></div></div>
  <div class="opg-h"><div class="wrap opg-hg"><div><span class="ofr-tag"><i class="dt ${k}"></i>${k==="live"?L.live:L.soon}</span><h2>${T.t}</h2><p class="opg-d">${T.d}</p><div class="opg-lab">${k==="live"?L.ends:L.starts}</div>${cd(to,"opg-cd")}
- <div class="opg-cta">${has?`<button type="button" class="btn pri" data-oscroll><span>${L.see}</span></button><a class="btn" target="_blank" rel="noopener" href="${wa}"><span>${L.ask}</span></a>`:`<a class="btn pri" target="_blank" rel="noopener" href="${wa}"><span>${M.e6}</span></a><button type="button" class="btn" data-oscroll><span>${L.how}</span></button>`}</div></div><div class="opg-r">${thumbs(c,3)}</div></div></div>
+ <div class="opg-cta">${has?`<button type="button" class="btn pri" data-oscroll><span>${L.see}</span></button><a class="btn" target="_blank" rel="noopener" href="${wa}"><span>${L.ask}</span></a>`:`<a class="btn pri" target="_blank" rel="noopener" href="${wa}"><span>${M.xc2}</span></a><button type="button" class="btn" data-oscroll><span>${L.how}</span></button>`}</div></div><div class="opg-r">${thumbs(c,3)}</div></div></div>
  <section id="ofitems"><div class="wrap">${has?`<div class="head"><div><span class="eyebrow">${L.off}</span><h2>${L.items}</h2></div><p>${L.itemsd}</p></div><div class="grid">${c.items.map(card).join("")}</div>`
   :`<div class="head"><div><span class="eyebrow">${L.off}</span><h2>${L.how}</h2></div></div><div class="steps" style="max-width:640px">${[1,2,3].map(n=>`<div class="st"><div><h4>${M["t"+n]}</h4><p>${M["t"+n+"d"]}</p></div></div>`).join("")}</div>`}</div></section>
  <section class="alt"><div class="wrap"><div class="head"><h2>${M.w1}</h2><p>${M.w2}</p></div><div class="trust">${perks.map(([ic,h,d])=>`<div class="tr sp"><div class="ic"><svg class="i"><use href="#${ic}"/></svg></div><div><h4>${h}</h4><p>${d}</p></div></div>`).join("")}</div></div></section>
@@ -983,7 +1044,7 @@ function hidePage(){cur=null;const o=$("#opg");if(o.hidden)return;o.hidden=true;
 function route(){const m=location.hash.match(/^#offer\/([\w-]+)/);m&&A.find(x=>x.c.id===m[1])?showPage(m[1]):hidePage()}
 function closePage(){if(pushed){pushed=false;history.back()}else{history.replaceState(null,"",location.pathname+location.search);route()}}
 
-function paint(){A=list();const bar=$("#cbar");
+function paint(){A=list();const bar=$("#cbar");window.MZ_OFFER=new Set(A.filter(x=>x.k==="live").flatMap(x=>x.c.items||[]));queueMicrotask(()=>window.mzBadges&&window.mzBadges());
  if(!A.length){bar.hidden=true;banner();hidePage();return}
  bar.hidden=dismissed();bi%=A.length;barText();banner();if(cur)A.find(x=>x.c.id===cur)?showPage(cur):hidePage();tick()}
 function tick(){if(!A.length)return;const now=Date.now();let stale=false;
