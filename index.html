@@ -707,6 +707,29 @@ header.stuck .nav img{height:38px}
 @media(max-width:640px){.cbar-t{padding:6px 44px 6px 12px;gap:8px;font-size:.82rem}.cb-cd{font-size:.72rem;padding:3px 9px}}
 @media(max-width:400px){.cb-go{display:none}.cbar-t{padding-left:10px;gap:6px}.cb-cd{font-size:.68rem;padding:3px 8px}}
 </style>
+<script>
+window.mzFb=function(i){
+ const s=document.createElement("span");s.className="mzfb";
+ s.innerHTML='<svg viewBox="0 0 120 240" aria-hidden="true"><rect x="14" y="6" width="92" height="228" rx="24" fill="#1a150d" stroke="#fbb02d" stroke-width="2"/><rect x="21" y="13" width="78" height="214" rx="18" fill="#2a2113"/><path d="M21 150 L99 70 V13 H21Z" fill="#fff" opacity=".05"/><rect x="47" y="21" width="26" height="7" rx="3.5" fill="#0c0905"/><rect x="38" y="96" width="44" height="44" rx="14" fill="none" stroke="#fbb02d" stroke-width="2" opacity=".75"/><circle cx="60" cy="118" r="7" fill="#fbb02d" opacity=".9"/><rect x="46" y="214" width="28" height="3" rx="1.5" fill="#fff" opacity=".35"/></svg>';
+ i.replaceWith(s);
+};
+</script>
+<style id="mz-hero-css">
+/* premium placeholder when a product photo is missing / still loading */
+.mzfb{display:grid;place-items:center;width:100%;height:100%;position:relative;z-index:1;
+ background:radial-gradient(60% 50% at 50% 46%,rgba(251,176,45,.26),transparent 70%)}
+.mzfb svg{height:58%;width:auto;max-width:60%;filter:drop-shadow(0 18px 22px rgba(0,0,0,.45)) drop-shadow(0 0 26px rgba(251,176,45,.28));animation:mzfl 5s ease-in-out infinite}
+.p .img .mzfb{background:radial-gradient(60% 55% at 50% 50%,rgba(251,176,45,.22),transparent 72%)}
+.p .img .mzfb{align-self:stretch}.p .img .mzfb svg{height:96px;max-height:70%;max-width:none;margin-top:14px}
+@keyframes mzfl{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.mzfb svg{animation:none}}
+@media(max-width:560px){
+ .hero .stage{max-width:262px}
+ .hero .pname{margin-top:16px;font-size:1rem;min-height:0}
+ .hero .pname small{font-size:1.05rem}
+ .hero .pname::after{margin-top:8px}
+}
+</style>
 </head>
 <body>
 <div id="bar"></div>
@@ -898,7 +921,7 @@ const STORES=["Islam Market","Concord Mueen"],X={m:0,s:0,w:0};
 let lang=localStorage.getItem("mz_lang")||"bn",filter="all",cond=0,cur=0,hs=0,rate=0,likes=new Set;
 const $=s=>document.querySelector(s),t=()=>T[lang];
 const fmt=n=>"৳"+Math.round(n).toLocaleString(t().cur);
-const img=(u,n)=>`<img src="${IMG+u}.webp" alt="${n}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📱',style:'font-size:4rem'}))">`;
+const img=(u,n)=>`<img src="${IMG+u}.webp" alt="${n}" loading="lazy" onerror="mzFb(this)">`;
 function render(){
  const L=t();document.documentElement.lang=lang;
  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=L[e.dataset.i]);
@@ -910,7 +933,7 @@ function render(){
 }
 function hf(i){const r=i.naturalWidth/i.naturalHeight,F=.8;if(!r)return;if(r>=F){i.style.width="100%";i.style.height=(F/r*100)+"%"}else{i.style.height="100%";i.style.width=(r/F*100)+"%"}i.classList.add("ok")}
 function hero(){
- $("#tilt").innerHTML=HERO.map((h,i)=>`<div class="slide ${i===hs?"on":""}"><div class="frm"><img class="bgi" src="${IMG+P[h][1]}.webp" alt="" aria-hidden="true" decoding="async"><img class="fgi" src="${IMG+P[h][1]}.webp" alt="${P[h][0]}" decoding="async" onload="hf(this)" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📱',style:'font-size:4rem;position:relative'}))"></div></div>`).join("");
+ $("#tilt").innerHTML=HERO.map((h,i)=>`<div class="slide ${i===hs?"on":""}"><div class="frm"><img class="bgi" src="${IMG+P[h][1]}.webp" alt="" aria-hidden="true" decoding="async"><img class="fgi" src="${IMG+P[h][1]}.webp" alt="${P[h][0]}" decoding="async" onload="hf(this)" onerror="mzFb(this)"></div></div>`).join("");
  const p=P[HERO[hs]];$("#pname").innerHTML=`${p[0]}<small>${fmt(p[2])}</small>`;
 }
 document.addEventListener("click",e=>{
